@@ -10,12 +10,12 @@ import java.awt.Color;
  *
  * @author crist
  */
-public class AdministradorPrincipal extends javax.swing.JFrame {
+public class EmpleadoPrincipal extends javax.swing.JFrame {
 int xmouse,ymouse;
     /**
      * Creates new form AdministradorInventario
      */
-    public AdministradorPrincipal() {
+    public EmpleadoPrincipal() {
         initComponents();
         this.setLocationRelativeTo(this);
     }
@@ -31,10 +31,10 @@ int xmouse,ymouse;
 
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        btnUsuario = new javax.swing.JButton();
-        btnInventario = new javax.swing.JButton();
+        btnFacturacion = new javax.swing.JButton();
+        btnVentas = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
-        btnProveedor = new javax.swing.JButton();
+        btnInventario = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -49,35 +49,35 @@ int xmouse,ymouse;
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/administrador 256px.png"))); // NOI18N
 
-        btnUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnUsuario.setForeground(new java.awt.Color(113, 189, 68));
-        btnUsuario.setText("Usuario");
-        btnUsuario.setBorder(null);
-        btnUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnFacturacion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnFacturacion.setForeground(new java.awt.Color(113, 189, 68));
+        btnFacturacion.setText("Facturacion");
+        btnFacturacion.setBorder(null);
+        btnFacturacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnUsuarioMouseEntered(evt);
+                btnFacturacionMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnUsuarioMouseExited(evt);
+                btnFacturacionMouseExited(evt);
             }
         });
-        btnUsuario.addActionListener(new java.awt.event.ActionListener() {
+        btnFacturacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUsuarioActionPerformed(evt);
+                btnFacturacionActionPerformed(evt);
             }
         });
 
-        btnInventario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnInventario.setForeground(new java.awt.Color(113, 189, 68));
-        btnInventario.setText("Inventario");
-        btnInventario.setBorder(null);
-        btnInventario.setBorderPainted(false);
-        btnInventario.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnVentas.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnVentas.setForeground(new java.awt.Color(113, 189, 68));
+        btnVentas.setText("Ventas");
+        btnVentas.setBorder(null);
+        btnVentas.setBorderPainted(false);
+        btnVentas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnInventarioMouseEntered(evt);
+                btnVentasMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnInventarioMouseExited(evt);
+                btnVentasMouseExited(evt);
             }
         });
 
@@ -99,16 +99,16 @@ int xmouse,ymouse;
             }
         });
 
-        btnProveedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnProveedor.setForeground(new java.awt.Color(113, 189, 68));
-        btnProveedor.setText("Proveedor");
-        btnProveedor.setBorder(null);
-        btnProveedor.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnInventario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnInventario.setForeground(new java.awt.Color(113, 189, 68));
+        btnInventario.setText("Inventario");
+        btnInventario.setBorder(null);
+        btnInventario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnProveedorMouseEntered(evt);
+                btnInventarioMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnProveedorMouseExited(evt);
+                btnInventarioMouseExited(evt);
             }
         });
 
@@ -122,18 +122,18 @@ int xmouse,ymouse;
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 8, Short.MAX_VALUE))
-                    .addComponent(btnUsuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnFacturacion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(btnInventario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnVentas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap()))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(btnProveedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnInventario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap()))
         );
         jPanel1Layout.setVerticalGroup(
@@ -142,19 +142,19 @@ int xmouse,ymouse;
                 .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(177, 177, 177)
-                .addComponent(btnUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnFacturacion, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(68, 68, 68)
                 .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(146, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                     .addContainerGap(348, Short.MAX_VALUE)
-                    .addComponent(btnInventario, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(305, 305, 305)))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                     .addContainerGap(455, Short.MAX_VALUE)
-                    .addComponent(btnProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnInventario, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(198, 198, 198)))
         );
 
@@ -191,9 +191,34 @@ int xmouse,ymouse;
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuarioActionPerformed
+    private void btnFacturacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturacionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnUsuarioActionPerformed
+    }//GEN-LAST:event_btnFacturacionActionPerformed
+
+    private void btnVentasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVentasMouseEntered
+        // TODO add your handling code here:
+        btnVentas.setBackground(Color.decode("#71bd44"));
+        btnVentas.setForeground(Color.black);
+    }//GEN-LAST:event_btnVentasMouseEntered
+
+    private void btnVentasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVentasMouseExited
+        // TODO add your handling code here:
+        btnVentas.setBackground(Color.white);
+        btnVentas.setForeground(Color.decode("#71bd44"));
+    }//GEN-LAST:event_btnVentasMouseExited
+
+    private void btnFacturacionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFacturacionMouseEntered
+        // TODO add your handling code here:
+        btnFacturacion.setBackground(Color.decode("#71bd44"));
+        btnFacturacion.setForeground(Color.black);
+
+    }//GEN-LAST:event_btnFacturacionMouseEntered
+
+    private void btnFacturacionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFacturacionMouseExited
+        // TODO add your handling code here:
+        btnFacturacion.setBackground(Color.white);
+        btnFacturacion.setForeground(Color.decode("#71bd44"));
+    }//GEN-LAST:event_btnFacturacionMouseExited
 
     private void btnInventarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInventarioMouseEntered
         // TODO add your handling code here:
@@ -206,31 +231,6 @@ int xmouse,ymouse;
         btnInventario.setBackground(Color.white);
         btnInventario.setForeground(Color.decode("#71bd44"));
     }//GEN-LAST:event_btnInventarioMouseExited
-
-    private void btnUsuarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuarioMouseEntered
-        // TODO add your handling code here:
-        btnUsuario.setBackground(Color.decode("#71bd44"));
-        btnUsuario.setForeground(Color.black);
-
-    }//GEN-LAST:event_btnUsuarioMouseEntered
-
-    private void btnUsuarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuarioMouseExited
-        // TODO add your handling code here:
-        btnUsuario.setBackground(Color.white);
-        btnUsuario.setForeground(Color.decode("#71bd44"));
-    }//GEN-LAST:event_btnUsuarioMouseExited
-
-    private void btnProveedorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProveedorMouseEntered
-        // TODO add your handling code here:
-        btnProveedor.setBackground(Color.decode("#71bd44"));
-        btnProveedor.setForeground(Color.black);
-    }//GEN-LAST:event_btnProveedorMouseEntered
-
-    private void btnProveedorMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProveedorMouseExited
-        // TODO add your handling code here:
-        btnProveedor.setBackground(Color.white);
-        btnProveedor.setForeground(Color.decode("#71bd44"));
-    }//GEN-LAST:event_btnProveedorMouseExited
 
     private void btnSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseEntered
         // TODO add your handling code here:
@@ -279,30 +279,32 @@ int xmouse,ymouse;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdministradorPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmpleadoPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdministradorPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmpleadoPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdministradorPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmpleadoPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdministradorPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmpleadoPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdministradorPrincipal().setVisible(true);
+                new EmpleadoPrincipal().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnFacturacion;
     private javax.swing.JButton btnInventario;
-    private javax.swing.JButton btnProveedor;
     private javax.swing.JButton btnSalir;
-    private javax.swing.JButton btnUsuario;
+    private javax.swing.JButton btnVentas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
