@@ -78,6 +78,11 @@ int xmouse,ymouse;
                 btnSesionMouseExited(evt);
             }
         });
+        btnSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSesionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -233,6 +238,11 @@ int xmouse,ymouse;
         int y=evt.getYOnScreen();
                 this.setLocation(x-xmouse,y-ymouse);
     }//GEN-LAST:event_jPanel2MouseDragged
+
+    private void btnSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSesionActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnSesionActionPerformed
 
     /**
      * @param args the command line arguments
