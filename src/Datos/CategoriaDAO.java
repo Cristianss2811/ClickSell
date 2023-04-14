@@ -37,7 +37,7 @@ public class CategoriaDAO implements CrudCategoria<Categoria> {
             ps.setString(1, '%' + texto + '%');
             rs=ps.executeQuery();
             while(rs.next()){
-                //registros.add(new Categoria(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getBoolean(5)));
+                registros.add(new Categoria(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4)));
             }
             ps.close();
             rs.close();
