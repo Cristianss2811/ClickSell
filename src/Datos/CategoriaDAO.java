@@ -32,12 +32,12 @@ public class CategoriaDAO implements CrudCategoria<Categoria> {
     public List<Categoria> listar(String texto, int combo) {
          List<Categoria> registros=new ArrayList();
         try{
-            ps=(combo==1)?CON.Conectar().prepareStatement("SELECT * FROM Categorias WHERE nombreCategoria LIKE ? AND ActivoCategoria=true ORDER BY nombreCategoria;"):
-                    CON.Conectar().prepareStatement("SELECT * FROM Categorias WHERE nombreCategoria LIKE ? ORDER BY nombreCategoria;");
+            ps=(combo==1)?CON.Conectar().prepareStatement("SELECT * FROM CATEGORIA WHERE NOMBREC LIKE ? ;"):
+                    CON.Conectar().prepareStatement("SELECT * FROM CATEGORIA WHERE NOMBREC LIKE ? ORDER BY NOMBREC;");
             ps.setString(1, '%' + texto + '%');
             rs=ps.executeQuery();
             while(rs.next()){
-                registros.add(new Categoria(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getBoolean(5)));
+                //registros.add(new Categoria(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getBoolean(5)));
             }
             ps.close();
             rs.close();

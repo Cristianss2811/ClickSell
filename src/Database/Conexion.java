@@ -4,13 +4,15 @@
  */
 package Database;
 
-import com.sun.jdi.connect.spi.Connection;
+//import com.sun.jdi.connect.spi.Connection;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.sql.Connection;
+
 
 /**
  *
@@ -29,7 +31,7 @@ public class Conexion {
     public Connection Conectar() {
         try {
             Class.forName(DRIVER);
-            this.cadena = (Connection) DriverManager.getConnection(URL + DB, USER, PASSWORD);
+            this.cadena = DriverManager.getConnection(URL + DB, USER, PASSWORD);
         } catch (ClassNotFoundException | SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
             System.exit(0);
@@ -40,7 +42,7 @@ public class Conexion {
     public void Desconectar() {
         try {
             this.cadena.close();
-        } catch (IOException ex) {
+        } catch (SQLException ex) {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

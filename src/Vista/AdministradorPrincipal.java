@@ -38,7 +38,7 @@ int xmouse,ymouse;
         jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        PanelFondo = new javax.swing.JPanel();
+        PanelPrincipal = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1280, 720));
@@ -82,6 +82,11 @@ int xmouse,ymouse;
                 btnInventarioMouseExited(evt);
             }
         });
+        btnInventario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInventarioActionPerformed(evt);
+            }
+        });
 
         btnSalir.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnSalir.setForeground(new java.awt.Color(113, 189, 68));
@@ -111,6 +116,11 @@ int xmouse,ymouse;
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnProveedorMouseExited(evt);
+            }
+        });
+        btnProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProveedorActionPerformed(evt);
             }
         });
 
@@ -197,24 +207,15 @@ int xmouse,ymouse;
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Logo 256px.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 220, 260, 280));
 
-        javax.swing.GroupLayout PanelFondoLayout = new javax.swing.GroupLayout(PanelFondo);
-        PanelFondo.setLayout(PanelFondoLayout);
-        PanelFondoLayout.setHorizontalGroup(
-            PanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1030, Short.MAX_VALUE)
-        );
-        PanelFondoLayout.setVerticalGroup(
-            PanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 690, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(PanelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, 1030, 690));
+        PanelPrincipal.setLayout(new javax.swing.BoxLayout(PanelPrincipal, javax.swing.BoxLayout.LINE_AXIS));
+        getContentPane().add(PanelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, 1030, 690));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuarioActionPerformed
         // TODO add your handling code here:
+         new CambiaPanel(PanelPrincipal,new AdminUsuario());
     }//GEN-LAST:event_btnUsuarioActionPerformed
 
     private void btnInventarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInventarioMouseEntered
@@ -284,6 +285,16 @@ int xmouse,ymouse;
                 this.setLocation(x-xmouse,y-ymouse);
     }//GEN-LAST:event_jPanel2MouseDragged
 
+    private void btnInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioActionPerformed
+        // TODO add your handling code here:
+        new CambiaPanel(PanelPrincipal,new AdminInventario());
+    }//GEN-LAST:event_btnInventarioActionPerformed
+
+    private void btnProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProveedorActionPerformed
+        // TODO add your handling code here:
+        new CambiaPanel(PanelPrincipal,new AdminProveedor());
+    }//GEN-LAST:event_btnProveedorActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -321,7 +332,7 @@ int xmouse,ymouse;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel PanelFondo;
+    private javax.swing.JPanel PanelPrincipal;
     private javax.swing.JButton btnInventario;
     private javax.swing.JButton btnProveedor;
     private javax.swing.JButton btnSalir;
