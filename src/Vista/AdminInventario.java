@@ -3,18 +3,59 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package Vista;
-
+import java.awt.Image;
+import Negocio.CategoriaControl;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.TableRowSorter;
 /**
  *
  * @author juanp
  */
 public class AdminInventario extends javax.swing.JPanel {
-
+private final CategoriaControl CONTROL;
+    String imagenProducto, nombreAnt;
     /**
      * Creates new form AdminInventario
      */
     public AdminInventario() {
         initComponents();
+        CONTROL=new CategoriaControl();
+        Listar("");
+    }
+    
+    public void Listar(String texto)
+    {
+        TablaCategoria.setModel(CONTROL.listar(texto));
+        TableRowSorter modeloOrdenado = new TableRowSorter(TablaCategoria.getModel());
+        TablaCategoria.setRowSorter(modeloOrdenado);
+    }
+    
+    public void mensajeOK(String mensaje){
+        JOptionPane.showMessageDialog(this, mensaje, "Papelería Yolis", JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    public void mensajeError(String mensaje){
+        JOptionPane.showMessageDialog(this, mensaje, "Papelería Yolis", JOptionPane.ERROR_MESSAGE);
+    }
+    
+    public void Limpiar(){
+        txtCategoria.setText("");
+        txtDescripcionCat.setText("");
+        
+        lblimgCat.setIcon(null);
+        imagenProducto="default.jpg";
+    }
+    
+    public void pintarImagen(JLabel lbl, String ruta){
+        ImageIcon imagen = new ImageIcon(ruta);
+        Icon icono = new ImageIcon(imagen.getImage().getScaledInstance(lbl.getWidth(), lbl.getHeight(), Image.SCALE_SMOOTH));
+        lbl.setIcon(icono);
+        repaint();
     }
 
     /**
@@ -45,7 +86,7 @@ public class AdminInventario extends javax.swing.JPanel {
         btnBuscarCategoria = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        TablaCategoria = new javax.swing.JTable();
         btnEliminarCategoria = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         btnModificarCategoria = new javax.swing.JPanel();
@@ -60,7 +101,7 @@ public class AdminInventario extends javax.swing.JPanel {
         btnAgregarCategoria = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         InventarioProducto = new javax.swing.JPanel();
-        jTextField5 = new javax.swing.JTextField();
+        txtBusqueda = new javax.swing.JTextField();
         btnBuscarProducto = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -337,18 +378,18 @@ public class AdminInventario extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        TablaCategoria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Nombre", "Descripcion", "Imagen"
+
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(TablaCategoria);
 
         btnEliminarCategoria.setBackground(new java.awt.Color(113, 189, 68));
         btnEliminarCategoria.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
@@ -570,7 +611,7 @@ public class AdminInventario extends javax.swing.JPanel {
                     .addContainerGap(75, Short.MAX_VALUE)))
         );
 
-        jTextField5.setText("Buscar...");
+        txtBusqueda.setText("Buscar...");
 
         btnBuscarProducto.setBackground(new java.awt.Color(113, 189, 68));
         btnBuscarProducto.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
@@ -827,7 +868,7 @@ public class AdminInventario extends javax.swing.JPanel {
                     .addGap(24, 24, 24)
                     .addGroup(InventarioProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(InventarioProductoLayout.createSequentialGroup()
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(10, 10, 10)
                             .addComponent(btnBuscarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -852,7 +893,7 @@ public class AdminInventario extends javax.swing.JPanel {
                     .addGroup(InventarioProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(InventarioProductoLayout.createSequentialGroup()
                             .addGap(10, 10, 10)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(btnBuscarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(40, 40, 40)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1030,6 +1071,7 @@ public class AdminInventario extends javax.swing.JPanel {
     private javax.swing.JPanel InventarioCategoria;
     private javax.swing.JPanel InventarioProducto;
     private javax.swing.JPanel InventarioTabla;
+    private javax.swing.JTable TablaCategoria;
     private javax.swing.JPanel btnAgregar;
     private javax.swing.JPanel btnAgregarCategoria;
     private javax.swing.JPanel btnAgregarCategoria1;
@@ -1070,12 +1112,11 @@ public class AdminInventario extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JLabel lblimgCat;
+    private javax.swing.JTextField txtBusqueda;
     private javax.swing.JTextField txtCategoria;
     private javax.swing.JTextField txtDescripcionCat;
     private javax.swing.JTextField txtDescripcionPro;
