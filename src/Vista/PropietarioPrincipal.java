@@ -38,6 +38,7 @@ int xmouse,ymouse;
         jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        PanelPrincipal = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1280, 720));
@@ -196,6 +197,9 @@ int xmouse,ymouse;
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Logo 256px.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 220, 260, 280));
 
+        PanelPrincipal.setLayout(new javax.swing.BoxLayout(PanelPrincipal, javax.swing.BoxLayout.LINE_AXIS));
+        getContentPane().add(PanelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, 1030, 690));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -313,6 +317,7 @@ int xmouse,ymouse;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel PanelPrincipal;
     private javax.swing.JButton btnCompras;
     private javax.swing.JButton btnEmpleados;
     private javax.swing.JButton btnInventario;
