@@ -5,7 +5,6 @@
 package Vista;
 
 import java.awt.Color;
-
 /**
  *
  * @author crist
@@ -206,7 +205,8 @@ int xmouse,ymouse;
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFacturacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturacionActionPerformed
-        // TODO add your handling code here:
+        
+        new CambiaPanel(this.PanelPrincipal,new Contenedor());
     }//GEN-LAST:event_btnFacturacionActionPerformed
 
     private void btnVentasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVentasMouseEntered
