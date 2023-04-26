@@ -25,6 +25,9 @@ private final CategoriaControl CONTROL;
      */
     public AdminInventario() {
         initComponents();
+         InventarioTabla.setVisible(true);
+        InventarioProducto.setVisible(false);
+        InventarioCategoria.setVisible(false);
         CONTROL=new CategoriaControl();
         Listar("");
        
@@ -38,7 +41,10 @@ private final CategoriaControl CONTROL;
     
     public void Listar(String texto)
     {
-        
+        TablaCategoria.setModel(CONTROL.listar(texto));
+        TableRowSorter modeloOrdenado = new TableRowSorter(TablaCategoria.getModel());
+       TablaCategoria.setRowSorter(modeloOrdenado);
+
     }
     
     public void mensajeOK(String mensaje){
@@ -79,12 +85,56 @@ private final CategoriaControl CONTROL;
         jLabel9 = new javax.swing.JLabel();
         btnModificar = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        btnAgregar = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
         btnFiltros = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        btnAgregarCa = new javax.swing.JPanel();
+        btnAgregarPro = new javax.swing.JPanel();
         jLabel25 = new javax.swing.JLabel();
+        btnAgregarCat = new javax.swing.JPanel();
+        jLabel26 = new javax.swing.JLabel();
+        InventarioProducto = new javax.swing.JPanel();
+        txtBusqueda = new javax.swing.JTextField();
+        btnBuscarProducto = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
+        btnEliminarProducto = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
+        btnModificarProducto = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
+        txtProducto = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        txtProductoCategoria = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        btnAgregarProducto = new javax.swing.JPanel();
+        jLabel21 = new javax.swing.JLabel();
+        txtDescripcionPro = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        btnVolver = new javax.swing.JPanel();
+        jLabel23 = new javax.swing.JLabel();
+        InventarioCategoria = new javax.swing.JPanel();
+        jTextField2 = new javax.swing.JTextField();
+        btnBuscarCategoria = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        TablaCategoria = new javax.swing.JTable();
+        btnEliminarCategoria = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        btnModificarCategoria = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        txtCategoria = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        txtDescripcionCat = new javax.swing.JTextField();
+        lblimgCat = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        btnAgregarCategoria = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        btnVolver1 = new javax.swing.JPanel();
+        jLabel24 = new javax.swing.JLabel();
 
         Txtbuscar.setText("Buscar...");
         Txtbuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -205,41 +255,6 @@ private final CategoriaControl CONTROL;
                 .addContainerGap())
         );
 
-        btnAgregar.setBackground(new java.awt.Color(113, 189, 68));
-        btnAgregar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
-        btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAgregarMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnAgregarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnAgregarMouseExited(evt);
-            }
-        });
-
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel11.setText("Agregar");
-        jLabel11.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        javax.swing.GroupLayout btnAgregarLayout = new javax.swing.GroupLayout(btnAgregar);
-        btnAgregar.setLayout(btnAgregarLayout);
-        btnAgregarLayout.setHorizontalGroup(
-            btnAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnAgregarLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel11)
-                .addContainerGap(30, Short.MAX_VALUE))
-        );
-        btnAgregarLayout.setVerticalGroup(
-            btnAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnAgregarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
         btnFiltros.setBackground(new java.awt.Color(113, 189, 68));
         btnFiltros.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         btnFiltros.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -272,38 +287,73 @@ private final CategoriaControl CONTROL;
                 .addContainerGap())
         );
 
-        btnAgregarCa.setBackground(new java.awt.Color(113, 189, 68));
-        btnAgregarCa.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
-        btnAgregarCa.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnAgregarPro.setBackground(new java.awt.Color(113, 189, 68));
+        btnAgregarPro.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        btnAgregarPro.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAgregarCaMouseClicked(evt);
+                btnAgregarProMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnAgregarCaMouseEntered(evt);
+                btnAgregarProMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnAgregarCaMouseExited(evt);
+                btnAgregarProMouseExited(evt);
             }
         });
 
         jLabel25.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel25.setText("Agregar Cat");
+        jLabel25.setText("Agregar Producto");
         jLabel25.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        javax.swing.GroupLayout btnAgregarCaLayout = new javax.swing.GroupLayout(btnAgregarCa);
-        btnAgregarCa.setLayout(btnAgregarCaLayout);
-        btnAgregarCaLayout.setHorizontalGroup(
-            btnAgregarCaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnAgregarCaLayout.createSequentialGroup()
+        javax.swing.GroupLayout btnAgregarProLayout = new javax.swing.GroupLayout(btnAgregarPro);
+        btnAgregarPro.setLayout(btnAgregarProLayout);
+        btnAgregarProLayout.setHorizontalGroup(
+            btnAgregarProLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnAgregarProLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jLabel25)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
-        btnAgregarCaLayout.setVerticalGroup(
-            btnAgregarCaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnAgregarCaLayout.createSequentialGroup()
+        btnAgregarProLayout.setVerticalGroup(
+            btnAgregarProLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnAgregarProLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        btnAgregarCat.setBackground(new java.awt.Color(113, 189, 68));
+        btnAgregarCat.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        btnAgregarCat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAgregarCatMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAgregarCatMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAgregarCatMouseExited(evt);
+            }
+        });
+
+        jLabel26.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel26.setText("Agregar Categoria");
+        jLabel26.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout btnAgregarCatLayout = new javax.swing.GroupLayout(btnAgregarCat);
+        btnAgregarCat.setLayout(btnAgregarCatLayout);
+        btnAgregarCatLayout.setHorizontalGroup(
+            btnAgregarCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnAgregarCatLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel26)
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+        btnAgregarCatLayout.setVerticalGroup(
+            btnAgregarCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnAgregarCatLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -312,13 +362,17 @@ private final CategoriaControl CONTROL;
         InventarioTablaLayout.setHorizontalGroup(
             InventarioTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(InventarioTablaLayout.createSequentialGroup()
-                .addGap(287, 287, 287)
+                .addContainerGap(132, Short.MAX_VALUE)
                 .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnAgregarCa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(318, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnAgregarPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnAgregarCat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnFiltros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39))
             .addGroup(InventarioTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(InventarioTablaLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -327,26 +381,23 @@ private final CategoriaControl CONTROL;
                             .addComponent(Txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(10, 10, 10)
                             .addComponent(btnBuscar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 970, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(InventarioTablaLayout.createSequentialGroup()
-                            .addGap(692, 692, 692)
-                            .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(20, 20, 20)
-                            .addComponent(btnFiltros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 970, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(0, 51, Short.MAX_VALUE)))
         );
         InventarioTablaLayout.setVerticalGroup(
             InventarioTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InventarioTablaLayout.createSequentialGroup()
                 .addContainerGap(621, Short.MAX_VALUE)
                 .addGroup(InventarioTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnFiltros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAgregarCat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAgregarCa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnAgregarPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(14, 14, 14))
             .addGroup(InventarioTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(InventarioTablaLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 6, Short.MAX_VALUE)
                     .addGroup(InventarioTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(InventarioTablaLayout.createSequentialGroup()
                             .addGap(10, 10, 10)
@@ -354,12 +405,598 @@ private final CategoriaControl CONTROL;
                         .addComponent(btnBuscar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(40, 40, 40)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(10, 10, 10)
-                    .addGroup(InventarioTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnFiltros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 78, Short.MAX_VALUE)))
         );
+
+        txtBusqueda.setText("Buscar...");
+
+        btnBuscarProducto.setBackground(new java.awt.Color(113, 189, 68));
+        btnBuscarProducto.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        btnBuscarProducto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnBuscarProductoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnBuscarProductoMouseExited(evt);
+            }
+        });
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel8.setText("Buscar");
+        jLabel8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout btnBuscarProductoLayout = new javax.swing.GroupLayout(btnBuscarProducto);
+        btnBuscarProducto.setLayout(btnBuscarProductoLayout);
+        btnBuscarProductoLayout.setHorizontalGroup(
+            btnBuscarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnBuscarProductoLayout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(jLabel8)
+                .addContainerGap(36, Short.MAX_VALUE))
+        );
+        btnBuscarProductoLayout.setVerticalGroup(
+            btnBuscarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnBuscarProductoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane3.setViewportView(jTable3);
+
+        btnEliminarProducto.setBackground(new java.awt.Color(113, 189, 68));
+        btnEliminarProducto.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        btnEliminarProducto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnEliminarProductoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEliminarProductoMouseExited(evt);
+            }
+        });
+
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel15.setText("Eliminar");
+        jLabel15.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout btnEliminarProductoLayout = new javax.swing.GroupLayout(btnEliminarProducto);
+        btnEliminarProducto.setLayout(btnEliminarProductoLayout);
+        btnEliminarProductoLayout.setHorizontalGroup(
+            btnEliminarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnEliminarProductoLayout.createSequentialGroup()
+                .addContainerGap(32, Short.MAX_VALUE)
+                .addComponent(jLabel15)
+                .addGap(30, 30, 30))
+        );
+        btnEliminarProductoLayout.setVerticalGroup(
+            btnEliminarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnEliminarProductoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        btnModificarProducto.setBackground(new java.awt.Color(113, 189, 68));
+        btnModificarProducto.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        btnModificarProducto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnModificarProductoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnModificarProductoMouseExited(evt);
+            }
+        });
+
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel16.setText("Modificar");
+        jLabel16.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout btnModificarProductoLayout = new javax.swing.GroupLayout(btnModificarProducto);
+        btnModificarProducto.setLayout(btnModificarProductoLayout);
+        btnModificarProductoLayout.setHorizontalGroup(
+            btnModificarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnModificarProductoLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jLabel16)
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+        btnModificarProductoLayout.setVerticalGroup(
+            btnModificarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnModificarProductoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel17.setText("Descripcion:");
+
+        txtProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtProductoActionPerformed(evt);
+            }
+        });
+
+        jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel18.setText("Nombre de Producto:");
+
+        txtProductoCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtProductoCategoriaActionPerformed(evt);
+            }
+        });
+
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/añadirimagen120px.png"))); // NOI18N
+        jLabel19.setText("jLabel3");
+
+        jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel20.setText("Imagen de Producto");
+
+        btnAgregarProducto.setBackground(new java.awt.Color(113, 189, 68));
+        btnAgregarProducto.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        btnAgregarProducto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAgregarProductoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAgregarProductoMouseExited(evt);
+            }
+        });
+
+        jLabel21.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel21.setText("Agregar");
+        jLabel21.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout btnAgregarProductoLayout = new javax.swing.GroupLayout(btnAgregarProducto);
+        btnAgregarProducto.setLayout(btnAgregarProductoLayout);
+        btnAgregarProductoLayout.setHorizontalGroup(
+            btnAgregarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnAgregarProductoLayout.createSequentialGroup()
+                .addContainerGap(32, Short.MAX_VALUE)
+                .addComponent(jLabel21)
+                .addGap(30, 30, 30))
+        );
+        btnAgregarProductoLayout.setVerticalGroup(
+            btnAgregarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnAgregarProductoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        txtDescripcionPro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDescripcionProActionPerformed(evt);
+            }
+        });
+
+        jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel22.setText("Categoria:");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(111, 111, 111)
+                .addComponent(btnAgregarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtProducto)
+                    .addComponent(txtProductoCategoria)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 103, Short.MAX_VALUE))
+                    .addComponent(txtDescripcionPro))
+                .addContainerGap())
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(16, 16, 16)
+                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(140, Short.MAX_VALUE)))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(16, 16, 16)
+                    .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(99, Short.MAX_VALUE)))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addComponent(txtProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(57, 57, 57)
+                .addComponent(txtProductoCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtDescripcionPro, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnAgregarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(16, 16, 16)
+                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(537, Short.MAX_VALUE)))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(117, 117, 117)
+                    .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(436, Short.MAX_VALUE)))
+        );
+
+        btnVolver.setBackground(new java.awt.Color(113, 189, 68));
+        btnVolver.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        btnVolver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnVolverMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnVolverMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnVolverMouseExited(evt);
+            }
+        });
+
+        jLabel23.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel23.setText("Volver");
+        jLabel23.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout btnVolverLayout = new javax.swing.GroupLayout(btnVolver);
+        btnVolver.setLayout(btnVolverLayout);
+        btnVolverLayout.setHorizontalGroup(
+            btnVolverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnVolverLayout.createSequentialGroup()
+                .addContainerGap(32, Short.MAX_VALUE)
+                .addComponent(jLabel23)
+                .addGap(30, 30, 30))
+        );
+        btnVolverLayout.setVerticalGroup(
+            btnVolverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnVolverLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout InventarioProductoLayout = new javax.swing.GroupLayout(InventarioProducto);
+        InventarioProducto.setLayout(InventarioProductoLayout);
+        InventarioProductoLayout.setHorizontalGroup(
+            InventarioProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(InventarioProductoLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(InventarioProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(InventarioProductoLayout.createSequentialGroup()
+                        .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnBuscarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(InventarioProductoLayout.createSequentialGroup()
+                        .addGroup(InventarioProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(InventarioProductoLayout.createSequentialGroup()
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(40, 40, 40))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InventarioProductoLayout.createSequentialGroup()
+                                .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnModificarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnEliminarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(60, 60, 60)))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(81, Short.MAX_VALUE))
+        );
+        InventarioProductoLayout.setVerticalGroup(
+            InventarioProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InventarioProductoLayout.createSequentialGroup()
+                .addContainerGap(33, Short.MAX_VALUE)
+                .addGroup(InventarioProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(InventarioProductoLayout.createSequentialGroup()
+                        .addComponent(btnBuscarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(InventarioProductoLayout.createSequentialGroup()
+                        .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(InventarioProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnEliminarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnModificarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap())
+        );
+
+        InventarioCategoria.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTextField2.setText("Buscar...");
+        InventarioCategoria.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 630, 40));
+
+        btnBuscarCategoria.setBackground(new java.awt.Color(113, 189, 68));
+        btnBuscarCategoria.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        btnBuscarCategoria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnBuscarCategoriaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnBuscarCategoriaMouseExited(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel6.setText("Buscar");
+        jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout btnBuscarCategoriaLayout = new javax.swing.GroupLayout(btnBuscarCategoria);
+        btnBuscarCategoria.setLayout(btnBuscarCategoriaLayout);
+        btnBuscarCategoriaLayout.setHorizontalGroup(
+            btnBuscarCategoriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnBuscarCategoriaLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jLabel6)
+                .addContainerGap(39, Short.MAX_VALUE))
+        );
+        btnBuscarCategoriaLayout.setVerticalGroup(
+            btnBuscarCategoriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnBuscarCategoriaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        InventarioCategoria.add(btnBuscarCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, -1, -1));
+
+        TablaCategoria.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane2.setViewportView(TablaCategoria);
+
+        InventarioCategoria.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 522, 510));
+
+        btnEliminarCategoria.setBackground(new java.awt.Color(113, 189, 68));
+        btnEliminarCategoria.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        btnEliminarCategoria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnEliminarCategoriaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEliminarCategoriaMouseExited(evt);
+            }
+        });
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel12.setText("Eliminar");
+        jLabel12.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout btnEliminarCategoriaLayout = new javax.swing.GroupLayout(btnEliminarCategoria);
+        btnEliminarCategoria.setLayout(btnEliminarCategoriaLayout);
+        btnEliminarCategoriaLayout.setHorizontalGroup(
+            btnEliminarCategoriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnEliminarCategoriaLayout.createSequentialGroup()
+                .addContainerGap(32, Short.MAX_VALUE)
+                .addComponent(jLabel12)
+                .addGap(30, 30, 30))
+        );
+        btnEliminarCategoriaLayout.setVerticalGroup(
+            btnEliminarCategoriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnEliminarCategoriaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        InventarioCategoria.add(btnEliminarCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 620, -1, -1));
+
+        btnModificarCategoria.setBackground(new java.awt.Color(113, 189, 68));
+        btnModificarCategoria.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        btnModificarCategoria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnModificarCategoriaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnModificarCategoriaMouseExited(evt);
+            }
+        });
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel13.setText("Modificar");
+        jLabel13.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout btnModificarCategoriaLayout = new javax.swing.GroupLayout(btnModificarCategoria);
+        btnModificarCategoria.setLayout(btnModificarCategoriaLayout);
+        btnModificarCategoriaLayout.setHorizontalGroup(
+            btnModificarCategoriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnModificarCategoriaLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jLabel13)
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+        btnModificarCategoriaLayout.setVerticalGroup(
+            btnModificarCategoriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnModificarCategoriaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        InventarioCategoria.add(btnModificarCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 620, -1, -1));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setText("Descripcion de la Categoría");
+
+        txtCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCategoriaActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setText("Nombre Categoría:");
+
+        txtDescripcionCat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDescripcionCatActionPerformed(evt);
+            }
+        });
+
+        lblimgCat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/añadirimagen120px.png"))); // NOI18N
+        lblimgCat.setText("jLabel3");
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel7.setText("Descripcion de la Categoría");
+
+        btnAgregarCategoria.setBackground(new java.awt.Color(113, 189, 68));
+        btnAgregarCategoria.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        btnAgregarCategoria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAgregarCategoriaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAgregarCategoriaMouseExited(evt);
+            }
+        });
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel14.setText("Agregar");
+        jLabel14.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout btnAgregarCategoriaLayout = new javax.swing.GroupLayout(btnAgregarCategoria);
+        btnAgregarCategoria.setLayout(btnAgregarCategoriaLayout);
+        btnAgregarCategoriaLayout.setHorizontalGroup(
+            btnAgregarCategoriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnAgregarCategoriaLayout.createSequentialGroup()
+                .addContainerGap(32, Short.MAX_VALUE)
+                .addComponent(jLabel14)
+                .addGap(30, 30, 30))
+        );
+        btnAgregarCategoriaLayout.setVerticalGroup(
+            btnAgregarCategoriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnAgregarCategoriaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(111, 111, 111)
+                .addComponent(btnAgregarCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtCategoria)
+                    .addComponent(txtDescripcionCat)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblimgCat, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 103, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGap(16, 16, 16)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(179, Short.MAX_VALUE)))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addComponent(txtCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtDescripcionCat, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblimgCat, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnAgregarCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8))
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGap(16, 16, 16)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(537, Short.MAX_VALUE)))
+        );
+
+        InventarioCategoria.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 80, -1, -1));
+
+        btnVolver1.setBackground(new java.awt.Color(113, 189, 68));
+        btnVolver1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        btnVolver1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnVolver1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnVolver1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnVolver1MouseExited(evt);
+            }
+        });
+
+        jLabel24.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel24.setText("Volver");
+        jLabel24.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout btnVolver1Layout = new javax.swing.GroupLayout(btnVolver1);
+        btnVolver1.setLayout(btnVolver1Layout);
+        btnVolver1Layout.setHorizontalGroup(
+            btnVolver1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnVolver1Layout.createSequentialGroup()
+                .addContainerGap(32, Short.MAX_VALUE)
+                .addComponent(jLabel24)
+                .addGap(30, 30, 30))
+        );
+        btnVolver1Layout.setVerticalGroup(
+            btnVolver1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnVolver1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        InventarioCategoria.add(btnVolver1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 620, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -371,6 +1008,16 @@ private final CategoriaControl CONTROL;
                     .addContainerGap()
                     .addComponent(InventarioTabla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap()))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(InventarioProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(InventarioCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 1040, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -380,6 +1027,16 @@ private final CategoriaControl CONTROL;
                     .addContainerGap()
                     .addComponent(InventarioTabla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap()))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(InventarioProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(InventarioCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 696, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -407,14 +1064,6 @@ private final CategoriaControl CONTROL;
         // TODO add your handling code here:
     }//GEN-LAST:event_btnModificarMouseExited
 
-    private void btnAgregarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAgregarMouseEntered
-
-    private void btnAgregarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAgregarMouseExited
-
     private void btnFiltrosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFiltrosMouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_btnFiltrosMouseEntered
@@ -427,47 +1076,210 @@ private final CategoriaControl CONTROL;
         // TODO add your handling code here:
     }//GEN-LAST:event_TxtbuscarActionPerformed
 
-    private void btnAgregarCaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarCaMouseEntered
+    private void btnAgregarProMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarProMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnAgregarCaMouseEntered
+    }//GEN-LAST:event_btnAgregarProMouseEntered
 
-    private void btnAgregarCaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarCaMouseExited
+    private void btnAgregarProMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarProMouseExited
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnAgregarCaMouseExited
+    }//GEN-LAST:event_btnAgregarProMouseExited
 
-    private void btnAgregarCaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarCaMouseClicked
+    private void btnAgregarProMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarProMouseClicked
         // TODO add your handling code here:
-        new CambiaPanel(InventarioTabla,new Inventario_Categoria());
-    }//GEN-LAST:event_btnAgregarCaMouseClicked
-
-    private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
-        // TODO add your handling code here:
-       new CambiaPanel(InventarioTabla,new Inventario_producto());
-        
-    }//GEN-LAST:event_btnAgregarMouseClicked
+        InventarioTabla.setVisible(false);
+        InventarioProducto.setVisible(true);
+        InventarioCategoria.setVisible(false);
+    }//GEN-LAST:event_btnAgregarProMouseClicked
 
     private void btnBuscar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscar1MouseClicked
         // TODO add your handling code here:
         ListarInventario(Txtbuscar.getText().trim());
     }//GEN-LAST:event_btnBuscar1MouseClicked
 
+    private void btnBuscarProductoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarProductoMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarProductoMouseEntered
+
+    private void btnBuscarProductoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarProductoMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarProductoMouseExited
+
+    private void btnEliminarProductoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarProductoMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarProductoMouseEntered
+
+    private void btnEliminarProductoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarProductoMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarProductoMouseExited
+
+    private void btnModificarProductoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarProductoMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnModificarProductoMouseEntered
+
+    private void btnModificarProductoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarProductoMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnModificarProductoMouseExited
+
+    private void txtProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtProductoActionPerformed
+
+    private void txtProductoCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProductoCategoriaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtProductoCategoriaActionPerformed
+
+    private void btnAgregarProductoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarProductoMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarProductoMouseEntered
+
+    private void btnAgregarProductoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarProductoMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarProductoMouseExited
+
+    private void txtDescripcionProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescripcionProActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDescripcionProActionPerformed
+
+    private void btnVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVolverMouseClicked
+
+    private void btnVolverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVolverMouseEntered
+
+    private void btnVolverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVolverMouseExited
+
+    private void btnBuscarCategoriaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarCategoriaMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarCategoriaMouseEntered
+
+    private void btnBuscarCategoriaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarCategoriaMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarCategoriaMouseExited
+
+    private void btnEliminarCategoriaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarCategoriaMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarCategoriaMouseEntered
+
+    private void btnEliminarCategoriaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarCategoriaMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarCategoriaMouseExited
+
+    private void btnModificarCategoriaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarCategoriaMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnModificarCategoriaMouseEntered
+
+    private void btnModificarCategoriaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarCategoriaMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnModificarCategoriaMouseExited
+
+    private void txtCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCategoriaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCategoriaActionPerformed
+
+    private void txtDescripcionCatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescripcionCatActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDescripcionCatActionPerformed
+
+    private void btnAgregarCategoriaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarCategoriaMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarCategoriaMouseEntered
+
+    private void btnAgregarCategoriaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarCategoriaMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarCategoriaMouseExited
+
+    private void btnVolver1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolver1MouseClicked
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_btnVolver1MouseClicked
+
+    private void btnVolver1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolver1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVolver1MouseEntered
+
+    private void btnVolver1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolver1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVolver1MouseExited
+
+    private void btnAgregarCatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarCatMouseClicked
+         InventarioTabla.setVisible(false);
+        InventarioProducto.setVisible(false);
+        InventarioCategoria.setVisible(true);
+    }//GEN-LAST:event_btnAgregarCatMouseClicked
+
+    private void btnAgregarCatMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarCatMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarCatMouseEntered
+
+    private void btnAgregarCatMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarCatMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarCatMouseExited
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel InventarioCategoria;
+    private javax.swing.JPanel InventarioProducto;
     private javax.swing.JPanel InventarioTabla;
+    private javax.swing.JTable TablaCategoria;
     private javax.swing.JTextField Txtbuscar;
-    private javax.swing.JPanel btnAgregar;
-    private javax.swing.JPanel btnAgregarCa;
+    private javax.swing.JPanel btnAgregarCat;
+    private javax.swing.JPanel btnAgregarCategoria;
+    private javax.swing.JPanel btnAgregarPro;
+    private javax.swing.JPanel btnAgregarProducto;
     private javax.swing.JPanel btnBuscar1;
+    private javax.swing.JPanel btnBuscarCategoria;
+    private javax.swing.JPanel btnBuscarProducto;
     private javax.swing.JPanel btnEliminar;
+    private javax.swing.JPanel btnEliminarCategoria;
+    private javax.swing.JPanel btnEliminarProducto;
     private javax.swing.JPanel btnFiltros;
     private javax.swing.JPanel btnModificar;
+    private javax.swing.JPanel btnModificarCategoria;
+    private javax.swing.JPanel btnModificarProducto;
+    private javax.swing.JPanel btnVolver;
+    private javax.swing.JPanel btnVolver1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable3;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel lblimgCat;
+    private javax.swing.JTextField txtBusqueda;
+    private javax.swing.JTextField txtCategoria;
+    private javax.swing.JTextField txtDescripcionCat;
+    private javax.swing.JTextField txtDescripcionPro;
+    private javax.swing.JTextField txtProducto;
+    private javax.swing.JTextField txtProductoCategoria;
     // End of variables declaration//GEN-END:variables
 }
