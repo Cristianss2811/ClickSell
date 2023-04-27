@@ -5,6 +5,7 @@
 package Vista;
 import java.awt.Image;
 import Negocio.CategoriaControl;
+import java.awt.Color;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -20,6 +21,7 @@ import javax.swing.table.TableRowSorter;
 public class AdminInventario extends javax.swing.JPanel {
 private final CategoriaControl CONTROL;
     String imagenProducto, nombreAnt;
+    String verde="#71BD44", naranja="#F39121";
     /**
      * Creates new form AdminInventario
      */
@@ -145,6 +147,7 @@ private final CategoriaControl CONTROL;
 
         btnBuscar1.setBackground(new java.awt.Color(113, 189, 68));
         btnBuscar1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        btnBuscar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBuscar1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnBuscar1MouseClicked(evt);
@@ -193,6 +196,7 @@ private final CategoriaControl CONTROL;
 
         btnEliminar.setBackground(new java.awt.Color(113, 189, 68));
         btnEliminar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnEliminarMouseEntered(evt);
@@ -225,6 +229,7 @@ private final CategoriaControl CONTROL;
 
         btnModificar.setBackground(new java.awt.Color(113, 189, 68));
         btnModificar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        btnModificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnModificar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnModificarMouseEntered(evt);
@@ -257,6 +262,7 @@ private final CategoriaControl CONTROL;
 
         btnFiltros.setBackground(new java.awt.Color(113, 189, 68));
         btnFiltros.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        btnFiltros.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnFiltros.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnFiltrosMouseEntered(evt);
@@ -289,6 +295,7 @@ private final CategoriaControl CONTROL;
 
         btnAgregarPro.setBackground(new java.awt.Color(113, 189, 68));
         btnAgregarPro.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        btnAgregarPro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAgregarPro.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAgregarProMouseClicked(evt);
@@ -324,6 +331,7 @@ private final CategoriaControl CONTROL;
 
         btnAgregarCat.setBackground(new java.awt.Color(113, 189, 68));
         btnAgregarCat.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        btnAgregarCat.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAgregarCat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAgregarCatMouseClicked(evt);
@@ -362,7 +370,7 @@ private final CategoriaControl CONTROL;
         InventarioTablaLayout.setHorizontalGroup(
             InventarioTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(InventarioTablaLayout.createSequentialGroup()
-                .addContainerGap(132, Short.MAX_VALUE)
+                .addContainerGap(156, Short.MAX_VALUE)
                 .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -412,6 +420,7 @@ private final CategoriaControl CONTROL;
 
         btnBuscarProducto.setBackground(new java.awt.Color(113, 189, 68));
         btnBuscarProducto.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        btnBuscarProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBuscarProducto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnBuscarProductoMouseEntered(evt);
@@ -457,6 +466,7 @@ private final CategoriaControl CONTROL;
 
         btnEliminarProducto.setBackground(new java.awt.Color(113, 189, 68));
         btnEliminarProducto.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        btnEliminarProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEliminarProducto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnEliminarProductoMouseEntered(evt);
@@ -489,6 +499,7 @@ private final CategoriaControl CONTROL;
 
         btnModificarProducto.setBackground(new java.awt.Color(113, 189, 68));
         btnModificarProducto.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        btnModificarProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnModificarProducto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnModificarProductoMouseEntered(evt);
@@ -547,6 +558,7 @@ private final CategoriaControl CONTROL;
 
         btnAgregarProducto.setBackground(new java.awt.Color(113, 189, 68));
         btnAgregarProducto.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        btnAgregarProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAgregarProducto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnAgregarProductoMouseEntered(evt);
@@ -650,6 +662,7 @@ private final CategoriaControl CONTROL;
 
         btnVolver.setBackground(new java.awt.Color(113, 189, 68));
         btnVolver.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        btnVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnVolver.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnVolverMouseClicked(evt);
@@ -730,6 +743,7 @@ private final CategoriaControl CONTROL;
                 .addContainerGap())
         );
 
+        InventarioCategoria.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         InventarioCategoria.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTextField2.setText("Buscar...");
@@ -1041,35 +1055,35 @@ private final CategoriaControl CONTROL;
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscar1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscar1MouseEntered
-        // TODO add your handling code here:
+        btnBuscar1.setBackground(Color.decode(naranja));
     }//GEN-LAST:event_btnBuscar1MouseEntered
 
     private void btnBuscar1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscar1MouseExited
-        // TODO add your handling code here:
+        btnBuscar1.setBackground(Color.decode(verde));
     }//GEN-LAST:event_btnBuscar1MouseExited
 
     private void btnEliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseEntered
-        // TODO add your handling code here:
+        btnEliminar.setBackground(Color.decode(naranja));
     }//GEN-LAST:event_btnEliminarMouseEntered
 
     private void btnEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseExited
-        // TODO add your handling code here:
+        btnEliminar.setBackground(Color.decode(verde));
     }//GEN-LAST:event_btnEliminarMouseExited
 
     private void btnModificarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseEntered
-        // TODO add your handling code here:
+        btnModificar.setBackground(Color.decode(naranja));
     }//GEN-LAST:event_btnModificarMouseEntered
 
     private void btnModificarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseExited
-        // TODO add your handling code here:
+        btnModificar.setBackground(Color.decode(verde));
     }//GEN-LAST:event_btnModificarMouseExited
 
     private void btnFiltrosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFiltrosMouseEntered
-        // TODO add your handling code here:
+        btnFiltros.setBackground(Color.decode(naranja));
     }//GEN-LAST:event_btnFiltrosMouseEntered
 
     private void btnFiltrosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFiltrosMouseExited
-        // TODO add your handling code here:
+        btnFiltros.setBackground(Color.decode(verde));
     }//GEN-LAST:event_btnFiltrosMouseExited
 
     private void TxtbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtbuscarActionPerformed
@@ -1077,11 +1091,11 @@ private final CategoriaControl CONTROL;
     }//GEN-LAST:event_TxtbuscarActionPerformed
 
     private void btnAgregarProMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarProMouseEntered
-        // TODO add your handling code here:
+        btnAgregarPro.setBackground(Color.decode(naranja));
     }//GEN-LAST:event_btnAgregarProMouseEntered
 
     private void btnAgregarProMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarProMouseExited
-        // TODO add your handling code here:
+        btnAgregarPro.setBackground(Color.decode(verde));
     }//GEN-LAST:event_btnAgregarProMouseExited
 
     private void btnAgregarProMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarProMouseClicked
@@ -1097,27 +1111,27 @@ private final CategoriaControl CONTROL;
     }//GEN-LAST:event_btnBuscar1MouseClicked
 
     private void btnBuscarProductoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarProductoMouseEntered
-        // TODO add your handling code here:
+        btnBuscarProducto.setBackground(Color.decode(naranja));
     }//GEN-LAST:event_btnBuscarProductoMouseEntered
 
     private void btnBuscarProductoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarProductoMouseExited
-        // TODO add your handling code here:
+        btnBuscarProducto.setBackground(Color.decode(verde));
     }//GEN-LAST:event_btnBuscarProductoMouseExited
 
     private void btnEliminarProductoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarProductoMouseEntered
-        // TODO add your handling code here:
+        btnEliminarProducto.setBackground(Color.decode(naranja));
     }//GEN-LAST:event_btnEliminarProductoMouseEntered
 
     private void btnEliminarProductoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarProductoMouseExited
-        // TODO add your handling code here:
+        btnEliminarProducto.setBackground(Color.decode(verde));
     }//GEN-LAST:event_btnEliminarProductoMouseExited
 
     private void btnModificarProductoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarProductoMouseEntered
-        // TODO add your handling code here:
+        btnModificarProducto.setBackground(Color.decode(naranja));
     }//GEN-LAST:event_btnModificarProductoMouseEntered
 
     private void btnModificarProductoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarProductoMouseExited
-        // TODO add your handling code here:
+        btnModificarProducto.setBackground(Color.decode(verde));
     }//GEN-LAST:event_btnModificarProductoMouseExited
 
     private void txtProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProductoActionPerformed
@@ -1129,11 +1143,11 @@ private final CategoriaControl CONTROL;
     }//GEN-LAST:event_txtProductoCategoriaActionPerformed
 
     private void btnAgregarProductoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarProductoMouseEntered
-        // TODO add your handling code here:
+        btnAgregarProducto.setBackground(Color.decode(naranja));
     }//GEN-LAST:event_btnAgregarProductoMouseEntered
 
     private void btnAgregarProductoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarProductoMouseExited
-        // TODO add your handling code here:
+        btnAgregarProducto.setBackground(Color.decode(verde));
     }//GEN-LAST:event_btnAgregarProductoMouseExited
 
     private void txtDescripcionProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescripcionProActionPerformed
@@ -1145,35 +1159,35 @@ private final CategoriaControl CONTROL;
     }//GEN-LAST:event_btnVolverMouseClicked
 
     private void btnVolverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseEntered
-        // TODO add your handling code here:
+        btnVolver.setBackground(Color.decode(naranja));
     }//GEN-LAST:event_btnVolverMouseEntered
 
     private void btnVolverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseExited
-        // TODO add your handling code here:
+        btnVolver.setBackground(Color.decode(verde));
     }//GEN-LAST:event_btnVolverMouseExited
 
     private void btnBuscarCategoriaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarCategoriaMouseEntered
-        // TODO add your handling code here:
+        btnBuscarCategoria.setBackground(Color.decode(naranja));
     }//GEN-LAST:event_btnBuscarCategoriaMouseEntered
 
     private void btnBuscarCategoriaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarCategoriaMouseExited
-        // TODO add your handling code here:
+        btnBuscarCategoria.setBackground(Color.decode(naranja));
     }//GEN-LAST:event_btnBuscarCategoriaMouseExited
 
     private void btnEliminarCategoriaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarCategoriaMouseEntered
-        // TODO add your handling code here:
+        btnEliminarCategoria.setBackground(Color.decode(naranja));
     }//GEN-LAST:event_btnEliminarCategoriaMouseEntered
 
     private void btnEliminarCategoriaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarCategoriaMouseExited
-        // TODO add your handling code here:
+        btnEliminarCategoria.setBackground(Color.decode(verde));
     }//GEN-LAST:event_btnEliminarCategoriaMouseExited
 
     private void btnModificarCategoriaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarCategoriaMouseEntered
-        // TODO add your handling code here:
+        btnModificarCategoria.setBackground(Color.decode(naranja));
     }//GEN-LAST:event_btnModificarCategoriaMouseEntered
 
     private void btnModificarCategoriaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarCategoriaMouseExited
-        // TODO add your handling code here:
+         btnModificarCategoria.setBackground(Color.decode(verde));
     }//GEN-LAST:event_btnModificarCategoriaMouseExited
 
     private void txtCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCategoriaActionPerformed
@@ -1185,11 +1199,11 @@ private final CategoriaControl CONTROL;
     }//GEN-LAST:event_txtDescripcionCatActionPerformed
 
     private void btnAgregarCategoriaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarCategoriaMouseEntered
-        // TODO add your handling code here:
+         btnAgregarCategoria.setBackground(Color.decode(naranja));
     }//GEN-LAST:event_btnAgregarCategoriaMouseEntered
 
     private void btnAgregarCategoriaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarCategoriaMouseExited
-        // TODO add your handling code here:
+        btnAgregarCategoria.setBackground(Color.decode(verde));
     }//GEN-LAST:event_btnAgregarCategoriaMouseExited
 
     private void btnVolver1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolver1MouseClicked
@@ -1198,11 +1212,11 @@ private final CategoriaControl CONTROL;
     }//GEN-LAST:event_btnVolver1MouseClicked
 
     private void btnVolver1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolver1MouseEntered
-        // TODO add your handling code here:
+        btnVolver1.setBackground(Color.decode(naranja));
     }//GEN-LAST:event_btnVolver1MouseEntered
 
     private void btnVolver1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolver1MouseExited
-        // TODO add your handling code here:
+        btnVolver1.setBackground(Color.decode(verde));
     }//GEN-LAST:event_btnVolver1MouseExited
 
     private void btnAgregarCatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarCatMouseClicked
@@ -1212,11 +1226,11 @@ private final CategoriaControl CONTROL;
     }//GEN-LAST:event_btnAgregarCatMouseClicked
 
     private void btnAgregarCatMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarCatMouseEntered
-        // TODO add your handling code here:
+        btnAgregarCat.setBackground(Color.decode(naranja));
     }//GEN-LAST:event_btnAgregarCatMouseEntered
 
     private void btnAgregarCatMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarCatMouseExited
-        // TODO add your handling code here:
+        btnAgregarCat.setBackground(Color.decode(verde));
     }//GEN-LAST:event_btnAgregarCatMouseExited
 
 
