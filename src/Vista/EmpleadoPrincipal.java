@@ -206,7 +206,7 @@ int xmouse,ymouse;
 
     private void btnFacturacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturacionActionPerformed
         
-        new CambiaPanel(this.PanelPrincipal,new Contenedor());
+        new CambiaPanel(this.PanelPrincipal,new PanelEmpleadoFactu());
     }//GEN-LAST:event_btnFacturacionActionPerformed
 
     private void btnVentasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVentasMouseEntered

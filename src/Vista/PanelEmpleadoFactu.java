@@ -13,12 +13,12 @@ import javax.swing.border.Border;
  *
  * @author axellopez
  */
-public class Contenedor extends javax.swing.JPanel {
+public class PanelEmpleadoFactu extends javax.swing.JPanel {
 
     /**
      * Creates new form Contenedor
      */
-    public Contenedor() {
+    public PanelEmpleadoFactu() {
         initComponents();
         Domicilio.setBorder(new RoundedBorder(24));
         Nif.setBorder(new RoundedBorder(24));
