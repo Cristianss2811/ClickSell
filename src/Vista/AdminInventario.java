@@ -1171,7 +1171,7 @@ private final CategoriaControl CONTROL;
     }//GEN-LAST:event_btnBuscarCategoriaMouseEntered
 
     private void btnBuscarCategoriaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarCategoriaMouseExited
-        btnBuscarCategoria.setBackground(Color.decode(naranja));
+        btnBuscarCategoria.setBackground(Color.decode(verde));
     }//GEN-LAST:event_btnBuscarCategoriaMouseExited
 
     private void btnEliminarCategoriaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarCategoriaMouseEntered
