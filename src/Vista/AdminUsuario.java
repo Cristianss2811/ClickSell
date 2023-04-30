@@ -3,29 +3,62 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package Vista;
-
+import java.awt.Image;
+import Negocio.UsuarioControl;
+import java.awt.Color;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.TableRowSorter;
 /**
  *
  * @author juanp
  */
 public class AdminUsuario extends javax.swing.JPanel {
-
+private final UsuarioControl CONTROL;
+String accion;
+    String imagenProducto, nombreAnt;
+    String verde="#71BD44", naranja="#F39121";
     /**
      * Creates new form AdminUsuario
      */
     public AdminUsuario() {
         initComponents();
-        
-        jPanel3.setVisible(false);
-        jLabel1.setVisible(false);
-        txtNombre.setVisible(false);
-        jLabel4.setVisible(false);
-        txtCorreo.setVisible(false);
-        jLabel5.setVisible(false);
-        txtContraseña.setVisible(false);
-        txtRol.setVisible(false);
-        jLabel9.setVisible(false);
-        btnRegistrar.setVisible(false);
+        CONTROL=new UsuarioControl();
+         tabla.setVisible(true);
+        Registro.setVisible(false);
+        Listar("");
+    }
+    
+    public void Listar(String texto)
+    {
+        TablaUsuario.setModel(CONTROL.listar(texto));
+        TableRowSorter modeloOrdenado = new TableRowSorter(TablaUsuario.getModel());
+       TablaUsuario.setRowSorter(modeloOrdenado);
+
+    }
+    
+     public void ListarInventario(String texto) {
+        TablaUsuario.setModel(CONTROL.listar(texto));
+    }
+    
+    public void mensajeOK(String mensaje){
+        JOptionPane.showMessageDialog(this, mensaje, "Papelería Yolis", JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    public void mensajeError(String mensaje){
+        JOptionPane.showMessageDialog(this, mensaje, "Papelería Yolis", JOptionPane.ERROR_MESSAGE);
+    }
+     public void Limpiar(){
+        txtNombre.setText("");
+        TxtID.setText("");
+        txtCorreo.setText("");
+        txtContraseña.setText("");
+        txtRol.setText("");
     }
 
     /**
@@ -38,11 +71,11 @@ public class AdminUsuario extends javax.swing.JPanel {
     private void initComponents() {
 
         tabla = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        TxtBuscar = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TablaUsuario = new javax.swing.JTable();
         btnEliminar = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         btnModificar = new javax.swing.JPanel();
@@ -65,12 +98,16 @@ public class AdminUsuario extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         btnVolver = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
+        TxtID = new javax.swing.JTextField();
 
-        jTextField1.setText("Buscar...");
+        TxtBuscar.setText("Buscar...");
 
         btnBuscar.setBackground(new java.awt.Color(113, 189, 68));
         btnBuscar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         btnBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBuscarMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnBuscarMouseEntered(evt);
             }
@@ -100,7 +137,7 @@ public class AdminUsuario extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TablaUsuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -111,11 +148,14 @@ public class AdminUsuario extends javax.swing.JPanel {
                 "Nombre", "Correo", "Rol"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(TablaUsuario);
 
         btnEliminar.setBackground(new java.awt.Color(113, 189, 68));
         btnEliminar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEliminarMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnEliminarMouseEntered(evt);
             }
@@ -148,6 +188,9 @@ public class AdminUsuario extends javax.swing.JPanel {
         btnModificar.setBackground(new java.awt.Color(113, 189, 68));
         btnModificar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         btnModificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnModificarMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnModificarMouseEntered(evt);
             }
@@ -254,7 +297,7 @@ public class AdminUsuario extends javax.swing.JPanel {
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addGroup(tablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(tablaLayout.createSequentialGroup()
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TxtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(10, 10, 10)
                             .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 970, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -278,7 +321,7 @@ public class AdminUsuario extends javax.swing.JPanel {
                     .addGroup(tablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(tablaLayout.createSequentialGroup()
                             .addGap(10, 10, 10)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TxtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(40, 40, 40)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -316,6 +359,9 @@ public class AdminUsuario extends javax.swing.JPanel {
         btnRegistrar.setBackground(new java.awt.Color(113, 189, 68));
         btnRegistrar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         btnRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRegistrarMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnRegistrarMouseEntered(evt);
             }
@@ -433,6 +479,10 @@ public class AdminUsuario extends javax.swing.JPanel {
                 .addGap(19, 19, 19)
                 .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(887, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RegistroLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(TxtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(130, 130, 130))
             .addGroup(RegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(RegistroLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -442,7 +492,9 @@ public class AdminUsuario extends javax.swing.JPanel {
         RegistroLayout.setVerticalGroup(
             RegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RegistroLayout.createSequentialGroup()
-                .addContainerGap(635, Short.MAX_VALUE)
+                .addGap(95, 95, 95)
+                .addComponent(TxtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 518, Short.MAX_VALUE)
                 .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(RegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -526,25 +578,10 @@ public class AdminUsuario extends javax.swing.JPanel {
         // TODO add your handling code here:
         tabla.setVisible(false);
         Registro.setVisible(true);
+        TxtID.setVisible(false);
+        accion = "guardar";
+        jLabel10.setText("Agregar");
         
-        jPanel3.setVisible(true);
-        jLabel1.setVisible(true);
-        txtNombre.setVisible(true);
-        jLabel4.setVisible(true);
-        txtCorreo.setVisible(true);
-        jLabel5.setVisible(true);
-        txtContraseña.setVisible(true);
-        txtRol.setVisible(true);
-        jLabel9.setVisible(true);
-        btnRegistrar.setVisible(true);
-        
-        jTextField1.setVisible(false);
-        btnBuscar.setVisible(false);
-        jScrollPane1.setVisible(false);
-        btnEliminar.setVisible(false);
-       btnModificar.setVisible(false);
-       btnAgregar.setVisible(false);
-       btnFiltros.setVisible(false);
     }//GEN-LAST:event_btnAgregarMouseClicked
 
     private void btnVolverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseEntered
@@ -560,29 +597,99 @@ public class AdminUsuario extends javax.swing.JPanel {
         tabla.setVisible(true);
         Registro.setVisible(false);
         
-        jPanel3.setVisible(false);
-        jLabel1.setVisible(false);
-        txtNombre.setVisible(false);
-        jLabel4.setVisible(false);
-        txtCorreo.setVisible(false);
-        jLabel5.setVisible(false);
-        txtContraseña.setVisible(false);
-        txtRol.setVisible(false);
-        jLabel9.setVisible(false);
-        btnRegistrar.setVisible(false);
         
-        jTextField1.setVisible(true);
-        btnBuscar.setVisible(true);
-        jScrollPane1.setVisible(true);
-        btnEliminar.setVisible(true);
-       btnModificar.setVisible(true);
-       btnAgregar.setVisible(true);
-       btnFiltros.setVisible(true);
     }//GEN-LAST:event_btnVolverMouseClicked
+
+    private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
+        // TODO add your handling code here:
+        ListarInventario(TxtBuscar.getText().trim());
+        
+    }//GEN-LAST:event_btnBuscarMouseClicked
+
+    private void btnRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarMouseClicked
+        // TODO add your handling code here:
+        String resp;
+        if (txtNombre.getText().isBlank()) {
+            JOptionPane.showMessageDialog(this, "debe escribir un nombre", "Sistema de compra-venta", JOptionPane.WARNING_MESSAGE);
+            txtNombre.requestFocus();
+            return;
+        }
+        if (accion.equals("editar")) {
+            nombreAnt = txtNombre.getText();
+            resp = CONTROL.actualizar(Integer.parseInt(TxtID.getText()), txtNombre.getText(), nombreAnt, txtCorreo.getText(), txtContraseña.getText(), txtRol.getText());
+            if (resp.equals("OK")) {
+                mensajeOK("Registro actualizao correctamente");
+                Listar("");
+                Limpiar();
+                tabla.setVisible(true);
+        Registro.setVisible(false);
+            } else {
+                mensajeError(resp);
+            }
+        } else {
+            resp = CONTROL.insertar(txtNombre.getText(), txtCorreo.getText(), txtContraseña.getText(), txtRol.getText());
+            if (resp.equals("OK")) {
+                mensajeOK("Registro Insertado con exito");
+                Listar("");
+                Limpiar();
+                tabla.setVisible(true);
+        Registro.setVisible(false);
+            } else {
+                mensajeError(resp);
+            }
+            txtNombre.requestFocus();
+        }
+        
+    }//GEN-LAST:event_btnRegistrarMouseClicked
+
+    private void btnModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseClicked
+        // TODO add your handling code here:
+        if (TablaUsuario.getSelectedRowCount() == 1) {
+
+            TxtID.setText(TablaUsuario.getValueAt(TablaUsuario.getSelectedRow(), 0).toString());
+            txtNombre.setText(TablaUsuario.getValueAt(TablaUsuario.getSelectedRow(), 1).toString());
+            txtCorreo.setText(TablaUsuario.getValueAt(TablaUsuario.getSelectedRow(), 2).toString());
+            txtContraseña.setText(TablaUsuario.getValueAt(TablaUsuario.getSelectedRow(), 3).toString());
+            txtRol.setText(TablaUsuario.getValueAt(TablaUsuario.getSelectedRow(), 4).toString());
+
+            tabla.setVisible(false);
+        Registro.setVisible(true);
+            accion = "editar";
+            //ID.setVisible(true);
+            
+        } else {
+            JOptionPane.showMessageDialog(this, "Debes seleccionar un registro", "Papeleria Yolis", JOptionPane.WARNING_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_btnModificarMouseClicked
+
+    private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
+        // TODO add your handling code here:
+        String resp;
+        int id;
+        if (TablaUsuario.getSelectedRowCount() == 1) {
+            if (JOptionPane.showConfirmDialog(this, "¿Deseas eliminar el usuario: " + TablaUsuario.getValueAt(TablaUsuario.getSelectedRow(), 1).toString() + "?", "Papeleria Yolis", JOptionPane.YES_NO_OPTION) == 0) {
+                resp = CONTROL.desactivar(Integer.parseInt(TablaUsuario.getValueAt(TablaUsuario.getSelectedRow(), 0).toString()));
+                if (resp.equals("OK")) {
+                    mensajeOK("Registro eliminado.");
+                    Listar("");
+                } else {
+                    mensajeError(resp);
+                }
+            } else {
+                mensajeError("Eliminación cancelada.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Debes seleccionar un producto", "Papelería Yolis", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnEliminarMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Registro;
+    private javax.swing.JTable TablaUsuario;
+    private javax.swing.JTextField TxtBuscar;
+    private javax.swing.JTextField TxtID;
     private javax.swing.JPanel btnAgregar;
     private javax.swing.JPanel btnBuscar;
     private javax.swing.JPanel btnEliminar;
@@ -603,8 +710,6 @@ public class AdminUsuario extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel tabla;
     private javax.swing.JTextField txtContraseña;
     private javax.swing.JTextField txtCorreo;

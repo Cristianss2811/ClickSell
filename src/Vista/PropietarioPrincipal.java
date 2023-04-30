@@ -82,6 +82,11 @@ int xmouse,ymouse;
                 btnComprasMouseExited(evt);
             }
         });
+        btnCompras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnComprasActionPerformed(evt);
+            }
+        });
 
         btnSalir.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnSalir.setForeground(new java.awt.Color(113, 189, 68));
@@ -111,6 +116,11 @@ int xmouse,ymouse;
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnInventarioMouseExited(evt);
+            }
+        });
+        btnInventario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInventarioActionPerformed(evt);
             }
         });
 
@@ -205,6 +215,7 @@ int xmouse,ymouse;
 
     private void btnEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpleadosActionPerformed
         // TODO add your handling code here:
+        new CambiaPanel(PanelPrincipal,new PropietarioEmpleados());
     }//GEN-LAST:event_btnEmpleadosActionPerformed
 
     private void btnComprasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnComprasMouseEntered
@@ -273,6 +284,16 @@ int xmouse,ymouse;
         int y=evt.getYOnScreen();
                 this.setLocation(x-xmouse,y-ymouse);
     }//GEN-LAST:event_jPanel2MouseDragged
+
+    private void btnComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprasActionPerformed
+        // TODO add your handling code here:
+        new CambiaPanel(PanelPrincipal,new PropietarioCompras());
+    }//GEN-LAST:event_btnComprasActionPerformed
+
+    private void btnInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioActionPerformed
+        // TODO add your handling code here:
+        new CambiaPanel(PanelPrincipal,new PropietarioInventario());
+    }//GEN-LAST:event_btnInventarioActionPerformed
 
     /**
      * @param args the command line arguments

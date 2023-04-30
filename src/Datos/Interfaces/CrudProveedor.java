@@ -10,11 +10,11 @@ import java.util.List;
  *
  * @author crist
  */
-public interface CrudProveedor<T, DP> {
+public interface CrudProveedor<T> {
     
     public List <T> listar(String texto); //Regresa un listado de tipo list de objetos T
     
-    public List<DP> ListarDetalle(int idProvedor);
+ 
     
     public boolean insertar(T obj); //Inserta un metodo del tipo T
     

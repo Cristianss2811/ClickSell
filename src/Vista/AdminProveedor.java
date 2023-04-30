@@ -3,33 +3,64 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package Vista;
-
+import java.awt.Image;
+import Negocio.ProveedorControl;
+import java.awt.Color;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.TableRowSorter;
 /**
  *
  * @author juanp
  */
 public class AdminProveedor extends javax.swing.JPanel {
-
+private final ProveedorControl CONTROL;
+String accion;
+    String imagenProducto, nombreAnt;
+    String verde="#71BD44", naranja="#F39121";
     /**
      * Creates new form AdminProveedor
      */
     public AdminProveedor() {
         initComponents();
-        
-        jPanel3.setVisible(false);
-        jLabel1.setVisible(false);
-        txtNombre.setVisible(false);
-        jLabel4.setVisible(false);
-        txtTelefono.setVisible(false);
-        jLabel5.setVisible(false);
-        txtLocalidad.setVisible(false);
-        txtEstado.setVisible(false);
-        jLabel9.setVisible(false);
-        jLabel11.setVisible(false);
-        txtEmpresa.setVisible(false);
-        btnRegistrar.setVisible(false);
+        CONTROL=new ProveedorControl();
+        ProvedorTabla.setVisible(true);
+        ProvedorRegistro.setVisible(false);
+         Listar("");
     }
 
+    public void Listar(String texto)
+    {
+        TablaProveedor.setModel(CONTROL.listar(texto));
+        TableRowSorter modeloOrdenado = new TableRowSorter(TablaProveedor.getModel());
+       TablaProveedor.setRowSorter(modeloOrdenado);
+
+    }
+    
+     public void ListarInventario(String texto) {
+        TablaProveedor.setModel(CONTROL.listar(texto));
+    }
+    
+    public void mensajeOK(String mensaje){
+        JOptionPane.showMessageDialog(this, mensaje, "Papelería Yolis", JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    public void mensajeError(String mensaje){
+        JOptionPane.showMessageDialog(this, mensaje, "Papelería Yolis", JOptionPane.ERROR_MESSAGE);
+    }
+     public void Limpiar(){
+        txtNombre.setText("");
+        txtTelefono.setText("");
+        txtEmpresa.setText("");
+        txtEstado.setText("");
+        txtLocalidad.setText("");
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -40,9 +71,9 @@ public class AdminProveedor extends javax.swing.JPanel {
     private void initComponents() {
 
         ProvedorTabla = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        TxtBuscar = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TablaProveedor = new javax.swing.JTable();
         btnEliminar = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         btnModificar = new javax.swing.JPanel();
@@ -69,10 +100,11 @@ public class AdminProveedor extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         btnVolver = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
+        txtID = new javax.swing.JTextField();
 
-        jTextField1.setText("Buscar...");
+        TxtBuscar.setText("Buscar...");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TablaProveedor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -83,11 +115,14 @@ public class AdminProveedor extends javax.swing.JPanel {
                 "Nombre", "Telefono", "Localidad", "Estado", "Empresa"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(TablaProveedor);
 
         btnEliminar.setBackground(new java.awt.Color(113, 189, 68));
         btnEliminar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEliminarMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnEliminarMouseEntered(evt);
             }
@@ -120,6 +155,9 @@ public class AdminProveedor extends javax.swing.JPanel {
         btnModificar.setBackground(new java.awt.Color(113, 189, 68));
         btnModificar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         btnModificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnModificarMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnModificarMouseEntered(evt);
             }
@@ -152,6 +190,9 @@ public class AdminProveedor extends javax.swing.JPanel {
         btnBuscar.setBackground(new java.awt.Color(113, 189, 68));
         btnBuscar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         btnBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBuscarMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnBuscarMouseEntered(evt);
             }
@@ -258,7 +299,7 @@ public class AdminProveedor extends javax.swing.JPanel {
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addGroup(ProvedorTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(ProvedorTablaLayout.createSequentialGroup()
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TxtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(10, 10, 10)
                             .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 970, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -282,7 +323,7 @@ public class AdminProveedor extends javax.swing.JPanel {
                     .addGroup(ProvedorTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(ProvedorTablaLayout.createSequentialGroup()
                             .addGap(10, 10, 10)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TxtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(40, 40, 40)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -325,6 +366,9 @@ public class AdminProveedor extends javax.swing.JPanel {
         btnRegistrar.setBackground(new java.awt.Color(113, 189, 68));
         btnRegistrar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         btnRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRegistrarMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnRegistrarMouseEntered(evt);
             }
@@ -449,6 +493,10 @@ public class AdminProveedor extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(890, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ProvedorRegistroLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(131, 131, 131))
             .addGroup(ProvedorRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(ProvedorRegistroLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -458,7 +506,9 @@ public class AdminProveedor extends javax.swing.JPanel {
         ProvedorRegistroLayout.setVerticalGroup(
             ProvedorRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ProvedorRegistroLayout.createSequentialGroup()
-                .addContainerGap(635, Short.MAX_VALUE)
+                .addGap(120, 120, 120)
+                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 493, Short.MAX_VALUE)
                 .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(ProvedorRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -543,26 +593,7 @@ public class AdminProveedor extends javax.swing.JPanel {
         ProvedorTabla.setVisible(true);
         ProvedorRegistro.setVisible(false);
 
-        jPanel3.setVisible(false);
-        jLabel1.setVisible(false);
-        txtNombre.setVisible(false);
-        jLabel4.setVisible(false);
-        txtTelefono.setVisible(false);
-        jLabel5.setVisible(false);
-        txtLocalidad.setVisible(false);
-        txtEstado.setVisible(false);
-        jLabel9.setVisible(false);
-        jLabel11.setVisible(false);
-        txtEmpresa.setVisible(false);
-        btnRegistrar.setVisible(false);
-
-        jTextField1.setVisible(true);
-        btnBuscar.setVisible(true);
-        jScrollPane1.setVisible(true);
-        btnEliminar.setVisible(true);
-        btnModificar.setVisible(true);
-        btnAgregar.setVisible(true);
-        btnFiltros.setVisible(true);
+        
     }//GEN-LAST:event_btnVolverMouseClicked
 
     private void btnVolverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseEntered
@@ -577,33 +608,101 @@ public class AdminProveedor extends javax.swing.JPanel {
         // TODO add your handling code here:
          ProvedorTabla.setVisible(false);
         ProvedorRegistro.setVisible(true);
-
-        jPanel3.setVisible(true);
-        jLabel1.setVisible(true);
-        txtNombre.setVisible(true);
-        jLabel4.setVisible(true);
-        txtTelefono.setVisible(true);
-        jLabel5.setVisible(true);
-        txtLocalidad.setVisible(true);
-        txtEstado.setVisible(true);
-        jLabel9.setVisible(true);
-        jLabel11.setVisible(true);
-        txtEmpresa.setVisible(true);
-        btnRegistrar.setVisible(true);
-
-        jTextField1.setVisible(false);
-        btnBuscar.setVisible(false);
-        jScrollPane1.setVisible(false);
-        btnEliminar.setVisible(false);
-        btnModificar.setVisible(false);
-        btnAgregar.setVisible(false);
-        btnFiltros.setVisible(false);
+txtID.setVisible(false);
+        accion = "guardar";
+        
     }//GEN-LAST:event_btnAgregarMouseClicked
+
+    private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
+        // TODO add your handling code here:
+        
+        ListarInventario(TxtBuscar.getText().trim());
+    }//GEN-LAST:event_btnBuscarMouseClicked
+
+    private void btnRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarMouseClicked
+        // TODO add your handling code here:
+        
+        String resp;
+        if (txtNombre.getText().isBlank()) {
+            JOptionPane.showMessageDialog(this, "debe escribir un nombre", "Sistema de compra-venta", JOptionPane.WARNING_MESSAGE);
+            txtNombre.requestFocus();
+            return;
+        }
+        if (accion.equals("editar")) {
+            nombreAnt = txtNombre.getText();
+            resp = CONTROL.actualizar(Integer.parseInt(txtID.getText()), txtNombre.getText(), nombreAnt, txtTelefono.getText(), txtLocalidad.getText(), txtEstado.getText(),txtEmpresa.getText());
+            if (resp.equals("OK")) {
+                mensajeOK("Registro actualizao correctamente");
+                Listar("");
+                Limpiar();
+                ProvedorTabla.setVisible(true);
+        ProvedorRegistro.setVisible(false);
+            } else {
+                mensajeError(resp);
+            }
+        } else {
+            resp = CONTROL.insertar(txtNombre.getText(),  txtTelefono.getText(), txtLocalidad.getText(), txtEstado.getText(),txtEmpresa.getText());
+            if (resp.equals("OK")) {
+                mensajeOK("Registro Insertado con exito");
+                Listar("");
+                Limpiar();
+                ProvedorTabla.setVisible(true);
+        ProvedorRegistro.setVisible(false);
+            } else {
+                mensajeError(resp);
+            }
+            txtNombre.requestFocus();
+        }
+    }//GEN-LAST:event_btnRegistrarMouseClicked
+
+    private void btnModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseClicked
+        // TODO add your handling code here:
+        if (TablaProveedor.getSelectedRowCount() == 1) {
+
+            txtID.setText(TablaProveedor.getValueAt(TablaProveedor.getSelectedRow(), 0).toString());
+            txtNombre.setText(TablaProveedor.getValueAt(TablaProveedor.getSelectedRow(), 1).toString());
+            txtTelefono.setText(TablaProveedor.getValueAt(TablaProveedor.getSelectedRow(), 2).toString());
+            txtLocalidad.setText(TablaProveedor.getValueAt(TablaProveedor.getSelectedRow(), 3).toString());
+            txtEstado.setText(TablaProveedor.getValueAt(TablaProveedor.getSelectedRow(), 4).toString());
+            txtEmpresa.setText(TablaProveedor.getValueAt(TablaProveedor.getSelectedRow(), 5).toString());
+
+             ProvedorTabla.setVisible(false);
+        ProvedorRegistro.setVisible(true);
+            accion = "editar";
+            //ID.setVisible(true);
+            
+        } else {
+            JOptionPane.showMessageDialog(this, "Debes seleccionar un registro", "Papeleria Yolis", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnModificarMouseClicked
+
+    private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
+        // TODO add your handling code here:
+        String resp;
+        int id;
+        if (TablaProveedor.getSelectedRowCount() == 1) {
+            if (JOptionPane.showConfirmDialog(this, "¿Deseas eliminar el usuario: " + TablaProveedor.getValueAt(TablaProveedor.getSelectedRow(), 1).toString() + "?", "Papeleria Yolis", JOptionPane.YES_NO_OPTION) == 0) {
+                resp = CONTROL.Desactivar(Integer.parseInt(TablaProveedor.getValueAt(TablaProveedor.getSelectedRow(), 0).toString()));
+                if (resp.equals("OK")) {
+                    mensajeOK("Registro eliminado.");
+                    Listar("");
+                } else {
+                    mensajeError(resp);
+                }
+            } else {
+                mensajeError("Eliminación cancelada.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Debes seleccionar un producto", "Papelería Yolis", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnEliminarMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ProvedorRegistro;
     private javax.swing.JPanel ProvedorTabla;
+    private javax.swing.JTable TablaProveedor;
+    private javax.swing.JTextField TxtBuscar;
     private javax.swing.JPanel btnAgregar;
     private javax.swing.JPanel btnBuscar;
     private javax.swing.JPanel btnEliminar;
@@ -625,10 +724,9 @@ public class AdminProveedor extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField txtEmpresa;
     private javax.swing.JTextField txtEstado;
+    private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtLocalidad;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtTelefono;
