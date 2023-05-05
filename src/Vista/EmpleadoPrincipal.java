@@ -112,6 +112,11 @@ int xmouse,ymouse;
                 btnInventarioMouseExited(evt);
             }
         });
+        btnInventario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInventarioActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setText("Empleado");
@@ -206,7 +211,7 @@ int xmouse,ymouse;
 
     private void btnFacturacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturacionActionPerformed
         
-        new CambiaPanel(this.PanelPrincipal,new Contenedor());
+        new CambiaPanel(this.PanelPrincipal,new EmpleadoFacturacion());
     }//GEN-LAST:event_btnFacturacionActionPerformed
 
     private void btnVentasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVentasMouseEntered
@@ -275,6 +280,11 @@ int xmouse,ymouse;
         int y=evt.getYOnScreen();
                 this.setLocation(x-xmouse,y-ymouse);
     }//GEN-LAST:event_jPanel2MouseDragged
+
+    private void btnInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioActionPerformed
+        // TODO add your handling code here:
+        new CambiaPanel(this.PanelPrincipal,new EmpleadoInventario());
+    }//GEN-LAST:event_btnInventarioActionPerformed
 
     /**
      * @param args the command line arguments

@@ -22,24 +22,22 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace pref="105" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jLabel6" min="-2" pref="499" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jLabel5" pref="500" max="32767" attributes="0"/>
-                      <Component id="correo" max="32767" attributes="0"/>
-                  </Group>
-                  <Component id="Nombre" alignment="1" min="-2" pref="499" max="-2" attributes="0"/>
-                  <Component id="jLabel7" alignment="1" min="-2" pref="499" max="-2" attributes="0"/>
-                  <Component id="Nif" alignment="1" min="-2" pref="499" max="-2" attributes="0"/>
-                  <Component id="jLabel4" alignment="1" min="-2" pref="499" max="-2" attributes="0"/>
-                  <Component id="Domicilio" alignment="1" min="-2" pref="499" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="95" max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="btnGenerarFactura" min="-2" pref="397" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                      <Component id="jLabel6" min="-2" pref="499" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jLabel5" pref="500" max="32767" attributes="0"/>
+                          <Component id="correo" max="32767" attributes="0"/>
+                      </Group>
+                      <Component id="Nombre" alignment="1" min="-2" pref="499" max="-2" attributes="0"/>
+                      <Component id="jLabel7" alignment="1" min="-2" pref="499" max="-2" attributes="0"/>
+                      <Component id="Nif" alignment="1" min="-2" pref="499" max="-2" attributes="0"/>
+                      <Component id="jLabel4" alignment="1" min="-2" pref="499" max="-2" attributes="0"/>
+                      <Component id="Domicilio" alignment="1" min="-2" pref="499" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="btnGenerarFactura" alignment="0" min="-2" pref="397" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
