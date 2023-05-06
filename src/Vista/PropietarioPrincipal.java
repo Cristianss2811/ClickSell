@@ -269,7 +269,9 @@ int xmouse,ymouse;
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
+        //System.exit(0);
+        Logout log=new Logout();
+        log.setVisible(true);
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void jPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed
