@@ -13,8 +13,8 @@ public class Usuarios {
     private String nombreu;
     private String correou;
     private String contraseñau;
-     private String rol;
-      private String estado;
+    private String rol;
+    private String estado;
 
     public Usuarios() {
     }

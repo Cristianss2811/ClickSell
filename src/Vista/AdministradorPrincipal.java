@@ -59,6 +59,7 @@ String verde="#71BD44", naranja="#F39121", blanco="#FFFFFF", negro="#000000";
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setText("Administrador");
 
+        btnContenedorInventario.setBackground(new java.awt.Color(255, 255, 255));
         btnContenedorInventario.setMaximumSize(new java.awt.Dimension(83, 25));
         btnContenedorInventario.setMinimumSize(new java.awt.Dimension(83, 25));
         btnContenedorInventario.setPreferredSize(new java.awt.Dimension(83, 25));
@@ -93,6 +94,7 @@ String verde="#71BD44", naranja="#F39121", blanco="#FFFFFF", negro="#000000";
         });
         btnContenedorInventario.add(btnInventario, java.awt.BorderLayout.CENTER);
 
+        btnContenedorUsuario.setBackground(new java.awt.Color(255, 255, 255));
         btnContenedorUsuario.setMaximumSize(new java.awt.Dimension(83, 25));
         btnContenedorUsuario.setMinimumSize(new java.awt.Dimension(83, 25));
         btnContenedorUsuario.setPreferredSize(new java.awt.Dimension(83, 25));
@@ -127,6 +129,7 @@ String verde="#71BD44", naranja="#F39121", blanco="#FFFFFF", negro="#000000";
         });
         btnContenedorUsuario.add(btnUsuario, java.awt.BorderLayout.CENTER);
 
+        btnContenedorProveedor.setBackground(new java.awt.Color(255, 255, 255));
         btnContenedorProveedor.setMaximumSize(new java.awt.Dimension(83, 25));
         btnContenedorProveedor.setMinimumSize(new java.awt.Dimension(83, 25));
         btnContenedorProveedor.setPreferredSize(new java.awt.Dimension(83, 25));
@@ -161,6 +164,7 @@ String verde="#71BD44", naranja="#F39121", blanco="#FFFFFF", negro="#000000";
         });
         btnContenedorProveedor.add(btnProveedor, java.awt.BorderLayout.CENTER);
 
+        btnContenedorSalir.setBackground(new java.awt.Color(255, 255, 255));
         btnContenedorSalir.setMaximumSize(new java.awt.Dimension(83, 25));
         btnContenedorSalir.setMinimumSize(new java.awt.Dimension(83, 25));
         btnContenedorSalir.setPreferredSize(new java.awt.Dimension(83, 25));
