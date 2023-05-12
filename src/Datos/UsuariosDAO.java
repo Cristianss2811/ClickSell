@@ -232,8 +232,9 @@ private final Conexion CON;
         
         List<Usuarios> registros=new ArrayList();
         try {
+//            System.out.println(texto2);
             CON.Conectar();
-            ps = CON.cadena.prepareStatement("SELECT CVEUSUARIO,ROL  FROM USUARIO WHERE NOMBREU=? and CONTRASEÑAU = ?;");
+            ps = CON.cadena.prepareStatement("SELECT CVEUSUARIO, ROL  FROM USUARIO WHERE NOMBREU=? and CONTRASEÑAU = ?;");
             ps.setString(1, texto);
             ps.setString(2, texto2);
             rs = ps.executeQuery();
@@ -246,8 +247,6 @@ private final Conexion CON;
             }
             ps.close();
             rs.close();
-            CON.Desconectar();
-            CON.cadena.close();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         } finally {

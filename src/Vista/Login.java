@@ -18,7 +18,7 @@ import Negocio.UsuarioControl;
  */
 public class Login extends javax.swing.JFrame {
     private final UsuarioControl CONTROL;
-    String [] log;
+    public String [] log;
 int xmouse,ymouse;
 Usuario_Venta u=new Usuario_Venta();
     /**
@@ -33,7 +33,7 @@ Usuario_Venta u=new Usuario_Venta();
 
     
      public void LogearUsuario(String texto,String texto2) {
-        log=CONTROL.Logear(texto, texto);
+        log=CONTROL.Logear(texto, texto2);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -258,7 +258,7 @@ Usuario_Venta u=new Usuario_Venta();
         // TODO add your handling code here:
         if(!txtUsuario.getText().isEmpty()){
             if(!txtContra.getText().isEmpty()){
-            LogearUsuario(txtUsuario.getText(),txtContra.getText());
+            LogearUsuario(txtUsuario.getText(),String.valueOf(txtContra.getPassword()));
         }
             else{
                 JOptionPane.showMessageDialog(this, "Escribir una contraseña valida", "Papeleria Yolis", JOptionPane.ERROR_MESSAGE);
@@ -285,6 +285,8 @@ Usuario_Venta u=new Usuario_Venta();
                 u.nombre=log[0];
                 obmp.setVisible(true);
        }
+       
+//        System.out.println(u.nombre);
        
     }//GEN-LAST:event_btnSesionActionPerformed
 

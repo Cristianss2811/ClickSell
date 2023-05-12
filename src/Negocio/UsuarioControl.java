@@ -128,7 +128,7 @@ public class UsuarioControl {
         String registro []= new String[2];
         for(Usuarios item:lista){
             registro[0]=""+item.getCVEUSUARIO();
-            registro[2]=item.getRol();
+            registro[1]=item.getRol();
         }
         return registro;
     }
