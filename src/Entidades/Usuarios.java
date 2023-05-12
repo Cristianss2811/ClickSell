@@ -28,6 +28,11 @@ public class Usuarios {
         this.estado = estado;
     }
 
+    public Usuarios(int CVEUSUARIO, String rol) {
+        this.CVEUSUARIO = CVEUSUARIO;
+        this.rol = rol;
+    }
+
     public Usuarios(int CVEUSUARIO, String nombreu, String correou, String contraseñau, String rol) {
         this.CVEUSUARIO = CVEUSUARIO;
         this.nombreu = nombreu;

@@ -18,6 +18,8 @@ public interface CrudUsuario<T> {
 
     public boolean actualizar(T obj);//Actualizar un registro de acuerdo a un objeto de tipo T
     
+    public List<T> Logear(String texto,String texto2);//Actualizar un registro de acuerdo a un objeto de tipo T
+    
     public boolean eliminar(int id);//Realiza una eliminación total
 
     public boolean desactivar(int id);//Realiza un borrado logico (Desactivar)

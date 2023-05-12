@@ -596,8 +596,6 @@ String accion;
         // TODO add your handling code here:
         tabla.setVisible(true);
         Registro.setVisible(false);
-        
-        
     }//GEN-LAST:event_btnVolverMouseClicked
 
     private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked

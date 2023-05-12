@@ -136,7 +136,7 @@ private final Conexion CON;
     @Override
     public boolean desactivar(int id) {
        resp=false;
-        String consultaSQL="UPDATE USUARIO SET ROL = 'Inactivo' WHERE CVEUSUARIO=?";
+        String consultaSQL="UPDATE USUARIO SET ESTADO = 'Inactivo' WHERE CVEUSUARIO=?";
         try{
             ps=CON.Conectar().prepareStatement(consultaSQL);
             ps.setInt(1, id);
@@ -159,7 +159,7 @@ private final Conexion CON;
     @Override
     public boolean activar(int id) {
         resp=false;
-        String consultaSQL="UPDATE USUARIO SET ROL = 'Activo' WHERE CVEUSUARIO=?";
+        String consultaSQL="UPDATE USUARIO SET ESTADO = 'Activo' WHERE CVEUSUARIO=?";
         try{
             ps=CON.Conectar().prepareStatement(consultaSQL);
             ps.setInt(1, id);
@@ -224,6 +224,38 @@ private final Conexion CON;
             CON.Desconectar();
         }
         return resp;  
+    }
+
+
+    @Override
+    public List<Usuarios> Logear(String texto, String texto2) {
+        
+        List<Usuarios> registros=new ArrayList();
+        try {
+            CON.Conectar();
+            ps = CON.cadena.prepareStatement("SELECT CVEUSUARIO,ROL  FROM USUARIO WHERE NOMBREU=? and CONTRASEÑAU = ?;");
+            ps.setString(1, texto);
+            ps.setString(2, texto2);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                while(rs.next()){
+                registros.add(new Usuarios(rs.getInt(1), rs.getString(2)));
+            }
+            } else {
+                JOptionPane.showMessageDialog(null, "Ingrese un usuario valido");
+            }
+            ps.close();
+            rs.close();
+            CON.Desconectar();
+            CON.cadena.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        } finally {
+            ps = null;
+             CON.Desconectar();
+            rs = null;
+        }
+return registros;
     }
     
 }
