@@ -87,18 +87,17 @@ public class ProductoDAO implements CrudProducto<Producto> {
     @Override
     public boolean actualizar(Producto obj) {
         resp=false;
-        String consultaSQL="UPDATE Producto SET CVECATEGORIA=?, NOMBRE=?, DESCRIPCION=?, IMGPRODUCTO=?, \n" +
+        String consultaSQL="UPDATE Producto SET NOMBRE=?, DESCRIPCION=?, IMGPRODUCTO=?, \n" +
                            "PRECIOCOMPRA=?, GANANCIA=? WHERE CVEPRODUCTO=?;";
         try{
             ps=CON.Conectar().prepareStatement(consultaSQL);
             ps=CON.Conectar().prepareStatement(consultaSQL);
-           ps.setInt(1, obj.getCveCategoria());
-            ps.setString(2, obj.getNombre());
-            ps.setString(3, obj.getDescripcion());
-            ps.setString(4, obj.getImgProducto());
-            ps.setDouble(5, obj.getPrecioCompra());
-            ps.setDouble(6, obj.getGanancia());
-            ps.setInt(7, obj.getCveProducto());
+            ps.setString(1, obj.getNombre());
+            ps.setString(2, obj.getDescripcion());
+            ps.setString(3, obj.getImgProducto());
+            ps.setDouble(4, obj.getPrecioCompra());
+            ps.setDouble(5, obj.getGanancia());
+            ps.setInt(6, obj.getCveProducto());
             
             if(ps.executeUpdate() > 0)
             {
@@ -170,6 +169,52 @@ public class ProductoDAO implements CrudProducto<Producto> {
         try{
             ps=CON.Conectar().prepareStatement(consultaSQL);
             ps.setString(1, texto);
+            if(ps.executeUpdate() > 0)
+            {
+                resp=true;
+            }
+            ps.close();
+        }
+        catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally{
+            ps=null;
+            CON.Desconectar();
+        }
+        return resp;    
+    }
+
+    @Override
+    public boolean desactivar(int id) {
+        resp=false;
+        String consultaSQL="UPDATE Producto SET ESTADO= 'Inactivo' WHERE CVEPRODUCTO=?";
+        try{
+            ps=CON.Conectar().prepareStatement(consultaSQL);
+            ps.setInt(1, id);
+            if(ps.executeUpdate() > 0)
+            {
+                resp=true;
+            }
+            ps.close();
+        }
+        catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally{
+            ps=null;
+            CON.Desconectar();
+        }
+        return resp;    
+    }
+
+    @Override
+    public boolean activar(int id) {
+        resp=false;
+        String consultaSQL="UPDATE PRODUCTO SET ESTADO = 'Activo' WHERE CVEPRODUCTO=?";
+        try{
+            ps=CON.Conectar().prepareStatement(consultaSQL);
+            ps.setInt(1, id);
             if(ps.executeUpdate() > 0)
             {
                 resp=true;

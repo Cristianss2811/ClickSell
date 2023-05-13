@@ -17,6 +17,10 @@ public interface CrudProducto<T> {
     
     public boolean actualizar(T obj); //Actualiza un registro de acuerdo a un objeto del tipo T
     
+     public boolean desactivar(int id);//Realiza un borrado logico (Desactivar)
+
+    public boolean activar(int id);//Activa un registro borrado logicamente
+    
     public int total();
     
     public boolean existe(String texto); //Regresa verdadero o falso si existe un registro.

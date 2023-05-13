@@ -37,7 +37,7 @@ public class CategoriaDAO implements CrudCategoria<Categoria> {
             ps.setString(1, '%' + texto + '%');
             rs=ps.executeQuery();
             while(rs.next()){
-                registros.add(new Categoria(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4)));
+                registros.add(new Categoria(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5)));
             }
             ps.close();
             rs.close();
@@ -55,12 +55,57 @@ public class CategoriaDAO implements CrudCategoria<Categoria> {
 
     @Override
     public boolean insertar(Categoria obj) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+         resp=false;
+        String consultaSQL="INSERT INTO Categoria (NOMBREC, DESCRIPCIONC, IMAGENC)\n" +
+        "VALUES(?,?,?);";
+        try{
+            ps=CON.Conectar().prepareStatement(consultaSQL);
+            ps.setString(1, obj.getNombrec());
+            ps.setString(2, obj.getDescripcionc());
+            ps.setString(3, obj.getImagenc());
+            
+            if(ps.executeUpdate() > 0)
+            {
+                resp=true;
+            }
+            ps.close();
+        }
+        catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally{
+            ps=null;
+            CON.Desconectar();
+        }
+        return resp;
     }
 
     @Override
     public boolean actualizar(Categoria obj) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        resp=false;
+        String consultaSQL="UPDATE Categoria SET NOMBREC=?, DESCRIPCIONC=?, IMAGENC=?"
+                + "WHERE CVECATEGORIA = ?;";
+        try{
+            ps=CON.Conectar().prepareStatement(consultaSQL);
+            ps.setString(1, obj.getNombrec());
+            ps.setString(2, obj.getDescripcionc());
+            ps.setString(3, obj.getImagenc());
+            ps.setInt(4, obj.getCvecategoria());
+            
+            if(ps.executeUpdate() > 0)
+            {
+                resp=true;
+            }
+            ps.close();
+        }
+        catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally{
+            ps=null;
+            CON.Desconectar();
+        }
+        return resp;
     }
 
     @Override
@@ -70,22 +115,95 @@ public class CategoriaDAO implements CrudCategoria<Categoria> {
 
     @Override
     public boolean desactivar(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        resp=false;
+        String consultaSQL="UPDATE Categoria SET ESTADO = 'Inactivo' WHERE CVECATEGORIA=?";
+        try{
+            ps=CON.Conectar().prepareStatement(consultaSQL);
+            ps.setInt(1, id);
+            if(ps.executeUpdate() > 0)
+            {
+                resp=true;
+            }
+            ps.close();
+        }
+        catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally{
+            ps=null;
+            CON.Desconectar();
+        }
+        return resp;    
     }
 
     @Override
     public boolean activar(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        resp=false;
+        String consultaSQL="UPDATE Categoria SET ESTADO = 'Activo' WHERE CVECATEGORIA=?";
+        try{
+            ps=CON.Conectar().prepareStatement(consultaSQL);
+            ps.setInt(1, id);
+            if(ps.executeUpdate() > 0)
+            {
+                resp=true;
+            }
+            ps.close();
+        }
+        catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally{
+            ps=null;
+            CON.Desconectar();
+        }
+        return resp;    
     }
 
     @Override
     public int total() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        int numeroRegistros=0;
+        try{
+            ps=CON.Conectar().prepareStatement("SELECT COUNT(*) FROM Categoria;");
+            rs=ps.executeQuery();
+            while(rs.next()){
+            numeroRegistros=rs.getInt(1);  // getString(String)
+        }
+        ps.close();
+        rs.close();
+        }
+        catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally{
+            ps=null;
+            rs=null;
+            CON.Desconectar();
+        }
+        return numeroRegistros;    
     }
 
     @Override
     public boolean existe(String texto) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        resp=false;
+        try{
+            ps=CON.Conectar().prepareStatement("SELECT * FROM Categoria WHERE NOMBREC=?;");
+            ps.setString(1, texto);
+            rs=ps.executeQuery();
+            if(rs.next()){
+            resp=true;  //getString(String)
+            }
+            ps.close();
+            rs.close();
+        }
+        catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally{
+            ps=null;
+            rs=null;
+            CON.Desconectar();
+        }
+        return resp;       
     }
 
     
