@@ -24,6 +24,15 @@ public class Producto {
         
     }
 
+    public Producto(int cveProducto, String nombre, double precioVenta, int existencia, double precioCompra, double ganancia) {
+        this.cveProducto = cveProducto;
+        this.nombre = nombre;
+        this.precioVenta = precioVenta;
+        this.existencia = existencia;
+        this.precioCompra = precioCompra;
+        this.ganancia = ganancia;
+    }
+
     public Producto(int cveProducto, int cveCategoria, String nombre, String descripcion, String imgProducto, double precioVenta, int existencia, double precioCompra, double ganancia, String estado) {
         this.cveProducto = cveProducto;
         this.cveCategoria = cveCategoria;

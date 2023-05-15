@@ -59,6 +59,19 @@ public class ProductoControl {
         return modeloTabla;
     }
     
+    public String[] obtenerProducto(int id){
+        String registro []= new String[6];
+        Producto producto = DATOS.obtenerProducto(id);
+        registro[0] = ""+producto.getCveProducto();
+        registro[1] = producto.getNombre();
+        registro[2] = ""+producto.getPrecioVenta();
+        registro[3] = ""+producto.getPrecioCompra();
+        registro[4] = ""+producto.getGanancia();
+        registro[5] = "1";
+
+        return registro;
+    }
+    
     public DefaultTableModel seleccionarCategorias(String texto){
         List <Categoria> lista = new ArrayList();
         lista.addAll(DATOSCAT.listar(texto,1));

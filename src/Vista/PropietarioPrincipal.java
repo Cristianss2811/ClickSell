@@ -289,7 +289,8 @@ int xmouse,ymouse;
 
     private void btnComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprasActionPerformed
         // TODO add your handling code here:
-        new CambiaPanel(PanelPrincipal,new PropietarioCompras());
+        //new CambiaPanel(PanelPrincipal,new MostrarCompras());
+        new CambiaPanel(PanelPrincipal,new MostrarCompras());
     }//GEN-LAST:event_btnComprasActionPerformed
 
     private void btnInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioActionPerformed

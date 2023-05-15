@@ -13,6 +13,8 @@ import java.util.List;
 public interface CrudProducto<T> {
     public List<T> listar(String texto); //Regresa un listado de tipo List de objetos T
     
+    public T obtenerProducto(int id);
+    
     public boolean insertar(T obj); // Inserta un objeto del tipo T
     
     public boolean actualizar(T obj); //Actualiza un registro de acuerdo a un objeto del tipo T

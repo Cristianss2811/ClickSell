@@ -26,7 +26,7 @@ public class ProductoDAO implements CrudProducto<Producto> {
 
     public ProductoDAO() {
      CON = Conexion.getInstance();
-    }    
+    }
 
     @Override
     public List<Producto> listar(String texto) {
@@ -52,6 +52,29 @@ public class ProductoDAO implements CrudProducto<Producto> {
             CON.Desconectar();
         }
         return registros;
+    }
+    
+    @Override
+    public Producto obtenerProducto(int id) {
+        Producto producto = new Producto();
+        try{
+            ps=CON.Conectar().prepareStatement("SELECT CVEPRODUCTO, NOMBRE, PRECIOVENTA, EXISTENCIA, PRECIOCOMPRA, GANANCIA FROM PRODUCTO\n" +
+                                                "WHERE CVEPRODUCTO = ? AND ESTADO = 'Activo';");
+            ps.setInt(1, id);
+            rs=ps.executeQuery();
+            while(rs.next())
+                producto = new Producto(rs.getInt(1),rs.getString(2),rs.getDouble(3), rs.getInt(4), rs.getDouble(5),rs.getDouble(6));
+            ps.close();
+            rs.close();
+        }
+        catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally{
+            ps=null;
+            CON.Desconectar();
+        }
+        return producto;
     }
 
     @Override
@@ -185,5 +208,4 @@ public class ProductoDAO implements CrudProducto<Producto> {
         }
         return resp;    
     }
-    
 }
