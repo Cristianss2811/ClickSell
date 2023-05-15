@@ -22,10 +22,11 @@ import javax.swing.table.TableRowSorter;
 public class AdminInventario extends javax.swing.JPanel {
 private final CategoriaControl CONTROLC;
 private final ProductoControl CONTROLP;
-String accion;
+String accionp, accionc;
 
     String imagenProducto, nombreAnt;
     String verde="#71BD44", naranja="#F39121";
+    
     /**
      * Creates new form AdminInventario
      */
@@ -156,6 +157,7 @@ String accion;
         jLabel14 = new javax.swing.JLabel();
         btnVolver1 = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
+        txtIDCategoria = new javax.swing.JTextField();
 
         InventarioTabla.setPreferredSize(new java.awt.Dimension(1030, 690));
 
@@ -491,6 +493,9 @@ String accion;
         btnEliminarProducto.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         btnEliminarProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEliminarProducto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEliminarProductoMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnEliminarProductoMouseEntered(evt);
             }
@@ -524,6 +529,9 @@ String accion;
         btnModificarProducto.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         btnModificarProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnModificarProducto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnModificarProductoMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnModificarProductoMouseEntered(evt);
             }
@@ -764,7 +772,7 @@ String accion;
                                 .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnModificarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnEliminarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(40, 40, 40)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -857,6 +865,9 @@ String accion;
         btnEliminarCategoria.setBackground(new java.awt.Color(113, 189, 68));
         btnEliminarCategoria.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         btnEliminarCategoria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEliminarCategoriaMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnEliminarCategoriaMouseEntered(evt);
             }
@@ -886,11 +897,14 @@ String accion;
                 .addContainerGap())
         );
 
-        InventarioCategoria.add(btnEliminarCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 620, -1, -1));
+        InventarioCategoria.add(btnEliminarCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 610, -1, -1));
 
         btnModificarCategoria.setBackground(new java.awt.Color(113, 189, 68));
         btnModificarCategoria.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         btnModificarCategoria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnModificarCategoriaMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnModificarCategoriaMouseEntered(evt);
             }
@@ -920,7 +934,7 @@ String accion;
                 .addContainerGap())
         );
 
-        InventarioCategoria.add(btnModificarCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 620, -1, -1));
+        InventarioCategoria.add(btnModificarCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 610, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -946,11 +960,14 @@ String accion;
         lblimgCat.setText("jLabel3");
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel7.setText("Descripcion de la Categoría");
+        jLabel7.setText("Imagen de la Categoría");
 
         btnAgregarCategoria.setBackground(new java.awt.Color(113, 189, 68));
         btnAgregarCategoria.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         btnAgregarCategoria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAgregarCategoriaMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnAgregarCategoriaMouseEntered(evt);
             }
@@ -1066,7 +1083,8 @@ String accion;
                 .addContainerGap())
         );
 
-        InventarioCategoria.add(btnVolver1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 620, -1, -1));
+        InventarioCategoria.add(btnVolver1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 610, -1, -1));
+        InventarioCategoria.add(txtIDCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 40, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -1159,7 +1177,8 @@ String accion;
         InventarioTabla.setVisible(false);
         InventarioProducto.setVisible(true);
         InventarioCategoria.setVisible(false);
-        accion="guardar";
+        txtIDProducto.setVisible(false);
+        accionp="guardar";
     }//GEN-LAST:event_btnAgregarProMouseClicked
 
     private void btnBuscar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscar1MouseClicked
@@ -1208,7 +1227,9 @@ String accion;
     }//GEN-LAST:event_btnAgregarProductoMouseExited
 
     private void btnVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseClicked
-        // TODO add your handling code here:
+        InventarioTabla.setVisible(true);
+        InventarioProducto.setVisible(false);
+        InventarioCategoria.setVisible(false);
     }//GEN-LAST:event_btnVolverMouseClicked
 
     private void btnVolverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseEntered
@@ -1260,7 +1281,10 @@ String accion;
     }//GEN-LAST:event_btnAgregarCategoriaMouseExited
 
     private void btnVolver1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolver1MouseClicked
-        // TODO add your handling code here:
+        InventarioTabla.setVisible(true);
+        InventarioProducto.setVisible(false);
+        InventarioCategoria.setVisible(false);
+        
 
     }//GEN-LAST:event_btnVolver1MouseClicked
 
@@ -1276,6 +1300,8 @@ String accion;
          InventarioTabla.setVisible(false);
         InventarioProducto.setVisible(false);
         InventarioCategoria.setVisible(true);
+        txtIDCategoria.setVisible(false);
+        accionc="guardar";
     }//GEN-LAST:event_btnAgregarCatMouseClicked
 
     private void btnAgregarCatMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarCatMouseEntered
@@ -1293,11 +1319,12 @@ String accion;
             txtProducto.requestFocus();
             return;
         }
-        if (accion.equals("editar")) {
+        if (accionp.equals("editar")) {
             nombreAnt = txtProducto.getText();
-            resp = CONTROLP.actualizar(Integer.parseInt(txtIDProducto.getText()), Integer.parseInt(txtProductoCategoria.getText()), txtProducto.getText(), nombreAnt, txtProductoCategoria.getText(), txtDescripcionPro.getText(), Double.parseDouble(txtPrecioCompra.getText()), Double.parseDouble(txtGanancia.getText()));
+            resp = CONTROLP.actualizar(Integer.parseInt(txtIDProducto.getText()), Integer.parseInt(txtProductoCategoria.getText()), txtProducto.getText(), nombreAnt, txtDescripcionPro.getText(), imagen.getText(), Double.parseDouble(txtPrecioCompra.getText()), Double.parseDouble(txtGanancia.getText()));
             if (resp.equals("OK")) {
-                mensajeOK("Registro actualizao correctamente");
+                mensajeOK("Registro actualizado correctamente");
+                txtProductoCategoria.setEditable(true);
                 ListarP("");
                 LimpiarProducto();
                 TablaProducto.setVisible(true);
@@ -1339,6 +1366,123 @@ String accion;
         // TODO add your handling code here:
     }//GEN-LAST:event_txtGananciaActionPerformed
 
+    private void btnAgregarCategoriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarCategoriaMouseClicked
+        String resp;
+        if (txtCategoria.getText().isBlank()) {
+            JOptionPane.showMessageDialog(this, "debe escribir un nombre", "Sistema de compra-venta", JOptionPane.WARNING_MESSAGE);
+            txtCategoria.requestFocus();
+            return;
+        }
+        if (txtDescripcionCat.getText().isBlank()) {
+            JOptionPane.showMessageDialog(this, "debe escribir una descripcion", "Sistema de compra-venta", JOptionPane.WARNING_MESSAGE);
+            txtDescripcionCat.requestFocus();
+            return;
+        }
+        if (accionc.equals("editar")) {
+            nombreAnt = txtCategoria.getText();
+            resp = CONTROLC.actualizar(Integer.parseInt(txtIDCategoria.getText()), txtCategoria.getText(), nombreAnt, txtDescripcionCat.getText(), lblimgCat.getText());
+            if (resp.equals("OK")) {
+                mensajeOK("Registro actualizao correctamente");
+                ListarC("");
+                LimpiarCategoria();
+            } else {
+                mensajeError(resp);
+            }
+        } else {
+            resp = CONTROLC.insertar(txtCategoria.getText(), txtDescripcionCat.getText(), lblimgCat.getText());
+            if (resp.equals("OK")) {
+                mensajeOK("Registro Insertado con exito");
+                ListarC("");
+                Limpiar();
+            } else {
+                mensajeError(resp);
+            }
+            txtCategoria.requestFocus();
+        }
+    }//GEN-LAST:event_btnAgregarCategoriaMouseClicked
+
+    private void btnEliminarCategoriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarCategoriaMouseClicked
+        String resp;
+        int id;
+        if (TablaCategoria.getSelectedRowCount() == 1) {
+            if (JOptionPane.showConfirmDialog(this, "¿Deseas eliminar el usuario: " + TablaCategoria.getValueAt(TablaCategoria.getSelectedRow(), 1).toString() + "?", "Papeleria Yolis", JOptionPane.YES_NO_OPTION) == 0) {
+                resp = CONTROLC.desactivar(Integer.parseInt(TablaCategoria.getValueAt(TablaCategoria.getSelectedRow(), 0).toString()));
+                if (resp.equals("OK")) {
+                    mensajeOK("Registro eliminado.");
+                    ListarC("");
+                } else {
+                    mensajeError(resp);
+                }
+            } else {
+                mensajeError("Eliminación cancelada.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Debes seleccionar una Categoria", "Papelería Yolis", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnEliminarCategoriaMouseClicked
+
+    private void btnModificarCategoriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarCategoriaMouseClicked
+        if (TablaCategoria.getSelectedRowCount() == 1) {
+            
+            txtIDCategoria.setText(TablaCategoria.getValueAt(TablaCategoria.getSelectedRow(), 0).toString());
+            txtCategoria.setText(TablaCategoria.getValueAt(TablaCategoria.getSelectedRow(), 1).toString());
+            txtDescripcionCat.setText(TablaCategoria.getValueAt(TablaCategoria.getSelectedRow(), 2).toString());
+            lblimgCat.setText(TablaCategoria.getValueAt(TablaCategoria.getSelectedRow(), 3).toString());
+     
+            InventarioTabla.setVisible(false);
+            accionc = "editar";
+            //ID.setVisible(true);
+            
+        } else {
+            JOptionPane.showMessageDialog(this, "Debes seleccionar un registro", "Papeleria Yolis", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnModificarCategoriaMouseClicked
+
+    private void btnModificarProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarProductoMouseClicked
+        if (TablaProducto.getSelectedRowCount() == 1) {
+            
+            txtIDProducto.setText(TablaProducto.getValueAt(TablaProducto.getSelectedRow(), 0).toString());
+            txtProductoCategoria.setText(TablaProducto.getValueAt(TablaProducto.getSelectedRow(), 1).toString());
+            txtProducto.setText(TablaProducto.getValueAt(TablaProducto.getSelectedRow(), 2).toString());
+            txtDescripcionPro.setText(TablaProducto.getValueAt(TablaProducto.getSelectedRow(), 3).toString());
+            txtPrecioCompra.setText(TablaProducto.getValueAt(TablaProducto.getSelectedRow(), 5).toString());
+            imagen.setText(TablaProducto.getValueAt(TablaProducto.getSelectedRow(), 4).toString());
+     
+            txtProductoCategoria.setEditable(false);
+            InventarioTabla.setVisible(false);
+            accionp = "editar";
+            //ID.setVisible(true);
+            
+        } else {
+            JOptionPane.showMessageDialog(this, "Debes seleccionar un registro", "Papeleria Yolis", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnModificarProductoMouseClicked
+
+    private void btnEliminarProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarProductoMouseClicked
+        String resp;
+        int id;
+        if (TablaProducto.getSelectedRowCount() == 1) {
+            if (JOptionPane.showConfirmDialog(this, "¿Deseas eliminar el producto: " + TablaProducto.getValueAt(TablaProducto.getSelectedRow(), 1).toString() + "?", "Papeleria Yolis", JOptionPane.YES_NO_OPTION) == 0) {
+                resp = CONTROLP.desactivar(Integer.parseInt(TablaProducto.getValueAt(TablaProducto.getSelectedRow(), 0).toString()));
+                if (resp.equals("OK")) {
+                    mensajeOK("Registro eliminado.");
+                    ListarP("");
+                } else {
+                    mensajeError(resp);
+                }
+            } else {
+                mensajeError("Eliminación cancelada.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Debes seleccionar un producto", "Papelería Yolis", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnEliminarProductoMouseClicked
+
+    public void LimpiarCategoria()
+    {
+        txtCategoria.setText("");
+        txtDescripcionCat.setText("");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel InventarioCategoria;
@@ -1402,6 +1546,7 @@ String accion;
     private javax.swing.JTextField txtDescripcionCat;
     private javax.swing.JTextField txtDescripcionPro;
     private javax.swing.JTextField txtGanancia;
+    private javax.swing.JTextField txtIDCategoria;
     private javax.swing.JTextField txtIDProducto;
     private javax.swing.JTextField txtPrecioCompra;
     private javax.swing.JTextField txtProducto;

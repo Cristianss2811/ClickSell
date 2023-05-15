@@ -13,6 +13,7 @@ public class Categoria {
     private String nombrec;
     private String descripcionc;
     private String imagenc;
+    private String estado;
 
     public Categoria() {
     }
@@ -21,11 +22,12 @@ public class Categoria {
         
     }
 
-    public Categoria(int cvecategoria, String nombrec, String descripcionc, String imagenc) {
+    public Categoria(int cvecategoria, String nombrec, String descripcionc, String imagenc, String estado) {
         this.cvecategoria = cvecategoria;
         this.nombrec = nombrec;
         this.descripcionc = descripcionc;
         this.imagenc = imagenc;
+        this.estado = estado;
     }
 
     public int getCvecategoria() {
@@ -60,9 +62,19 @@ public class Categoria {
         this.imagenc = imagenc;
     }
 
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    
+
     @Override
     public String toString() {
-        return "Categoria{" + "cvecategoria=" + cvecategoria + ", nombrec=" + nombrec + ", descripcionc=" + descripcionc + ", imagenc=" + imagenc + '}';
+        return "Categoria{" + "cvecategoria=" + cvecategoria + ", nombrec=" + nombrec + ", descripcionc=" + descripcionc + ", imagenc=" + imagenc + ", estado=" + estado + '}';
     }
     
 }
