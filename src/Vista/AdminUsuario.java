@@ -543,35 +543,35 @@ String accion;
     }//GEN-LAST:event_btnBuscarMouseExited
 
     private void btnEliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseEntered
-        // TODO add your handling code here:
+        btnEliminar.setBackground(Color.decode(naranja));
     }//GEN-LAST:event_btnEliminarMouseEntered
 
     private void btnEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseExited
-        // TODO add your handling code here:
+        btnEliminar.setBackground(Color.decode(verde));
     }//GEN-LAST:event_btnEliminarMouseExited
 
     private void btnModificarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseEntered
-        // TODO add your handling code here:
+        btnModificar.setBackground(Color.decode(naranja));
     }//GEN-LAST:event_btnModificarMouseEntered
 
     private void btnModificarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseExited
-        // TODO add your handling code here:
+        btnModificar.setBackground(Color.decode(verde));
     }//GEN-LAST:event_btnModificarMouseExited
 
     private void btnAgregarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseEntered
-        // TODO add your handling code here:
+        btnAgregar.setBackground(Color.decode(naranja));
     }//GEN-LAST:event_btnAgregarMouseEntered
 
     private void btnAgregarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseExited
-        // TODO add your handling code here:
+        btnAgregar.setBackground(Color.decode(verde));
     }//GEN-LAST:event_btnAgregarMouseExited
 
     private void btnFiltrosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFiltrosMouseEntered
-        // TODO add your handling code here:
+        btnFiltros.setBackground(Color.decode(naranja));
     }//GEN-LAST:event_btnFiltrosMouseEntered
 
     private void btnFiltrosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFiltrosMouseExited
-        // TODO add your handling code here:
+        btnFiltros.setBackground(Color.decode(verde));
     }//GEN-LAST:event_btnFiltrosMouseExited
 
     private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
@@ -585,19 +585,17 @@ String accion;
     }//GEN-LAST:event_btnAgregarMouseClicked
 
     private void btnVolverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseEntered
-        // TODO add your handling code here:
+        btnVolver.setBackground(Color.decode(naranja));
     }//GEN-LAST:event_btnVolverMouseEntered
 
     private void btnVolverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseExited
-        // TODO add your handling code here:
+        btnVolver.setBackground(Color.decode(verde));
     }//GEN-LAST:event_btnVolverMouseExited
 
     private void btnVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseClicked
         // TODO add your handling code here:
         tabla.setVisible(true);
         Registro.setVisible(false);
-        
-        
     }//GEN-LAST:event_btnVolverMouseClicked
 
     private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked

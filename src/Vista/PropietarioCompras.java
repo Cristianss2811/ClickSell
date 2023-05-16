@@ -1,20 +1,70 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package Vista;
 
-/**
- *
- * @author juanp
- */
-public class PropietarioCompras extends javax.swing.JPanel {
+import Entidades.Proveedor;
+import Entidades.Compras;
+import Negocio.ComprasControl;
+import Negocio.ProductoControl;
+import Negocio.ProveedorControl;
+import java.awt.event.KeyEvent;
+import java.util.LinkedList;
+import Vista.Usuario_Venta;
+import javax.swing.JOptionPane;
+import java.awt.Color;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
 
-    /**
-     * Creates new form AdminInventario
-     */
+public class PropietarioCompras extends javax.swing.JPanel {
+    private final ProveedorControl PVCONTROL;
+    private final ProductoControl PRCONTROL;
+    private final ComprasControl COMCONTROL;
+    private DefaultTableModel modeloTabla;
+    private Usuario_Venta c = new Usuario_Venta();
+    
+    private String verde="#71BD44", naranja="#F39121";
+    private int i;
+    private double total;
+    
     public PropietarioCompras() {
         initComponents();
+        PVCONTROL = new ProveedorControl();
+        PRCONTROL = new ProductoControl();
+        COMCONTROL = new ComprasControl();
+        llenarCombo();
+        inicializarTabla();
+        
+    }
+    
+    private void llenarCombo(){
+        for(Proveedor proveedor: PVCONTROL.obtenerProveedores(""))
+            comboProveedores.addItem(proveedor.getNombrep());
+    }
+    
+    private void inicializarTabla(){
+        String titulos[]={"Clave producto", "Nombre", "Precio Venta","Precio Compra", "Ganancia", "Cantidad"};
+        modeloTabla=new DefaultTableModel(null,titulos);
+        tablaProductos.setModel(modeloTabla);
+        //ListSelectionModel evento = tablaProductos.getSelectionModel();
+    }
+    
+    private boolean encuentraProducto(String id){
+        for(i=0; i < tablaProductos.getRowCount(); i++)
+            if(id.equals(tablaProductos.getValueAt(i, 0)))
+                return true;
+        return false;
+    }
+    
+    private void calcularTotal(){
+        total=0;
+        for(i = 0; i < tablaProductos.getRowCount(); i++)
+            total += (Double.parseDouble(""+tablaProductos.getValueAt(i, 3)) * Integer.parseInt(""+tablaProductos.getValueAt(i, 5)));
+        txtTotal.setText("$"+total);
+    }
+    
+    private void vaciarCompras(){
+        inicializarTabla();
+        txtProducto.setText("");
+        calcularTotal();
+        comboProveedores.setSelectedIndex(0);
     }
 
     /**
@@ -27,17 +77,26 @@ public class PropietarioCompras extends javax.swing.JPanel {
     private void initComponents() {
 
         PropietarioCompras = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        txtProducto = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaProductos = new javax.swing.JTable();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField2 = new javax.swing.JTextField();
+        comboProveedores = new javax.swing.JComboBox<>();
+        txtTotal = new javax.swing.JTextField();
+        btnEliminar = new javax.swing.JPanel();
+        jLabel26 = new javax.swing.JLabel();
+        btnAgregar = new javax.swing.JPanel();
+        jLabel27 = new javax.swing.JLabel();
 
-        jTextField1.setText("Añadir producto...");
+        txtProducto.setName(""); // NOI18N
+        txtProducto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtProductoKeyReleased(evt);
+            }
+        });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -48,7 +107,7 @@ public class PropietarioCompras extends javax.swing.JPanel {
                 "Producto", "Cantidad", "Precio", "Ganancia"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaProductos);
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel9.setText("Total de la compra");
@@ -58,30 +117,102 @@ public class PropietarioCompras extends javax.swing.JPanel {
         jLabel10.setText("Proveedor");
         jLabel10.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Juan Coca", "Alex Pan", "Eduardo Marinela" }));
+        comboProveedores.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        comboProveedores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar proveedor..." }));
 
-        jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField2.setText("$0.00");
+        txtTotal.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtTotal.setText("$0.00");
+        txtTotal.setEnabled(false);
+
+        btnEliminar.setBackground(new java.awt.Color(113, 189, 68));
+        btnEliminar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEliminarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnEliminarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEliminarMouseExited(evt);
+            }
+        });
+
+        jLabel26.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel26.setText("Eliminar producto");
+        jLabel26.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout btnEliminarLayout = new javax.swing.GroupLayout(btnEliminar);
+        btnEliminar.setLayout(btnEliminarLayout);
+        btnEliminarLayout.setHorizontalGroup(
+            btnEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnEliminarLayout.createSequentialGroup()
+                .addContainerGap(36, Short.MAX_VALUE)
+                .addComponent(jLabel26)
+                .addGap(30, 30, 30))
+        );
+        btnEliminarLayout.setVerticalGroup(
+            btnEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+        );
+
+        btnAgregar.setBackground(new java.awt.Color(113, 189, 68));
+        btnAgregar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAgregarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAgregarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAgregarMouseExited(evt);
+            }
+        });
+
+        jLabel27.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel27.setText("Realizar compra");
+        jLabel27.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout btnAgregarLayout = new javax.swing.GroupLayout(btnAgregar);
+        btnAgregar.setLayout(btnAgregarLayout);
+        btnAgregarLayout.setHorizontalGroup(
+            btnAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnAgregarLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jLabel27)
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+        btnAgregarLayout.setVerticalGroup(
+            btnAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel27, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout PropietarioComprasLayout = new javax.swing.GroupLayout(PropietarioCompras);
         PropietarioCompras.setLayout(PropietarioComprasLayout);
         PropietarioComprasLayout.setHorizontalGroup(
             PropietarioComprasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PropietarioComprasLayout.createSequentialGroup()
-                .addGroup(PropietarioComprasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PropietarioComprasLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 971, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(PropietarioComprasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PropietarioComprasLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(20, 20, 20)
+                        .addComponent(txtProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PropietarioComprasLayout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(37, 37, 37)
+                .addGroup(PropietarioComprasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PropietarioComprasLayout.createSequentialGroup()
                         .addGroup(PropietarioComprasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(comboProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(75, 75, 75)
                         .addGroup(PropietarioComprasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField2))))
+                            .addComponent(jLabel9)
+                            .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(32, Short.MAX_VALUE))
             .addGroup(PropietarioComprasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PropietarioComprasLayout.createSequentialGroup()
@@ -96,13 +227,17 @@ public class PropietarioCompras extends javax.swing.JPanel {
                 .addGroup(PropietarioComprasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(PropietarioComprasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(PropietarioComprasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(PropietarioComprasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(comboProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(81, 81, 81))
+                .addGroup(PropietarioComprasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(82, 82, 82))
             .addGroup(PropietarioComprasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PropietarioComprasLayout.createSequentialGroup()
                     .addContainerGap(31, Short.MAX_VALUE)
@@ -128,15 +263,86 @@ public class PropietarioCompras extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtProductoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProductoKeyReleased
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            if(!encuentraProducto(txtProducto.getText()))
+                if(!txtProducto.getText().equals(""))
+                {
+                    String producto[] = PRCONTROL.obtenerProducto(Integer.parseInt(txtProducto.getText()));
+                    if(producto[1] != null){
+                        modeloTabla.addRow(producto);
+                        tablaProductos.setModel(modeloTabla);
+                        calcularTotal();
+                    }
+                    else
+                        JOptionPane.showMessageDialog(null, "El producto no se encontró en la BD.");
+                }
+                else
+                        JOptionPane.showMessageDialog(null, "Por favor, inserte la clave de un producto.");
+            txtProducto.setText("");
+        }
+    }//GEN-LAST:event_txtProductoKeyReleased
+
+    private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
+        if(tablaProductos.getSelectedRow() != -1){
+            modeloTabla.removeRow(tablaProductos.getSelectedRow());
+            tablaProductos.setModel(modeloTabla);
+        }
+        else
+            JOptionPane.showMessageDialog(null, "Por favor, seleccione el producto a eliminar.");
+    }//GEN-LAST:event_btnEliminarMouseClicked
+
+    private void btnEliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseEntered
+        btnEliminar.setBackground(Color.decode(naranja));
+    }//GEN-LAST:event_btnEliminarMouseEntered
+
+    private void btnEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseExited
+        btnEliminar.setBackground(Color.decode(verde));
+    }//GEN-LAST:event_btnEliminarMouseExited
+
+    private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
+        if(!comboProveedores.getSelectedItem().equals("Seleccionar proveedor..."))
+            if(tablaProductos.getRowCount() > 0)
+            {
+                for(Proveedor proveedor: PVCONTROL.obtenerProveedores(""+comboProveedores.getSelectedItem()))
+                    COMCONTROL.insertar(proveedor.getCVEPROVEEDORES(), Integer.parseInt(c.nombre));
+                for(i = 0; i < tablaProductos.getRowCount(); i++)
+                {
+                    COMCONTROL.insertarDetalle(Integer.parseInt(""+tablaProductos.getValueAt(i, 0)), 
+                            Integer.parseInt(""+tablaProductos.getValueAt(i, 5)), 
+                            Double.parseDouble(""+tablaProductos.getValueAt(i, 3)), 
+                            Double.parseDouble(""+tablaProductos.getValueAt(i, 4)));
+                }
+                JOptionPane.showMessageDialog(null, "Compra realizada con éxito.");
+                vaciarCompras();
+            }
+            else
+                JOptionPane.showMessageDialog(null, "Por favor, inserte al menos un producto.");
+        else
+            JOptionPane.showMessageDialog(null, "Por favor, seleccione un proveedor.");
+    }//GEN-LAST:event_btnAgregarMouseClicked
+
+    private void btnAgregarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseEntered
+        btnAgregar.setBackground(Color.decode(naranja));
+    }//GEN-LAST:event_btnAgregarMouseEntered
+
+    private void btnAgregarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseExited
+        btnAgregar.setBackground(Color.decode(verde));
+    }//GEN-LAST:event_btnAgregarMouseExited
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PropietarioCompras;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JPanel btnAgregar;
+    private javax.swing.JPanel btnEliminar;
+    private javax.swing.JComboBox<String> comboProveedores;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTable tablaProductos;
+    private javax.swing.JTextField txtProducto;
+    private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 }

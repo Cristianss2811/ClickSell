@@ -31,7 +31,7 @@ String accion;
         CONTROL=new ProveedorControl();
         ProvedorTabla.setVisible(true);
         ProvedorRegistro.setVisible(false);
-         Listar("");
+        Listar("");
     }
 
     public void Listar(String texto)

@@ -5,21 +5,36 @@
 package Vista;
 
 import java.awt.Color;
+import Database.Conexion;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import Negocio.UsuarioControl;
 
 /**
  *
  * @author juanp
  */
 public class Login extends javax.swing.JFrame {
+    private final UsuarioControl CONTROL;
+    public String [] log;
 int xmouse,ymouse;
+Usuario_Venta u=new Usuario_Venta();
     /**
      * Creates new form Login
      */
     public Login() {
         initComponents();
         this.setLocationRelativeTo(this);
+        CONTROL=new UsuarioControl();
+        
     }
 
+    
+     public void LogearUsuario(String texto,String texto2) {
+        log=CONTROL.Logear(texto, texto2);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -101,7 +116,7 @@ int xmouse,ymouse;
                             .addComponent(txtUsuario)
                             .addComponent(txtContra, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(80, 80, 80)
+                        .addGap(75, 75, 75)
                         .addComponent(btnSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(39, Short.MAX_VALUE))
         );
@@ -119,11 +134,11 @@ int xmouse,ymouse;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtContra, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnSesion, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(btnSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 330, 400));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 330, 420));
 
         jPanel2.setBackground(new java.awt.Color(243, 145, 33));
         jPanel2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -188,7 +203,7 @@ int xmouse,ymouse;
             .addGap(0, 30, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 330, -1));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 330, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -241,7 +256,38 @@ int xmouse,ymouse;
 
     private void btnSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSesionActionPerformed
         // TODO add your handling code here:
-        
+        if(!txtUsuario.getText().isEmpty()){
+            if(!txtContra.getText().isEmpty()){
+            LogearUsuario(txtUsuario.getText(),String.valueOf(txtContra.getPassword()));
+        }
+            else{
+                JOptionPane.showMessageDialog(this, "Escribir una contraseña valida", "Papeleria Yolis", JOptionPane.ERROR_MESSAGE);
+            txtUsuario.requestFocus();
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, "Escribir un usuario valido", "Papeleria Yolis", JOptionPane.ERROR_MESSAGE);
+            txtUsuario.requestFocus();
+        }
+       
+       if(log[1].equals("Administrador")){
+           AdministradorPrincipal obma = new AdministradorPrincipal();
+                hide();
+                u.nombre=log[0];
+                obma.setVisible(true);
+       }else if(log[1].equals("Propietario")){
+           PropietarioPrincipal obmp = new PropietarioPrincipal();
+                hide();
+                u.nombre=log[0];
+                obmp.setVisible(true);
+       }else{
+           EmpleadoPrincipal obmp = new EmpleadoPrincipal();
+                hide();
+                u.nombre=log[0];
+                obmp.setVisible(true);
+       }
+       
+//        System.out.println(u.nombre);
+       
     }//GEN-LAST:event_btnSesionActionPerformed
 
     /**

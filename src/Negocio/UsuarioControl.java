@@ -122,5 +122,15 @@ public class UsuarioControl {
         return registrosMostrados;
     }
     
+    public String [] Logear(String texto, String texto2){
+        List <Usuarios> lista = new ArrayList();
+        lista.addAll(DATOS.Logear(texto,texto2));
+        String registro []= new String[2];
+        for(Usuarios item:lista){
+            registro[0]=""+item.getCVEUSUARIO();
+            registro[1]=item.getRol();
+        }
+        return registro;
+    }
     
 }

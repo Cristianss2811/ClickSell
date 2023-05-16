@@ -50,6 +50,10 @@ public class ProveedorControl {
         }
         return modeloTabla;
     }
+     
+    public List <Proveedor> obtenerProveedores(String texto){
+        return DATOS.listar(texto);
+    }
     
     public String insertar(String nombrePro, String Telp, String localidad, String estado,String empresa){
     // Verificar si existe la categoria

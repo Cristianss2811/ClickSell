@@ -269,7 +269,9 @@ int xmouse,ymouse;
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
+        //System.exit(0);
+        Logout log=new Logout();
+        log.setVisible(true);
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void jPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed
@@ -287,7 +289,8 @@ int xmouse,ymouse;
 
     private void btnComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprasActionPerformed
         // TODO add your handling code here:
-        new CambiaPanel(PanelPrincipal,new PropietarioCompras());
+        //new CambiaPanel(PanelPrincipal,new MostrarCompras());
+        new CambiaPanel(PanelPrincipal,new MostrarCompras());
     }//GEN-LAST:event_btnComprasActionPerformed
 
     private void btnInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioActionPerformed

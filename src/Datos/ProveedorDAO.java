@@ -104,7 +104,7 @@ public class ProveedorDAO implements CrudProveedor<Proveedor>{
     @Override
     public boolean desactivar(int id) {
        resp = false;
-        String consultaSQL = "delete from PROVEEDORES where CVEPROVEEDORES=?";
+        String consultaSQL = "UPDATE Proveedores SET ESTADO = 'Inactivo' WHERE CVEPROVEEDORES = ?;";
         try {
             ps = CON.Conectar().prepareStatement(consultaSQL);
             ps.setInt(1, id);

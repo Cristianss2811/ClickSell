@@ -13,8 +13,8 @@ public class Usuarios {
     private String nombreu;
     private String correou;
     private String contraseñau;
-     private String rol;
-      private String estado;
+    private String rol;
+    private String estado;
 
     public Usuarios() {
     }
@@ -26,6 +26,11 @@ public class Usuarios {
         this.contraseñau = contraseñau;
         this.rol = rol;
         this.estado = estado;
+    }
+
+    public Usuarios(int CVEUSUARIO, String rol) {
+        this.CVEUSUARIO = CVEUSUARIO;
+        this.rol = rol;
     }
 
     public Usuarios(int CVEUSUARIO, String nombreu, String correou, String contraseñau, String rol) {
