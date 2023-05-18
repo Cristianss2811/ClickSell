@@ -49,7 +49,51 @@ private final Conexion CON;
         }
         return registros;
     }
-
+    
+    public List<Usuarios> listar2(String texto) {
+        List<Usuarios> registros=new ArrayList();
+          try{
+            ps=CON.Conectar().prepareStatement("SELECT NOMBREU, CORREOU, ROL, ESTADO FROM USUARIO WHERE NOMBREU LIKE ? AND ESTADO = 'activo'");
+            ps.setString(1, '%' + texto + '%');
+            rs=ps.executeQuery();
+            while(rs.next()){
+                registros.add(new Usuarios(rs.getString(1),rs.getString(2),rs.getString(3), rs.getString(4)));
+            }
+            ps.close();
+            rs.close();
+        }
+        catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally{
+            ps=null;
+            rs=null;
+            CON.Desconectar();
+        }
+        return registros;
+    }
+    public List<Usuarios> listar3(String texto) {
+        List<Usuarios> registros=new ArrayList();
+          try{
+            ps=CON.Conectar().prepareStatement("SELECT NOMBREU, CORREOU, ROL FROM USUARIO WHERE NOMBREU LIKE ? AND ESTADO = 'activo'");
+            ps.setString(1, '%' + texto + '%');
+            rs=ps.executeQuery();
+            while(rs.next()){
+                registros.add(new Usuarios(rs.getString(1),rs.getString(2),rs.getString(3)));
+            }
+            ps.close();
+            rs.close();
+        }
+        catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally{
+            ps=null;
+            rs=null;
+            CON.Desconectar();
+        }
+        return registros;
+    }
     @Override
     public boolean insertar(Usuarios obj) {
        resp=false;

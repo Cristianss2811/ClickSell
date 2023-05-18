@@ -4,19 +4,27 @@
  */
 package Vista;
 
+import Negocio.ProductoControl;
+import javax.swing.table.TableRowSorter;
+
 /**
  *
  * @author crist
  */
 public class PropietarioInventario extends javax.swing.JPanel {
-
+    private final ProductoControl CONTROL;
     /**
      * Creates new form AdministradorInventario
      */
     public PropietarioInventario() {
         initComponents();
+        CONTROL = new ProductoControl();
     }
-
+    private void listarInventario(String msj){
+        jTable1.setModel(CONTROL.listar(msj));
+        TableRowSorter modeloOrdenado = new TableRowSorter(jTable1.getModel());
+        jTable1.setRowSorter(modeloOrdenado);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

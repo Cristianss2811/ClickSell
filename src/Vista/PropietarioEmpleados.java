@@ -4,19 +4,29 @@
  */
 package Vista;
 
+import Negocio.UsuarioControl;
+import javax.swing.table.TableRowSorter;
+
 /**
  *
  * @author crist
  */
 public class PropietarioEmpleados extends javax.swing.JPanel {
-
+    private final UsuarioControl CONTROL;
     /**
      * Creates new form AdministradorInventario
      */
     public PropietarioEmpleados() {
+        
         initComponents();
+        CONTROL = new UsuarioControl();
+        listarUsuarios("");
     }
-
+    private void listarUsuarios(String msj){
+        tabla.setModel(CONTROL.listar3(msj));
+        TableRowSorter modeloOrdenado = new TableRowSorter(tabla.getModel());
+        tabla.setRowSorter(modeloOrdenado);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,7 +40,7 @@ public class PropietarioEmpleados extends javax.swing.JPanel {
         btnBuscar1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabla = new javax.swing.JTable();
         btnBuscar = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
 
@@ -39,6 +49,9 @@ public class PropietarioEmpleados extends javax.swing.JPanel {
         btnBuscar1.setBackground(new java.awt.Color(113, 189, 68));
         btnBuscar1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         btnBuscar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBuscar1MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnBuscar1MouseEntered(evt);
             }
@@ -68,7 +81,7 @@ public class PropietarioEmpleados extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -76,7 +89,7 @@ public class PropietarioEmpleados extends javax.swing.JPanel {
                 "Nombre", "Correo", "Rol"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabla);
 
         btnBuscar.setBackground(new java.awt.Color(113, 189, 68));
         btnBuscar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
@@ -157,6 +170,11 @@ public class PropietarioEmpleados extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBuscarMouseExited
 
+    private void btnBuscar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscar1MouseClicked
+        // TODO add your handling code here:
+        listarUsuarios(jTextField1.getText());
+    }//GEN-LAST:event_btnBuscar1MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel btnBuscar;
@@ -164,7 +182,7 @@ public class PropietarioEmpleados extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
 }

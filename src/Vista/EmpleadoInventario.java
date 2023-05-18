@@ -8,20 +8,30 @@ import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Insets;
 import javax.swing.border.Border;
-
+import Negocio.UsuarioControl;
+import javax.swing.table.TableRowSorter;
 /**
  *
  * @author axellopez
  */
 public class EmpleadoInventario extends javax.swing.JPanel {
-
+    private final UsuarioControl CONTROL;
     /**
      * Creates new form EmpleadoInventario
      */
     public EmpleadoInventario() {
-        initComponents();/*
+        
+        initComponents();
+        CONTROL = new UsuarioControl();
+        listarUsuarios("");
+        /*
         btnBuscar.setBorder(new RoundedBorder(24));
         btnFiltros.setBorder(new RoundedBorder(24));*/
+    }
+    private void listarUsuarios(String msj){
+        tabla.setModel(CONTROL.listar2(msj));
+        TableRowSorter modeloOrdenado = new TableRowSorter(tabla.getModel());
+        tabla.setRowSorter(modeloOrdenado);
     }
     //clase para implementar bordes a los componentes
     class RoundedBorder implements Border {
@@ -127,6 +137,7 @@ public class EmpleadoInventario extends javax.swing.JPanel {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
+        listarUsuarios(JtextBuscar.getText());
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void JtextBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JtextBuscarActionPerformed

@@ -9,6 +9,7 @@ package Entidades;
  * @author juanp
  */
 public class Usuarios {
+
     private int CVEUSUARIO;
     private String nombreu;
     private String correou;
@@ -41,6 +42,18 @@ public class Usuarios {
         this.rol = rol;
     }
 
+    public Usuarios(String nombreu, String correou, String rol, String estado) {
+        this.nombreu = nombreu;
+        this.correou = correou;
+        this.rol = rol;
+        this.estado = estado;
+    }
+    
+    public Usuarios(String nombreu, String correou, String rol) {
+        this.nombreu = nombreu;
+        this.correou = correou;
+        this.rol = rol;
+    }
     public int getCVEUSUARIO() {
         return CVEUSUARIO;
     }
@@ -93,6 +106,5 @@ public class Usuarios {
     public String toString() {
         return "Usuarios{" + "CVEUSUARIO=" + CVEUSUARIO + ", nombreu=" + nombreu + ", correou=" + correou + ", contrase\u00f1au=" + contraseñau + ", rol=" + rol + ", estado=" + estado + '}';
     }
-      
-      
+
 }

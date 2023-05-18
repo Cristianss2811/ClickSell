@@ -50,7 +50,53 @@ public class UsuarioControl {
         }
         return modeloTabla;
     }
-    
+    // lista de usuarios solo por nombre, correo, rol y estado
+    public DefaultTableModel listar2(String texto){
+        List <Usuarios> lista = new ArrayList();
+        lista.addAll(DATOS.listar2(texto));
+        
+        //Crear el modelo y establecer los títulos del modelo
+        String titulos[]={"Nombre Usuario", "Correo", "Rol", "Estado"};
+        modeloTabla=new DefaultTableModel(null,titulos);
+        
+        // Recorrer los elementos de la lista con for each
+        String registro []= new String[9];
+        registrosMostrados=0;
+        for(Usuarios item: lista){
+            registro[0] = item.getNombreu();
+            registro[1] = item.getCorreou();
+            registro[2] = item.getRol();
+            registro[3] = item.getEstado();
+            
+            //Insertar el registro en el modelo
+            modeloTabla.addRow(registro);
+            registrosMostrados+=1;
+        }
+        return modeloTabla;
+    }
+    // lista de usuarios solo por nombre, correo, rol
+    public DefaultTableModel listar3(String texto){
+        List <Usuarios> lista = new ArrayList();
+        lista.addAll(DATOS.listar3(texto));
+        
+        //Crear el modelo y establecer los títulos del modelo
+        String titulos[]={"Nombre Usuario", "Correo", "Rol"};
+        modeloTabla=new DefaultTableModel(null,titulos);
+        
+        // Recorrer los elementos de la lista con for each
+        String registro []= new String[9];
+        registrosMostrados=0;
+        for(Usuarios item: lista){
+            registro[0] = item.getNombreu();
+            registro[1] = item.getCorreou();
+            registro[2] = item.getRol();
+            
+            //Insertar el registro en el modelo
+            modeloTabla.addRow(registro);
+            registrosMostrados+=1;
+        }
+        return modeloTabla;
+    }
     public String insertar(String nombreUsuario, String Correou, String contrasena, String rol){
     // Verificar si existe la categoria
         if(DATOS.existe(nombreUsuario))
