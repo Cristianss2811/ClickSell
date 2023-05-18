@@ -10,26 +10,28 @@ import java.util.List;
  *
  * @author crist
  */
-public interface CrudVentas<T, DV, P, U> {
-    public List<T> listar(String texto);// Regresa un listado de tipo list de objetos T
-
-    public List<DV> listarDetalle(int idVenta); //Regresar los prodcutos de la venta(tabla hija)
-
-    public List<P> ListarProductos(String valor);
-
-    public List<U> ListarUsuario(String valor);
-
-    public boolean insertar(T obj);//Inserta un objeto del tipo T
-
-    public boolean insertarUsu_Ven(int idVenta, int idEmpleado);
-
-    public int RegresarIdVenta(String Folio);
-
-    public int total(); //Regresa el total de registros de una tabla
-
-    public boolean existe(String texto); //Refresa verdadero si existe un registro o falso sino
-
+public interface CrudVentas<T> {
+    public List<T> Listar(String folio);
+    
+    public List<T> ListarDetalle(int idVenta);
+    
+    public List<T> ListarProductos(String valor);
+    
+    public List<T> ListarProvedor(String valor);
+    
+    public List<T> ListarUsuario(String valor);
+    
+    public boolean insertar(T obj);
+    
+    public boolean insertarDetalle(T obj);
+    
+    public boolean cancelar(int id);
+    
+    public int total();
+        
+    public boolean existe(String texto);
+    
     public int ActualizarStock(int cant, int id);
-
+    
     public int ObtenerStock(int id);
 }

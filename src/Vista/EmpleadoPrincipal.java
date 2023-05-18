@@ -81,6 +81,11 @@ int xmouse,ymouse;
                 btnVentasMouseExited(evt);
             }
         });
+        btnVentas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVentasActionPerformed(evt);
+            }
+        });
 
         btnSalir.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnSalir.setForeground(new java.awt.Color(113, 189, 68));
@@ -287,6 +292,10 @@ int xmouse,ymouse;
         // TODO add your handling code here:
         new CambiaPanel(this.PanelPrincipal,new EmpleadoInventario());
     }//GEN-LAST:event_btnInventarioActionPerformed
+
+    private void btnVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentasActionPerformed
+        new CambiaPanel(this.PanelPrincipal,new EmpleadoVentas());
+    }//GEN-LAST:event_btnVentasActionPerformed
 
     /**
      * @param args the command line arguments

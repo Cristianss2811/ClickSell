@@ -6,10 +6,6 @@ package Vista;
 
 import java.awt.Color;
 
-/**
- *
- * @author crist
- */
 public class PropietarioPrincipal extends javax.swing.JFrame {
 int xmouse,ymouse;
     /**
@@ -290,7 +286,7 @@ int xmouse,ymouse;
     private void btnComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprasActionPerformed
         // TODO add your handling code here:
         //new CambiaPanel(PanelPrincipal,new MostrarCompras());
-        new CambiaPanel(PanelPrincipal,new MostrarCompras());
+        new CambiaPanel(PanelPrincipal,new PropietarioCompras());
     }//GEN-LAST:event_btnComprasActionPerformed
 
     private void btnInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioActionPerformed
