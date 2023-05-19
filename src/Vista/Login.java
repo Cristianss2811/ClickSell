@@ -268,23 +268,30 @@ Usuario_Venta u=new Usuario_Venta();
             JOptionPane.showMessageDialog(this, "Escribir un usuario valido", "Papeleria Yolis", JOptionPane.ERROR_MESSAGE);
             txtUsuario.requestFocus();
         }
-       
-       if(log[1].equals("Administrador")){
-           AdministradorPrincipal obma = new AdministradorPrincipal();
-                hide();
-                u.nombre=log[0];
-                obma.setVisible(true);
-       }else if(log[1].equals("Propietario")){
-           PropietarioPrincipal obmp = new PropietarioPrincipal();
-                hide();
-                u.nombre=log[0];
-                obmp.setVisible(true);
-       }else{
-           EmpleadoPrincipal obmp = new EmpleadoPrincipal();
-                hide();
-                u.nombre=log[0];
-                obmp.setVisible(true);
+       if(log[1]!=null)
+       {
+           if(log[1].equals("Administrador")){
+                AdministradorPrincipal obma = new AdministradorPrincipal();
+                     hide();
+                     u.nombre=log[0];
+                     obma.setVisible(true);
+            }else if(log[1].equals("Propietario")){
+                PropietarioPrincipal obmp = new PropietarioPrincipal();
+                     hide();
+                     u.nombre=log[0];
+                     obmp.setVisible(true);
+            }else{
+                EmpleadoPrincipal obmp = new EmpleadoPrincipal();
+                     hide();
+                     u.nombre=log[0];
+                     obmp.setVisible(true);
+            } 
        }
+       else
+       {
+           JOptionPane.showMessageDialog(null, "Ingrese un usuario valido");
+       }
+           
        
 //        System.out.println(u.nombre);
        

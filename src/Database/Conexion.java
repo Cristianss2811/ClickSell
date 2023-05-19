@@ -19,7 +19,7 @@ import java.sql.Connection;
  * @author crist
  */
 public class Conexion {
-    private final String DRIVER = "com.mysql.cj.jdbc.Driver", URL = "jdbc:mysql://localhost:3306/", DB = "PAPELERIAYOLIS", USER = "root", PASSWORD = "FieBEJjZY5>Q";
+    private final String DRIVER = "com.mysql.cj.jdbc.Driver", URL = "jdbc:mysql://localhost:3306/", DB = "PAPELERIAYOLIS", USER = "root", PASSWORD = "admin";
     public Connection cadena;
     public static Conexion instancia;
     

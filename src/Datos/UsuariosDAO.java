@@ -282,13 +282,13 @@ private final Conexion CON;
             ps.setString(1, texto);
             ps.setString(2, texto2);
             rs = ps.executeQuery();
-            if (rs.next()) {
+//            if (rs.next()) {
                 while(rs.next()){
                 registros.add(new Usuarios(rs.getInt(1), rs.getString(2)));
             }
-            } else {
-                JOptionPane.showMessageDialog(null, "Ingrese un usuario valido");
-            }
+//            } else {
+//                JOptionPane.showMessageDialog(null, "Ingrese un usuario valido");
+//            }
             ps.close();
             rs.close();
         } catch (SQLException e) {
