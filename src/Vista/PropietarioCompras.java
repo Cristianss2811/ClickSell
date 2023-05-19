@@ -19,7 +19,7 @@ public class PropietarioCompras extends javax.swing.JPanel {
     private final ProductoControl PRCONTROL;
     private final ComprasControl COMCONTROL;
     private DefaultTableModel modeloTabla;
-    private Usuario_Venta c = new Usuario_Venta();
+    private Usuario_Venta u = new Usuario_Venta();
     
     private String verde="#71BD44", naranja="#F39121";
     private int i;
@@ -507,7 +507,7 @@ public class PropietarioCompras extends javax.swing.JPanel {
             if(tablaProductos.getRowCount() > 0)
             {
                 for(Proveedor proveedor: PVCONTROL.obtenerProveedores(""+comboProveedores.getSelectedItem()))
-                    COMCONTROL.insertar(proveedor.getCVEPROVEEDORES(), 1);
+                    COMCONTROL.insertar(proveedor.getCVEPROVEEDORES(), Integer.parseInt(u.nombre));
                 System.out.println("Ingresa la compra");
                 for(i = 0; i < tablaProductos.getRowCount(); i++)
                 {
