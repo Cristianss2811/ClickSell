@@ -11,6 +11,7 @@ import java.awt.Color;
  */
 public class EmpleadoPrincipal extends javax.swing.JFrame {
 int xmouse,ymouse;
+String verde="#71BD44", naranja="#F39121", blanco="#FFFFFF", negro="#000000";
     /**
      * Creates new form AdministradorInventario
      */
@@ -30,11 +31,15 @@ int xmouse,ymouse;
 
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        btnFacturacion = new javax.swing.JButton();
-        btnVentas = new javax.swing.JButton();
-        btnSalir = new javax.swing.JButton();
-        btnInventario = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        btnContenedorSalir = new javax.swing.JPanel();
+        btnSalir = new javax.swing.JButton();
+        btnContenedorVentas = new javax.swing.JPanel();
+        btnVentas = new javax.swing.JButton();
+        btnContenedorFacturacion = new javax.swing.JPanel();
+        btnFacturacion = new javax.swing.JButton();
+        btnContenedorInventario = new javax.swing.JPanel();
+        btnInventario = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         PanelPrincipal = new javax.swing.JPanel();
@@ -50,47 +55,29 @@ int xmouse,ymouse;
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/empleado256px.png"))); // NOI18N
 
-        btnFacturacion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnFacturacion.setForeground(new java.awt.Color(113, 189, 68));
-        btnFacturacion.setText("Facturacion");
-        btnFacturacion.setBorder(null);
-        btnFacturacion.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnFacturacionMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnFacturacionMouseExited(evt);
-            }
-        });
-        btnFacturacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFacturacionActionPerformed(evt);
-            }
-        });
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel3.setText("Empleado");
 
-        btnVentas.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnVentas.setForeground(new java.awt.Color(113, 189, 68));
-        btnVentas.setText("Ventas");
-        btnVentas.setBorder(null);
-        btnVentas.setBorderPainted(false);
-        btnVentas.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnContenedorSalir.setBackground(new java.awt.Color(255, 255, 255));
+        btnContenedorSalir.setMaximumSize(new java.awt.Dimension(238, 50));
+        btnContenedorSalir.setMinimumSize(new java.awt.Dimension(238, 50));
+        btnContenedorSalir.setPreferredSize(new java.awt.Dimension(238, 50));
+        btnContenedorSalir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnVentasMouseEntered(evt);
+                btnContenedorSalirMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnVentasMouseExited(evt);
+                btnContenedorSalirMouseExited(evt);
             }
         });
-        btnVentas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVentasActionPerformed(evt);
-            }
-        });
+        btnContenedorSalir.setLayout(new java.awt.BorderLayout());
 
         btnSalir.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnSalir.setForeground(new java.awt.Color(113, 189, 68));
         btnSalir.setText("Salir");
         btnSalir.setBorder(null);
+        btnSalir.setBorderPainted(false);
+        btnSalir.setContentAreaFilled(false);
         btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnSalirMouseEntered(evt);
@@ -104,11 +91,98 @@ int xmouse,ymouse;
                 btnSalirActionPerformed(evt);
             }
         });
+        btnContenedorSalir.add(btnSalir, java.awt.BorderLayout.CENTER);
+
+        btnContenedorVentas.setBackground(new java.awt.Color(255, 255, 255));
+        btnContenedorVentas.setMaximumSize(new java.awt.Dimension(238, 50));
+        btnContenedorVentas.setMinimumSize(new java.awt.Dimension(238, 50));
+        btnContenedorVentas.setPreferredSize(new java.awt.Dimension(238, 50));
+        btnContenedorVentas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnContenedorVentasMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnContenedorVentasMouseExited(evt);
+            }
+        });
+        btnContenedorVentas.setLayout(new java.awt.BorderLayout());
+
+        btnVentas.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnVentas.setForeground(new java.awt.Color(113, 189, 68));
+        btnVentas.setText("Ventas");
+        btnVentas.setBorder(null);
+        btnVentas.setBorderPainted(false);
+        btnVentas.setContentAreaFilled(false);
+        btnVentas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnVentasMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnVentasMouseExited(evt);
+            }
+        });
+        btnVentas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVentasActionPerformed(evt);
+            }
+        });
+        btnContenedorVentas.add(btnVentas, java.awt.BorderLayout.CENTER);
+
+        btnContenedorFacturacion.setBackground(new java.awt.Color(255, 255, 255));
+        btnContenedorFacturacion.setMaximumSize(new java.awt.Dimension(238, 50));
+        btnContenedorFacturacion.setMinimumSize(new java.awt.Dimension(238, 50));
+        btnContenedorFacturacion.setPreferredSize(new java.awt.Dimension(238, 50));
+        btnContenedorFacturacion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnContenedorFacturacionMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnContenedorFacturacionMouseExited(evt);
+            }
+        });
+        btnContenedorFacturacion.setLayout(new java.awt.BorderLayout());
+
+        btnFacturacion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnFacturacion.setForeground(new java.awt.Color(113, 189, 68));
+        btnFacturacion.setText("Facturacion");
+        btnFacturacion.setBorder(null);
+        btnFacturacion.setBorderPainted(false);
+        btnFacturacion.setContentAreaFilled(false);
+        btnFacturacion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnFacturacionMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnFacturacionMouseExited(evt);
+            }
+        });
+        btnFacturacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFacturacionActionPerformed(evt);
+            }
+        });
+        btnContenedorFacturacion.add(btnFacturacion, java.awt.BorderLayout.CENTER);
+
+        btnContenedorInventario.setBackground(new java.awt.Color(255, 255, 255));
+        btnContenedorInventario.setMaximumSize(new java.awt.Dimension(238, 50));
+        btnContenedorInventario.setMinimumSize(new java.awt.Dimension(238, 50));
+        btnContenedorInventario.setPreferredSize(new java.awt.Dimension(238, 50));
+        btnContenedorInventario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnContenedorInventarioMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnContenedorInventarioMouseExited(evt);
+            }
+        });
+        btnContenedorInventario.setLayout(new java.awt.BorderLayout());
 
         btnInventario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnInventario.setForeground(new java.awt.Color(113, 189, 68));
         btnInventario.setText("Inventario");
         btnInventario.setBorder(null);
+        btnInventario.setBorderPainted(false);
+        btnInventario.setContentAreaFilled(false);
         btnInventario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnInventarioMouseEntered(evt);
@@ -122,60 +196,51 @@ int xmouse,ymouse;
                 btnInventarioActionPerformed(evt);
             }
         });
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel3.setText("Empleado");
+        btnContenedorInventario.add(btnInventario, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(71, 71, 71))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnContenedorSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(160, 160, 160))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnFacturacion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
-                            .addComponent(btnSalir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap())))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(btnVentas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(btnInventario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
+                        .addContainerGap()
+                        .addComponent(btnContenedorVentas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnContenedorFacturacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnContenedorInventario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(85, 85, 85)
+                        .addComponent(jLabel3)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(100, 100, 100)
-                .addComponent(btnFacturacion, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68)
-                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(146, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(348, Short.MAX_VALUE)
-                    .addComponent(btnVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(305, 305, 305)))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(455, Short.MAX_VALUE)
-                    .addComponent(btnInventario, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(198, 198, 198)))
+                .addGap(40, 40, 40)
+                .addComponent(btnContenedorVentas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnContenedorFacturacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnContenedorInventario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnContenedorSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(100, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 250, 690));
@@ -221,51 +286,51 @@ int xmouse,ymouse;
 
     private void btnVentasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVentasMouseEntered
         // TODO add your handling code here:
-        btnVentas.setBackground(Color.decode("#71bd44"));
-        btnVentas.setForeground(Color.black);
+        btnContenedorVentas.setBackground(Color.decode(verde));
+        btnVentas.setForeground(Color.decode(negro));
     }//GEN-LAST:event_btnVentasMouseEntered
 
     private void btnVentasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVentasMouseExited
         // TODO add your handling code here:
-        btnVentas.setBackground(Color.white);
-        btnVentas.setForeground(Color.decode("#71bd44"));
+        btnContenedorVentas.setBackground(Color.decode(blanco));
+        btnVentas.setForeground(Color.decode(verde));
     }//GEN-LAST:event_btnVentasMouseExited
 
     private void btnFacturacionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFacturacionMouseEntered
         // TODO add your handling code here:
-        btnFacturacion.setBackground(Color.decode("#71bd44"));
-        btnFacturacion.setForeground(Color.black);
+       btnContenedorFacturacion.setBackground(Color.decode(verde));
+        btnFacturacion.setForeground(Color.decode(negro));
 
     }//GEN-LAST:event_btnFacturacionMouseEntered
 
     private void btnFacturacionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFacturacionMouseExited
         // TODO add your handling code here:
-        btnFacturacion.setBackground(Color.white);
-        btnFacturacion.setForeground(Color.decode("#71bd44"));
+        btnContenedorFacturacion.setBackground(Color.decode(blanco));
+        btnFacturacion.setForeground(Color.decode(verde));
     }//GEN-LAST:event_btnFacturacionMouseExited
 
     private void btnInventarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInventarioMouseEntered
         // TODO add your handling code here:
-        btnInventario.setBackground(Color.decode("#71bd44"));
-        btnInventario.setForeground(Color.black);
+        btnContenedorInventario.setBackground(Color.decode(verde));
+        btnInventario.setForeground(Color.decode(negro));
     }//GEN-LAST:event_btnInventarioMouseEntered
 
     private void btnInventarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInventarioMouseExited
         // TODO add your handling code here:
-        btnInventario.setBackground(Color.white);
-        btnInventario.setForeground(Color.decode("#71bd44"));
+        btnContenedorInventario.setBackground(Color.decode(blanco));
+        btnInventario.setForeground(Color.decode(verde));
     }//GEN-LAST:event_btnInventarioMouseExited
 
     private void btnSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseEntered
         // TODO add your handling code here:
-         btnSalir.setBackground(Color.decode("#71bd44"));
-        btnSalir.setForeground(Color.black);
+      btnContenedorSalir.setBackground(Color.decode(verde));
+        btnSalir.setForeground(Color.decode(negro));
     }//GEN-LAST:event_btnSalirMouseEntered
 
     private void btnSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseExited
         // TODO add your handling code here:
-        btnSalir.setBackground(Color.white);
-        btnSalir.setForeground(Color.decode("#71bd44"));
+       btnContenedorSalir.setBackground(Color.decode(blanco));
+        btnSalir.setForeground(Color.decode(verde));
     }//GEN-LAST:event_btnSalirMouseExited
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
@@ -296,6 +361,38 @@ int xmouse,ymouse;
     private void btnVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentasActionPerformed
         new CambiaPanel(this.PanelPrincipal,new EmpleadoVentas());
     }//GEN-LAST:event_btnVentasActionPerformed
+
+    private void btnContenedorFacturacionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnContenedorFacturacionMouseEntered
+
+    }//GEN-LAST:event_btnContenedorFacturacionMouseEntered
+
+    private void btnContenedorFacturacionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnContenedorFacturacionMouseExited
+
+    }//GEN-LAST:event_btnContenedorFacturacionMouseExited
+
+    private void btnContenedorInventarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnContenedorInventarioMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnContenedorInventarioMouseEntered
+
+    private void btnContenedorInventarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnContenedorInventarioMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnContenedorInventarioMouseExited
+
+    private void btnContenedorVentasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnContenedorVentasMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnContenedorVentasMouseEntered
+
+    private void btnContenedorVentasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnContenedorVentasMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnContenedorVentasMouseExited
+
+    private void btnContenedorSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnContenedorSalirMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnContenedorSalirMouseEntered
+
+    private void btnContenedorSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnContenedorSalirMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnContenedorSalirMouseExited
 
     /**
      * @param args the command line arguments
@@ -337,6 +434,10 @@ int xmouse,ymouse;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelPrincipal;
+    private javax.swing.JPanel btnContenedorFacturacion;
+    private javax.swing.JPanel btnContenedorInventario;
+    private javax.swing.JPanel btnContenedorSalir;
+    private javax.swing.JPanel btnContenedorVentas;
     private javax.swing.JButton btnFacturacion;
     private javax.swing.JButton btnInventario;
     private javax.swing.JButton btnSalir;

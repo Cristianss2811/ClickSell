@@ -56,18 +56,13 @@
               </Group>
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btnContenedorInventario" alignment="1" max="32767" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="btnContenedorUsuario" alignment="0" min="-2" pref="238" max="-2" attributes="0"/>
-                              <Component id="btnContenedorProveedor" alignment="0" min="-2" pref="238" max="-2" attributes="0"/>
-                              <Component id="btnContenedorSalir" alignment="0" min="-2" pref="238" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
+                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="btnContenedorInventario" max="32767" attributes="0"/>
+                      <Component id="btnContenedorUsuario" alignment="1" pref="238" max="32767" attributes="0"/>
+                      <Component id="btnContenedorProveedor" alignment="1" pref="238" max="32767" attributes="0"/>
+                      <Component id="btnContenedorSalir" alignment="1" pref="238" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -84,9 +79,9 @@
                   <Component id="btnContenedorUsuario" min="-2" pref="50" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnContenedorProveedor" min="-2" pref="50" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Component id="btnContenedorSalir" min="-2" pref="50" max="-2" attributes="0"/>
-                  <EmptySpace pref="131" max="32767" attributes="0"/>
+                  <EmptySpace pref="125" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

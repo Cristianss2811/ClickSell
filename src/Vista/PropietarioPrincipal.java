@@ -8,6 +8,7 @@ import java.awt.Color;
 
 public class PropietarioPrincipal extends javax.swing.JFrame {
 int xmouse,ymouse;
+String verde="#71BD44", naranja="#F39121", blanco="#FFFFFF", negro="#000000";
     /**
      * Creates new form AdministradorInventario
      */
@@ -27,11 +28,15 @@ int xmouse,ymouse;
 
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        btnEmpleados = new javax.swing.JButton();
-        btnCompras = new javax.swing.JButton();
-        btnSalir = new javax.swing.JButton();
-        btnInventario = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        btnContenedorCompras = new javax.swing.JPanel();
+        btnCompras = new javax.swing.JButton();
+        btnContenedorEmpleados = new javax.swing.JPanel();
+        btnEmpleados = new javax.swing.JButton();
+        btnContenedorInventario = new javax.swing.JPanel();
+        btnInventario = new javax.swing.JButton();
+        btnContenedorSalir = new javax.swing.JPanel();
+        btnSalir = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         PanelPrincipal = new javax.swing.JPanel();
@@ -47,29 +52,29 @@ int xmouse,ymouse;
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/propietario256px.png"))); // NOI18N
 
-        btnEmpleados.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnEmpleados.setForeground(new java.awt.Color(113, 189, 68));
-        btnEmpleados.setText("Empleados");
-        btnEmpleados.setBorder(null);
-        btnEmpleados.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel3.setText("Propietario");
+
+        btnContenedorCompras.setBackground(new java.awt.Color(255, 255, 255));
+        btnContenedorCompras.setMaximumSize(new java.awt.Dimension(238, 50));
+        btnContenedorCompras.setMinimumSize(new java.awt.Dimension(238, 50));
+        btnContenedorCompras.setPreferredSize(new java.awt.Dimension(238, 50));
+        btnContenedorCompras.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnEmpleadosMouseEntered(evt);
+                btnContenedorComprasMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnEmpleadosMouseExited(evt);
+                btnContenedorComprasMouseExited(evt);
             }
         });
-        btnEmpleados.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEmpleadosActionPerformed(evt);
-            }
-        });
+        btnContenedorCompras.setLayout(new java.awt.BorderLayout());
 
         btnCompras.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnCompras.setForeground(new java.awt.Color(113, 189, 68));
         btnCompras.setText("Compras");
         btnCompras.setBorder(null);
         btnCompras.setBorderPainted(false);
+        btnCompras.setContentAreaFilled(false);
         btnCompras.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnComprasMouseEntered(evt);
@@ -83,29 +88,63 @@ int xmouse,ymouse;
                 btnComprasActionPerformed(evt);
             }
         });
+        btnContenedorCompras.add(btnCompras, java.awt.BorderLayout.CENTER);
 
-        btnSalir.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnSalir.setForeground(new java.awt.Color(113, 189, 68));
-        btnSalir.setText("Salir");
-        btnSalir.setBorder(null);
-        btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnContenedorEmpleados.setBackground(new java.awt.Color(255, 255, 255));
+        btnContenedorEmpleados.setMaximumSize(new java.awt.Dimension(238, 50));
+        btnContenedorEmpleados.setMinimumSize(new java.awt.Dimension(238, 50));
+        btnContenedorEmpleados.setPreferredSize(new java.awt.Dimension(238, 50));
+        btnContenedorEmpleados.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnSalirMouseEntered(evt);
+                btnContenedorEmpleadosMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnSalirMouseExited(evt);
+                btnContenedorEmpleadosMouseExited(evt);
             }
         });
-        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+        btnContenedorEmpleados.setLayout(new java.awt.BorderLayout());
+
+        btnEmpleados.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnEmpleados.setForeground(new java.awt.Color(113, 189, 68));
+        btnEmpleados.setText("Empleados");
+        btnEmpleados.setBorder(null);
+        btnEmpleados.setBorderPainted(false);
+        btnEmpleados.setContentAreaFilled(false);
+        btnEmpleados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnEmpleadosMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEmpleadosMouseExited(evt);
+            }
+        });
+        btnEmpleados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalirActionPerformed(evt);
+                btnEmpleadosActionPerformed(evt);
             }
         });
+        btnContenedorEmpleados.add(btnEmpleados, java.awt.BorderLayout.CENTER);
+
+        btnContenedorInventario.setBackground(new java.awt.Color(255, 255, 255));
+        btnContenedorInventario.setMaximumSize(new java.awt.Dimension(238, 50));
+        btnContenedorInventario.setMinimumSize(new java.awt.Dimension(238, 50));
+        btnContenedorInventario.setPreferredSize(new java.awt.Dimension(238, 50));
+        btnContenedorInventario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnContenedorInventarioMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnContenedorInventarioMouseExited(evt);
+            }
+        });
+        btnContenedorInventario.setLayout(new java.awt.BorderLayout());
 
         btnInventario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnInventario.setForeground(new java.awt.Color(113, 189, 68));
         btnInventario.setText("Inventario");
         btnInventario.setBorder(null);
+        btnInventario.setBorderPainted(false);
+        btnInventario.setContentAreaFilled(false);
         btnInventario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnInventarioMouseEntered(evt);
@@ -119,35 +158,69 @@ int xmouse,ymouse;
                 btnInventarioActionPerformed(evt);
             }
         });
+        btnContenedorInventario.add(btnInventario, java.awt.BorderLayout.CENTER);
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel3.setText("Propietario");
+        btnContenedorSalir.setBackground(new java.awt.Color(255, 255, 255));
+        btnContenedorSalir.setMaximumSize(new java.awt.Dimension(238, 50));
+        btnContenedorSalir.setMinimumSize(new java.awt.Dimension(238, 50));
+        btnContenedorSalir.setPreferredSize(new java.awt.Dimension(238, 50));
+        btnContenedorSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnContenedorSalirMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnContenedorSalirMouseExited(evt);
+            }
+        });
+        btnContenedorSalir.setLayout(new java.awt.BorderLayout());
+
+        btnSalir.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnSalir.setForeground(new java.awt.Color(113, 189, 68));
+        btnSalir.setText("Salir");
+        btnSalir.setBorder(null);
+        btnSalir.setBorderPainted(false);
+        btnSalir.setContentAreaFilled(false);
+        btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSalirMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSalirMouseExited(evt);
+            }
+        });
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+        btnContenedorSalir.add(btnSalir, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnEmpleados, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
-                    .addComponent(btnSalir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(78, 78, 78)
-                .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(btnCompras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(btnInventario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(78, 78, 78)
+                                .addComponent(jLabel3))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(btnContenedorCompras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(btnContenedorEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(btnContenedorInventario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnContenedorSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,21 +229,15 @@ int xmouse,ymouse;
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(110, 110, 110)
-                .addComponent(btnEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68)
-                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(146, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(348, Short.MAX_VALUE)
-                    .addComponent(btnCompras, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(305, 305, 305)))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(455, Short.MAX_VALUE)
-                    .addComponent(btnInventario, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(198, 198, 198)))
+                .addGap(40, 40, 40)
+                .addComponent(btnContenedorCompras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnContenedorEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnContenedorInventario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnContenedorSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(104, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 250, 690));
@@ -216,59 +283,40 @@ int xmouse,ymouse;
 
     private void btnComprasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnComprasMouseEntered
         // TODO add your handling code here:
-        btnCompras.setBackground(Color.decode("#71bd44"));
-        btnCompras.setForeground(Color.black);
+       btnContenedorCompras.setBackground(Color.decode(verde));
+        btnCompras.setForeground(Color.decode(negro));
     }//GEN-LAST:event_btnComprasMouseEntered
 
     private void btnComprasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnComprasMouseExited
         // TODO add your handling code here:
-        btnCompras.setBackground(Color.white);
-        btnCompras.setForeground(Color.decode("#71bd44"));
+        btnContenedorCompras.setBackground(Color.decode(blanco));
+        btnCompras.setForeground(Color.decode(verde));
     }//GEN-LAST:event_btnComprasMouseExited
 
     private void btnEmpleadosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmpleadosMouseEntered
         // TODO add your handling code here:
-        btnEmpleados.setBackground(Color.decode("#71bd44"));
-        btnEmpleados.setForeground(Color.black);
+        btnContenedorEmpleados.setBackground(Color.decode(verde));
+        btnEmpleados.setForeground(Color.decode(negro));
 
     }//GEN-LAST:event_btnEmpleadosMouseEntered
 
     private void btnEmpleadosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmpleadosMouseExited
         // TODO add your handling code here:
-        btnEmpleados.setBackground(Color.white);
-        btnEmpleados.setForeground(Color.decode("#71bd44"));
+        btnContenedorEmpleados.setBackground(Color.decode(blanco));
+        btnEmpleados.setForeground(Color.decode(verde));
     }//GEN-LAST:event_btnEmpleadosMouseExited
 
     private void btnInventarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInventarioMouseEntered
         // TODO add your handling code here:
-        btnInventario.setBackground(Color.decode("#71bd44"));
-        btnInventario.setForeground(Color.black);
+        btnContenedorInventario.setBackground(Color.decode(verde));
+        btnInventario.setForeground(Color.decode(negro));
     }//GEN-LAST:event_btnInventarioMouseEntered
 
     private void btnInventarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInventarioMouseExited
         // TODO add your handling code here:
-        btnInventario.setBackground(Color.white);
-        btnInventario.setForeground(Color.decode("#71bd44"));
+         btnContenedorInventario.setBackground(Color.decode(blanco));
+        btnInventario.setForeground(Color.decode(verde));
     }//GEN-LAST:event_btnInventarioMouseExited
-
-    private void btnSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseEntered
-        // TODO add your handling code here:
-         btnSalir.setBackground(Color.decode("#71bd44"));
-        btnSalir.setForeground(Color.black);
-    }//GEN-LAST:event_btnSalirMouseEntered
-
-    private void btnSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseExited
-        // TODO add your handling code here:
-        btnSalir.setBackground(Color.white);
-        btnSalir.setForeground(Color.decode("#71bd44"));
-    }//GEN-LAST:event_btnSalirMouseExited
-
-    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        // TODO add your handling code here:
-        //System.exit(0);
-        Logout log=new Logout();
-        log.setVisible(true);
-    }//GEN-LAST:event_btnSalirActionPerformed
 
     private void jPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed
         // TODO add your handling code here:
@@ -293,6 +341,57 @@ int xmouse,ymouse;
         // TODO add your handling code here:
         new CambiaPanel(PanelPrincipal,new PropietarioInventario());
     }//GEN-LAST:event_btnInventarioActionPerformed
+
+    private void btnContenedorEmpleadosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnContenedorEmpleadosMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnContenedorEmpleadosMouseEntered
+
+    private void btnContenedorEmpleadosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnContenedorEmpleadosMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnContenedorEmpleadosMouseExited
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        // TODO add your handling code here:
+        //System.exit(0);
+        Logout log=new Logout();
+        log.setVisible(true);
+    }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseExited
+        // TODO add your handling code here:
+        btnContenedorSalir.setBackground(Color.decode(blanco));
+        btnSalir.setForeground(Color.decode(verde));
+    }//GEN-LAST:event_btnSalirMouseExited
+
+    private void btnSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseEntered
+        // TODO add your handling code here:
+        btnContenedorSalir.setBackground(Color.decode(verde));
+        btnSalir.setForeground(Color.decode(negro));
+    }//GEN-LAST:event_btnSalirMouseEntered
+
+    private void btnContenedorComprasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnContenedorComprasMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnContenedorComprasMouseEntered
+
+    private void btnContenedorComprasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnContenedorComprasMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnContenedorComprasMouseExited
+
+    private void btnContenedorInventarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnContenedorInventarioMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnContenedorInventarioMouseEntered
+
+    private void btnContenedorInventarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnContenedorInventarioMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnContenedorInventarioMouseExited
+
+    private void btnContenedorSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnContenedorSalirMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnContenedorSalirMouseEntered
+
+    private void btnContenedorSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnContenedorSalirMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnContenedorSalirMouseExited
 
     /**
      * @param args the command line arguments
@@ -339,6 +438,10 @@ int xmouse,ymouse;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelPrincipal;
     private javax.swing.JButton btnCompras;
+    private javax.swing.JPanel btnContenedorCompras;
+    private javax.swing.JPanel btnContenedorEmpleados;
+    private javax.swing.JPanel btnContenedorInventario;
+    private javax.swing.JPanel btnContenedorSalir;
     private javax.swing.JButton btnEmpleados;
     private javax.swing.JButton btnInventario;
     private javax.swing.JButton btnSalir;
