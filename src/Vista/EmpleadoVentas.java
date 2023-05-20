@@ -17,7 +17,7 @@ public class EmpleadoVentas extends javax.swing.JPanel {
     private final ProductoControl PRCONTROL;
     private final VentasControl COMCONTROL;
     private DefaultTableModel modeloTabla;
-    private Usuario_Venta c = new Usuario_Venta();
+    private Usuario_Venta u = new Usuario_Venta();
     
     private String verde="#71BD44", naranja="#F39121";
     private int i;
@@ -520,7 +520,7 @@ public class EmpleadoVentas extends javax.swing.JPanel {
     private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
         if(tablaProductos.getRowCount() > 0)
         {
-            COMCONTROL.insertar(1);
+            COMCONTROL.insertar(Integer.parseInt(u.nombre));
             for(i = 0; i < tablaProductos.getRowCount(); i++)
             {
                 COMCONTROL.insertarDetalle(Integer.parseInt(""+tablaProductos.getValueAt(i, 0)),
