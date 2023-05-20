@@ -64,6 +64,15 @@ String accionp, accionc;
        TablaProducto.setRowSorter(modeloOrdenadoP);
 
     }
+    
+    public void ListarP2(String texto)
+    {
+        jTable1.setModel(CONTROLP.listar(texto));
+        TableRowSorter modeloOrdenadoP = new TableRowSorter(jTable1.getModel());
+       jTable1.setRowSorter(modeloOrdenadoP);
+
+    }
+    
     public void mensajeOK(String mensaje){
         JOptionPane.showMessageDialog(this, mensaje, "Papelería Yolis", JOptionPane.INFORMATION_MESSAGE);
     }
