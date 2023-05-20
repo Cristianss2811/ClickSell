@@ -75,12 +75,13 @@ public class ProductoControl {
     }
     
     public String[] obtenerProductoVenta(int id){
-        String registro []= new String[4];
+        String registro []= new String[5];
         Producto producto = DATOS.obtenerProducto(id);
         registro[0] = ""+producto.getCveProducto();
         registro[1] = producto.getNombre();
         registro[2] = ""+producto.getPrecioVenta();
-        registro[3] = "1";
+        registro[3] = ""+producto.getExistencia();
+        registro[4] = "1";
 
         return registro;
     }

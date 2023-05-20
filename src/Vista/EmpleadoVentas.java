@@ -34,7 +34,7 @@ public class EmpleadoVentas extends javax.swing.JPanel {
     }
     
     private void inicializarTabla(){
-        String titulos[]={"Clave producto", "Nombre", "Precio Venta", "Cantidad"};
+        String titulos[]={"Clave producto", "Nombre", "Precio Venta", "Existencias", "Cantidad"};
         modeloTabla=new DefaultTableModel(null,titulos);
         modeloTabla.addTableModelListener(new TableModelListener(){
              @Override
@@ -49,7 +49,7 @@ public class EmpleadoVentas extends javax.swing.JPanel {
         for(i=0; i < tablaProductos.getRowCount(); i++)
             if(id.equals(tablaProductos.getValueAt(i, 0)))
             {
-                tablaProductos.setValueAt(""+(Integer.parseInt(""+tablaProductos.getValueAt(i, 5))+1), i, 5);
+                tablaProductos.setValueAt(""+(Integer.parseInt(""+tablaProductos.getValueAt(i, 4))+1), i, 4);
                 this.calcularTotal();
                 return true;
             }
@@ -59,13 +59,18 @@ public class EmpleadoVentas extends javax.swing.JPanel {
     private void calcularTotal(){
         total=0;
         for(i = 0; i < tablaProductos.getRowCount(); i++){
-            if(Integer.parseInt(""+tablaProductos.getValueAt(i, 3))>0)
-                    total += (Double.parseDouble(""+tablaProductos.getValueAt(i, 2)) * Integer.parseInt(""+tablaProductos.getValueAt(i, 3)));
+            if(Integer.parseInt(""+tablaProductos.getValueAt(i, 4)) <= Integer.parseInt(""+tablaProductos.getValueAt(i, 3)))
+                if(Integer.parseInt(""+tablaProductos.getValueAt(i, 4))>0)
+                        total += (Double.parseDouble(""+tablaProductos.getValueAt(i, 2)) * Integer.parseInt(""+tablaProductos.getValueAt(i, 4)));
+                else{
+                    JOptionPane.showMessageDialog(null, "No es posible vender " + tablaProductos.getValueAt(i, 4) + " " + ""+tablaProductos.getValueAt(i, 1));
+                    tablaProductos.setValueAt(1,i,4);
+                }
             else{
-                JOptionPane.showMessageDialog(null, "No es posible vender " + tablaProductos.getValueAt(i, 3) + " " + ""+tablaProductos.getValueAt(i, 1));
-                tablaProductos.setValueAt(1,i,3);
+                JOptionPane.showMessageDialog(null, "Sólo tienes " + Integer.parseInt(""+tablaProductos.getValueAt(i, 3)) + " productos en existencia.");
+                tablaProductos.setValueAt(Integer.parseInt(""+tablaProductos.getValueAt(i, 3)),i,4);
             }
-                    
+                 
         }
         txtTotal.setText("$"+(Math.round(total*100.00)/100.00));
         txtSubtotal.setText("$"+(Math.round((total/1.16)*100.00)/100.00));
@@ -388,10 +393,10 @@ public class EmpleadoVentas extends javax.swing.JPanel {
             EmpleadoVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(EmpleadoVentasLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(EmpleadoVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(EmpleadoVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(EmpleadoVentasLayout.createSequentialGroup()
-                        .addComponent(txtProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 641, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(59, 59, 59)
+                        .addComponent(txtProducto)
+                        .addGap(18, 18, 18)
                         .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(EmpleadoVentasLayout.createSequentialGroup()
                         .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -524,7 +529,7 @@ public class EmpleadoVentas extends javax.swing.JPanel {
             for(i = 0; i < tablaProductos.getRowCount(); i++)
             {
                 COMCONTROL.insertarDetalle(Integer.parseInt(""+tablaProductos.getValueAt(i, 0)),
-                                             Integer.parseInt(""+tablaProductos.getValueAt(i, 3)));
+                                             Integer.parseInt(""+tablaProductos.getValueAt(i, 4)));
             }
             JOptionPane.showMessageDialog(null, "Venta realizada con éxito.");
             vaciarVentas();
