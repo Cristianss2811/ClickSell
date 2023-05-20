@@ -19,6 +19,7 @@ public class PropietarioInventario extends javax.swing.JPanel {
     public PropietarioInventario() {
         initComponents();
         CONTROL = new ProductoControl();
+        listarInventario("");
     }
     private void listarInventario(String msj){
         jTable1.setModel(CONTROL.listar(msj));
@@ -76,13 +77,13 @@ public class PropietarioInventario extends javax.swing.JPanel {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Producto", "Cantidad", "Precio", "IVA", "Precio Final"
+
             }
         ));
         jScrollPane1.setViewportView(jTable1);

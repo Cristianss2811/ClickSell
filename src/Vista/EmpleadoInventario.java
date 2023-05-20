@@ -4,6 +4,7 @@
  */
 package Vista;
 
+import Negocio.ProductoControl;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Insets;
@@ -16,6 +17,7 @@ import javax.swing.table.TableRowSorter;
  */
 public class EmpleadoInventario extends javax.swing.JPanel {
     private final UsuarioControl CONTROL;
+    private final ProductoControl CONTROLP;
     /**
      * Creates new form EmpleadoInventario
      */
@@ -23,13 +25,21 @@ public class EmpleadoInventario extends javax.swing.JPanel {
         
         initComponents();
         CONTROL = new UsuarioControl();
-        listarUsuarios("");
+        CONTROLP = new ProductoControl();
+        //listarUsuarios("");
+        listarProducto("");
         /*
         btnBuscar.setBorder(new RoundedBorder(24));
         btnFiltros.setBorder(new RoundedBorder(24));*/
     }
     private void listarUsuarios(String msj){
         tabla.setModel(CONTROL.listar2(msj));
+        TableRowSorter modeloOrdenado = new TableRowSorter(tabla.getModel());
+        tabla.setRowSorter(modeloOrdenado);
+    }
+    
+    private void listarProducto(String msj){
+        tabla.setModel(CONTROLP.listar(msj));
         TableRowSorter modeloOrdenado = new TableRowSorter(tabla.getModel());
         tabla.setRowSorter(modeloOrdenado);
     }
@@ -66,7 +76,6 @@ public class EmpleadoInventario extends javax.swing.JPanel {
         btnBuscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
-        btnFiltros = new javax.swing.JButton();
         JtextBuscar = new javax.swing.JTextField();
 
         btnBuscar.setBackground(new java.awt.Color(113, 189, 68));
@@ -81,21 +90,16 @@ public class EmpleadoInventario extends javax.swing.JPanel {
 
         tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Producto", "Cantidad", "Precio", "Iva", "Precio Final"
+
             }
         ));
         jScrollPane1.setViewportView(tabla);
-
-        btnFiltros.setBackground(new java.awt.Color(113, 189, 68));
-        btnFiltros.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        btnFiltros.setText("Filtros");
-        btnFiltros.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
 
         JtextBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,9 +116,7 @@ public class EmpleadoInventario extends javax.swing.JPanel {
                 .addComponent(JtextBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 789, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
-                .addComponent(btnFiltros, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10))
+                .addGap(226, 226, 226))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1)
@@ -127,9 +129,7 @@ public class EmpleadoInventario extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnBuscar)
-                        .addComponent(btnFiltros))
+                    .addComponent(btnBuscar)
                     .addComponent(JtextBuscar))
                 .addGap(19, 19, 19))
         );
@@ -148,7 +148,6 @@ public class EmpleadoInventario extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField JtextBuscar;
     private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnFiltros;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
