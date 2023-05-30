@@ -10,6 +10,8 @@ import java.awt.Graphics;
 import java.awt.Insets;
 import javax.swing.border.Border;
 import Negocio.UsuarioControl;
+import java.awt.Color;
+import javax.swing.JOptionPane;
 import javax.swing.table.TableRowSorter;
 /**
  *
@@ -18,6 +20,7 @@ import javax.swing.table.TableRowSorter;
 public class EmpleadoInventario extends javax.swing.JPanel {
     private final UsuarioControl CONTROL;
     private final ProductoControl CONTROLP;
+    private String verde="#71BD44", naranja="#F39121";
     /**
      * Creates new form EmpleadoInventario
      */
@@ -42,6 +45,14 @@ public class EmpleadoInventario extends javax.swing.JPanel {
         tabla.setModel(CONTROLP.listar(msj));
         TableRowSorter modeloOrdenado = new TableRowSorter(tabla.getModel());
         tabla.setRowSorter(modeloOrdenado);
+    }
+    
+    public void mensajeOK(String mensaje){
+        JOptionPane.showMessageDialog(this, mensaje, "Papelería Yolis", JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    public void mensajeError(String mensaje){
+        JOptionPane.showMessageDialog(this, mensaje, "Papelería Yolis", JOptionPane.ERROR_MESSAGE);
     }
     //clase para implementar bordes a los componentes
     class RoundedBorder implements Border {
@@ -73,20 +84,11 @@ public class EmpleadoInventario extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnBuscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
         JtextBuscar = new javax.swing.JTextField();
-
-        btnBuscar.setBackground(new java.awt.Color(113, 189, 68));
-        btnBuscar.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        btnBuscar.setText("Buscar");
-        btnBuscar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
-            }
-        });
+        contenedorbtnBuscar = new javax.swing.JPanel();
+        btnBuscar = new javax.swing.JButton();
 
         tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -107,19 +109,60 @@ public class EmpleadoInventario extends javax.swing.JPanel {
             }
         });
 
+        contenedorbtnBuscar.setBackground(new java.awt.Color(113, 189, 68));
+        contenedorbtnBuscar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        contenedorbtnBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                contenedorbtnBuscarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                contenedorbtnBuscarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                contenedorbtnBuscarMouseExited(evt);
+            }
+        });
+        contenedorbtnBuscar.setLayout(new java.awt.BorderLayout());
+
+        btnBuscar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnBuscar.setText("Buscar");
+        btnBuscar.setBorder(null);
+        btnBuscar.setBorderPainted(false);
+        btnBuscar.setContentAreaFilled(false);
+        btnBuscar.setPreferredSize(new java.awt.Dimension(130, 49));
+        btnBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBuscarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnBuscarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnBuscarMouseExited(evt);
+            }
+        });
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+        contenedorbtnBuscar.add(btnBuscar, java.awt.BorderLayout.CENTER);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(JtextBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 789, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(226, 226, 226))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(JtextBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 872, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(contenedorbtnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(173, 173, 173))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -127,27 +170,69 @@ public class EmpleadoInventario extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnBuscar)
-                    .addComponent(JtextBuscar))
-                .addGap(19, 19, 19))
+                    .addComponent(JtextBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+                    .addComponent(contenedorbtnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
-        listarUsuarios(JtextBuscar.getText());
+        listarProducto(JtextBuscar.getText());
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void JtextBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JtextBuscarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_JtextBuscarActionPerformed
 
+    private void contenedorbtnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contenedorbtnBuscarMouseClicked
+        // TODO add your handling code here:
+        String resp;
+        int id;
+        if (tabla.getSelectedRowCount() == 1) {
+            if (JOptionPane.showConfirmDialog(this, "¿Deseas desactivar el producto: " + tabla.getValueAt(tabla.getSelectedRow(), 1).toString() + "?", "Papeleria Yolis", JOptionPane.YES_NO_OPTION) == 0) {
+                resp = CONTROLP.desactivar(Integer.parseInt(tabla.getValueAt(tabla.getSelectedRow(), 0).toString()));
+                if (resp.equals("OK")) {
+                    mensajeOK("Registro desactivado.");
+                    listarProducto("");
+                } else {
+                    mensajeError(resp);
+                }
+            } else {
+                mensajeError("Desactivación cancelada.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Debes seleccionar un producto", "Papelería Yolis", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_contenedorbtnBuscarMouseClicked
+
+    private void contenedorbtnBuscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contenedorbtnBuscarMouseEntered
+        
+    }//GEN-LAST:event_contenedorbtnBuscarMouseEntered
+
+    private void contenedorbtnBuscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contenedorbtnBuscarMouseExited
+        
+    }//GEN-LAST:event_contenedorbtnBuscarMouseExited
+
+    private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarMouseClicked
+
+    private void btnBuscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseEntered
+        contenedorbtnBuscar.setBackground(Color.decode(naranja));
+    }//GEN-LAST:event_btnBuscarMouseEntered
+
+    private void btnBuscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseExited
+        contenedorbtnBuscar.setBackground(Color.decode(verde));
+    }//GEN-LAST:event_btnBuscarMouseExited
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField JtextBuscar;
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JPanel contenedorbtnBuscar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables

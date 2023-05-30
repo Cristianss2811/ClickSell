@@ -82,8 +82,6 @@ String accion;
         jLabel6 = new javax.swing.JLabel();
         btnAgregar = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
-        btnFiltros = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
         ProvedorRegistro = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -257,43 +255,18 @@ String accion;
                 .addContainerGap())
         );
 
-        btnFiltros.setBackground(new java.awt.Color(113, 189, 68));
-        btnFiltros.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
-        btnFiltros.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnFiltrosMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnFiltrosMouseExited(evt);
-            }
-        });
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel7.setText("Filtros");
-        jLabel7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        javax.swing.GroupLayout btnFiltrosLayout = new javax.swing.GroupLayout(btnFiltros);
-        btnFiltros.setLayout(btnFiltrosLayout);
-        btnFiltrosLayout.setHorizontalGroup(
-            btnFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnFiltrosLayout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(jLabel7)
-                .addContainerGap(39, Short.MAX_VALUE))
-        );
-        btnFiltrosLayout.setVerticalGroup(
-            btnFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnFiltrosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
         javax.swing.GroupLayout ProvedorTablaLayout = new javax.swing.GroupLayout(ProvedorTabla);
         ProvedorTabla.setLayout(ProvedorTablaLayout);
         ProvedorTablaLayout.setHorizontalGroup(
             ProvedorTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1018, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ProvedorTablaLayout.createSequentialGroup()
+                .addContainerGap(563, Short.MAX_VALUE)
+                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
             .addGroup(ProvedorTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(ProvedorTablaLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -302,21 +275,18 @@ String accion;
                             .addComponent(TxtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(10, 10, 10)
                             .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 970, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(ProvedorTablaLayout.createSequentialGroup()
-                            .addGap(390, 390, 390)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(20, 20, 20)
-                            .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(20, 20, 20)
-                            .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(20, 20, 20)
-                            .addComponent(btnFiltros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 970, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         ProvedorTablaLayout.setVerticalGroup(
             ProvedorTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 678, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ProvedorTablaLayout.createSequentialGroup()
+                .addContainerGap(623, Short.MAX_VALUE)
+                .addGroup(ProvedorTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
             .addGroup(ProvedorTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(ProvedorTablaLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -327,13 +297,7 @@ String accion;
                         .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(40, 40, 40)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(10, 10, 10)
-                    .addGroup(ProvedorTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnFiltros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 69, Short.MAX_VALUE)))
         );
 
         jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
@@ -541,52 +505,44 @@ String accion;
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarMouseEntered
-        // TODO add your handling code here:
+        btnRegistrar.setBackground(Color.decode(naranja));
     }//GEN-LAST:event_btnRegistrarMouseEntered
 
     private void btnRegistrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarMouseExited
-        // TODO add your handling code here:
+        btnRegistrar.setBackground(Color.decode(verde));
     }//GEN-LAST:event_btnRegistrarMouseExited
 
     private void btnEliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseEntered
-        // TODO add your handling code here:
+       btnEliminar.setBackground(Color.decode(naranja));
     }//GEN-LAST:event_btnEliminarMouseEntered
 
     private void btnEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseExited
-        // TODO add your handling code here:
+        btnEliminar.setBackground(Color.decode(verde));
     }//GEN-LAST:event_btnEliminarMouseExited
 
     private void btnModificarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseEntered
-        // TODO add your handling code here:
+        btnModificar.setBackground(Color.decode(naranja));
     }//GEN-LAST:event_btnModificarMouseEntered
 
     private void btnModificarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseExited
-        // TODO add your handling code here:
+        btnModificar.setBackground(Color.decode(verde));
     }//GEN-LAST:event_btnModificarMouseExited
 
     private void btnBuscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseEntered
-        // TODO add your handling code here:
+        btnBuscar.setBackground(Color.decode(naranja));
     }//GEN-LAST:event_btnBuscarMouseEntered
 
     private void btnBuscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseExited
-        // TODO add your handling code here:
+        btnBuscar.setBackground(Color.decode(verde));
     }//GEN-LAST:event_btnBuscarMouseExited
 
     private void btnAgregarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseEntered
-        // TODO add your handling code here:
+        btnAgregar.setBackground(Color.decode(naranja));
     }//GEN-LAST:event_btnAgregarMouseEntered
 
     private void btnAgregarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseExited
-        // TODO add your handling code here:
+        btnAgregar.setBackground(Color.decode(verde));
     }//GEN-LAST:event_btnAgregarMouseExited
-
-    private void btnFiltrosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFiltrosMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnFiltrosMouseEntered
-
-    private void btnFiltrosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFiltrosMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnFiltrosMouseExited
 
     private void btnVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseClicked
         // TODO add your handling code here:
@@ -597,11 +553,11 @@ String accion;
     }//GEN-LAST:event_btnVolverMouseClicked
 
     private void btnVolverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseEntered
-        // TODO add your handling code here:
+        btnVolver.setBackground(Color.decode(naranja));
     }//GEN-LAST:event_btnVolverMouseEntered
 
     private void btnVolverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseExited
-        // TODO add your handling code here:
+        btnVolver.setBackground(Color.decode(verde));
     }//GEN-LAST:event_btnVolverMouseExited
 
     private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
@@ -616,7 +572,7 @@ txtID.setVisible(false);
     private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
         // TODO add your handling code here:
         
-        ListarInventario(TxtBuscar.getText().trim());
+        Listar(TxtBuscar.getText().trim());
     }//GEN-LAST:event_btnBuscarMouseClicked
 
     private void btnRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarMouseClicked
@@ -706,7 +662,6 @@ txtID.setVisible(false);
     private javax.swing.JPanel btnAgregar;
     private javax.swing.JPanel btnBuscar;
     private javax.swing.JPanel btnEliminar;
-    private javax.swing.JPanel btnFiltros;
     private javax.swing.JPanel btnModificar;
     private javax.swing.JPanel btnRegistrar;
     private javax.swing.JPanel btnVolver;
@@ -719,7 +674,6 @@ txtID.setVisible(false);
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel3;

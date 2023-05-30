@@ -5,6 +5,7 @@
 package Vista;
 
 import Negocio.UsuarioControl;
+import java.awt.Color;
 import javax.swing.table.TableRowSorter;
 
 /**
@@ -13,6 +14,8 @@ import javax.swing.table.TableRowSorter;
  */
 public class PropietarioEmpleados extends javax.swing.JPanel {
     private final UsuarioControl CONTROL;
+    private String verde="#71BD44", naranja="#F39121";
+
     /**
      * Creates new form AdministradorInventario
      */
@@ -120,11 +123,12 @@ public class PropietarioEmpleados extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscar1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscar1MouseEntered
-        // TODO add your handling code here:
+        btnBuscar1.setBackground(Color.decode(naranja));
+
     }//GEN-LAST:event_btnBuscar1MouseEntered
 
     private void btnBuscar1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscar1MouseExited
-        // TODO add your handling code here:
+        btnBuscar1.setBackground(Color.decode(verde));
     }//GEN-LAST:event_btnBuscar1MouseExited
 
     private void btnBuscar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscar1MouseClicked

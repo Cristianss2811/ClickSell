@@ -5,6 +5,7 @@
 package Vista;
 
 import Negocio.ProductoControl;
+import java.awt.Color;
 import javax.swing.table.TableRowSorter;
 
 /**
@@ -13,6 +14,7 @@ import javax.swing.table.TableRowSorter;
  */
 public class PropietarioInventario extends javax.swing.JPanel {
     private final ProductoControl CONTROL;
+    private String verde="#71BD44", naranja="#F39121";
     /**
      * Creates new form AdministradorInventario
      */
@@ -46,6 +48,9 @@ public class PropietarioInventario extends javax.swing.JPanel {
         btnBuscar1.setBackground(new java.awt.Color(113, 189, 68));
         btnBuscar1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         btnBuscar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBuscar1MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnBuscar1MouseEntered(evt);
             }
@@ -63,9 +68,9 @@ public class PropietarioInventario extends javax.swing.JPanel {
         btnBuscar1Layout.setHorizontalGroup(
             btnBuscar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnBuscar1Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
+                .addGap(38, 38, 38)
                 .addComponent(jLabel5)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         btnBuscar1Layout.setVerticalGroup(
             btnBuscar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,12 +124,16 @@ public class PropietarioInventario extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscar1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscar1MouseEntered
-        // TODO add your handling code here:
+        btnBuscar1.setBackground(Color.decode(naranja));
     }//GEN-LAST:event_btnBuscar1MouseEntered
 
     private void btnBuscar1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscar1MouseExited
-        // TODO add your handling code here:
+        btnBuscar1.setBackground(Color.decode(verde));
     }//GEN-LAST:event_btnBuscar1MouseExited
+
+    private void btnBuscar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscar1MouseClicked
+        listarInventario(jTextField1.getText());
+    }//GEN-LAST:event_btnBuscar1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

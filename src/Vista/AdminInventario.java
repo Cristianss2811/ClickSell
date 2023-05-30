@@ -39,13 +39,16 @@ String accionp, accionc;
         CONTROLP = new ProductoControl();
         ListarC("");
         ListarP("");
+        ListarInventario("");
        
        
     }
     
     
     public void ListarInventario(String texto) {
-//        jTable1.setModel(CONTROL.listar(texto));
+       TablaInventario.setModel(CONTROLP.listar(texto));
+        TableRowSorter modeloOrdenadoC = new TableRowSorter(TablaInventario.getModel());
+       TablaInventario.setRowSorter(modeloOrdenadoC);
     }
     
     
@@ -67,9 +70,9 @@ String accionp, accionc;
     
     public void ListarP2(String texto)
     {
-        jTable1.setModel(CONTROLP.listar(texto));
-        TableRowSorter modeloOrdenadoP = new TableRowSorter(jTable1.getModel());
-       jTable1.setRowSorter(modeloOrdenadoP);
+        TablaInventario.setModel(CONTROLP.listar(texto));
+        TableRowSorter modeloOrdenadoP = new TableRowSorter(TablaInventario.getModel());
+       TablaInventario.setRowSorter(modeloOrdenadoP);
     }
     
     public void mensajeOK(String mensaje){
@@ -105,13 +108,11 @@ String accionp, accionc;
         btnBuscar1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TablaInventario = new javax.swing.JTable();
         btnEliminar = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         btnModificar = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        btnFiltros = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
         btnAgregarPro = new javax.swing.JPanel();
         jLabel25 = new javax.swing.JLabel();
         btnAgregarCat = new javax.swing.JPanel();
@@ -212,7 +213,7 @@ String accionp, accionc;
                 .addContainerGap())
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TablaInventario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -223,12 +224,15 @@ String accionp, accionc;
 
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(TablaInventario);
 
         btnEliminar.setBackground(new java.awt.Color(113, 189, 68));
         btnEliminar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEliminarMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnEliminarMouseEntered(evt);
             }
@@ -262,6 +266,9 @@ String accionp, accionc;
         btnModificar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         btnModificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnModificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnModificarMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnModificarMouseEntered(evt);
             }
@@ -288,39 +295,6 @@ String accionp, accionc;
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnModificarLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        btnFiltros.setBackground(new java.awt.Color(113, 189, 68));
-        btnFiltros.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
-        btnFiltros.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnFiltros.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnFiltrosMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnFiltrosMouseExited(evt);
-            }
-        });
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel4.setText("Filtros");
-        jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        javax.swing.GroupLayout btnFiltrosLayout = new javax.swing.GroupLayout(btnFiltros);
-        btnFiltros.setLayout(btnFiltrosLayout);
-        btnFiltrosLayout.setHorizontalGroup(
-            btnFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnFiltrosLayout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(jLabel4)
-                .addContainerGap(39, Short.MAX_VALUE))
-        );
-        btnFiltrosLayout.setVerticalGroup(
-            btnFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnFiltrosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -400,8 +374,8 @@ String accionp, accionc;
         InventarioTabla.setLayout(InventarioTablaLayout);
         InventarioTablaLayout.setHorizontalGroup(
             InventarioTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(InventarioTablaLayout.createSequentialGroup()
-                .addContainerGap(158, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InventarioTablaLayout.createSequentialGroup()
+                .addContainerGap(291, Short.MAX_VALUE)
                 .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -409,9 +383,7 @@ String accionp, accionc;
                 .addComponent(btnAgregarPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnAgregarCat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnFiltros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39))
+                .addGap(54, 54, 54))
             .addGroup(InventarioTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(InventarioTablaLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -426,14 +398,13 @@ String accionp, accionc;
         InventarioTablaLayout.setVerticalGroup(
             InventarioTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InventarioTablaLayout.createSequentialGroup()
-                .addContainerGap(627, Short.MAX_VALUE)
+                .addContainerGap(626, Short.MAX_VALUE)
                 .addGroup(InventarioTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnFiltros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAgregarCat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAgregarPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(14, 14, 14))
+                .addGap(15, 15, 15))
             .addGroup(InventarioTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(InventarioTablaLayout.createSequentialGroup()
                     .addGap(0, 6, Short.MAX_VALUE)
@@ -455,6 +426,9 @@ String accionp, accionc;
         btnBuscarProducto.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         btnBuscarProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBuscarProducto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBuscarProductoMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnBuscarProductoMouseEntered(evt);
             }
@@ -819,11 +793,19 @@ String accionp, accionc;
         InventarioCategoria.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTextField2.setText("Buscar...");
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
         InventarioCategoria.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 630, 40));
 
         btnBuscarCategoria.setBackground(new java.awt.Color(113, 189, 68));
         btnBuscarCategoria.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         btnBuscarCategoria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBuscarCategoriaMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnBuscarCategoriaMouseEntered(evt);
             }
@@ -1160,14 +1142,6 @@ String accionp, accionc;
         btnModificar.setBackground(Color.decode(verde));
     }//GEN-LAST:event_btnModificarMouseExited
 
-    private void btnFiltrosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFiltrosMouseEntered
-        btnFiltros.setBackground(Color.decode(naranja));
-    }//GEN-LAST:event_btnFiltrosMouseEntered
-
-    private void btnFiltrosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFiltrosMouseExited
-        btnFiltros.setBackground(Color.decode(verde));
-    }//GEN-LAST:event_btnFiltrosMouseExited
-
     private void TxtbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtbuscarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TxtbuscarActionPerformed
@@ -1470,7 +1444,7 @@ String accionp, accionc;
         String resp;
         int id;
         if (TablaProducto.getSelectedRowCount() == 1) {
-            if (JOptionPane.showConfirmDialog(this, "¿Deseas eliminar el producto: " + TablaProducto.getValueAt(TablaProducto.getSelectedRow(), 1).toString() + "?", "Papeleria Yolis", JOptionPane.YES_NO_OPTION) == 0) {
+            if (JOptionPane.showConfirmDialog(this, "¿Deseas eliminar el producto: " + TablaProducto.getValueAt(TablaProducto.getSelectedRow(), 2).toString() + "?", "Papeleria Yolis", JOptionPane.YES_NO_OPTION) == 0) {
                 resp = CONTROLP.desactivar(Integer.parseInt(TablaProducto.getValueAt(TablaProducto.getSelectedRow(), 0).toString()));
                 if (resp.equals("OK")) {
                     mensajeOK("Registro eliminado.");
@@ -1486,6 +1460,61 @@ String accionp, accionc;
         }
     }//GEN-LAST:event_btnEliminarProductoMouseClicked
 
+    private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
+        String resp;
+        int id;
+        if (TablaInventario.getSelectedRowCount() == 1) {
+            if (JOptionPane.showConfirmDialog(this, "¿Deseas eliminar el producto: " + TablaInventario.getValueAt(TablaInventario.getSelectedRow(), 2).toString() + "?", "Papeleria Yolis", JOptionPane.YES_NO_OPTION) == 0) {
+                resp = CONTROLP.desactivar(Integer.parseInt(TablaInventario.getValueAt(TablaInventario.getSelectedRow(), 0).toString()));
+                if (resp.equals("OK")) {
+                    mensajeOK("Registro eliminado.");
+                    ListarP("");
+                } else {
+                    mensajeError(resp);
+                }
+            } else {
+                mensajeError("Eliminación cancelada.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Debes seleccionar un producto", "Papelería Yolis", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnEliminarMouseClicked
+
+    private void btnModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseClicked
+        InventarioTabla.setVisible(false);
+        InventarioProducto.setVisible(true);
+        
+        if (TablaInventario.getSelectedRowCount() == 1) {
+            
+            txtIDProducto.setText(TablaInventario.getValueAt(TablaInventario.getSelectedRow(), 0).toString());
+            txtProductoCategoria.setText(TablaInventario.getValueAt(TablaInventario.getSelectedRow(), 1).toString());
+            txtProducto.setText(TablaInventario.getValueAt(TablaInventario.getSelectedRow(), 2).toString());
+            txtDescripcionPro.setText(TablaInventario.getValueAt(TablaInventario.getSelectedRow(), 3).toString());
+            txtPrecioCompra.setText(TablaInventario.getValueAt(TablaInventario.getSelectedRow(), 5).toString());
+            imagen.setText(TablaInventario.getValueAt(TablaInventario.getSelectedRow(), 4).toString());
+     
+            txtProductoCategoria.setEditable(false);
+            InventarioTabla.setVisible(false);
+            accionp = "editar";
+            //ID.setVisible(true);
+            
+        } else {
+            JOptionPane.showMessageDialog(this, "Debes seleccionar un registro", "Papeleria Yolis", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnModificarMouseClicked
+
+    private void btnBuscarProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarProductoMouseClicked
+        ListarInventario(txtBusqueda.getText().trim());
+    }//GEN-LAST:event_btnBuscarProductoMouseClicked
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void btnBuscarCategoriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarCategoriaMouseClicked
+        ListarC(jTextField2.getText().trim());
+    }//GEN-LAST:event_btnBuscarCategoriaMouseClicked
+
     public void LimpiarCategoria()
     {
         txtCategoria.setText("");
@@ -1497,6 +1526,7 @@ String accionp, accionc;
     private javax.swing.JPanel InventarioProducto;
     private javax.swing.JPanel InventarioTabla;
     private javax.swing.JTable TablaCategoria;
+    private javax.swing.JTable TablaInventario;
     private javax.swing.JTable TablaProducto;
     private javax.swing.JTextField Txtbuscar;
     private javax.swing.JPanel btnAgregarCat;
@@ -1509,7 +1539,6 @@ String accionp, accionc;
     private javax.swing.JPanel btnEliminar;
     private javax.swing.JPanel btnEliminarCategoria;
     private javax.swing.JPanel btnEliminarProducto;
-    private javax.swing.JPanel btnFiltros;
     private javax.swing.JPanel btnModificar;
     private javax.swing.JPanel btnModificarCategoria;
     private javax.swing.JPanel btnModificarProducto;
@@ -1535,7 +1564,6 @@ String accionp, accionc;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1546,7 +1574,6 @@ String accionp, accionc;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lblimgCat;
     private javax.swing.JTextField txtBusqueda;

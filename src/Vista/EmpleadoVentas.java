@@ -550,7 +550,7 @@ public class EmpleadoVentas extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAgregarMouseExited
 
     private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
-        // TODO add your handling code here:
+        listarVentas(txtBuscar.getText());
     }//GEN-LAST:event_txtBuscarActionPerformed
 
     private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
