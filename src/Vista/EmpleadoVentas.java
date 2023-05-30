@@ -492,9 +492,13 @@ public class EmpleadoVentas extends javax.swing.JPanel {
                 {
                     String producto[] = PRCONTROL.obtenerProductoVenta(Integer.parseInt(txtProducto.getText()));
                     if(producto[1] != null){
-                        System.out.println(producto.length);
-                        modeloTabla.addRow(producto);
-                        calcularTotal();
+                        if(Integer.parseInt(producto[3]) > 0){
+                            System.out.println(producto.length);
+                            modeloTabla.addRow(producto);
+                            calcularTotal();
+                        }
+                        else
+                            JOptionPane.showMessageDialog(null, "El producto no cuenta con existencias.");
                     }
                     else
                         JOptionPane.showMessageDialog(null, "El producto no se encontró en la BD.");
