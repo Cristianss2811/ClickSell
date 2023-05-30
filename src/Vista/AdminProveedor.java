@@ -548,6 +548,7 @@ String accion;
         // TODO add your handling code here:
         ProvedorTabla.setVisible(true);
         ProvedorRegistro.setVisible(false);
+        Limpiar();
 
         
     }//GEN-LAST:event_btnVolverMouseClicked

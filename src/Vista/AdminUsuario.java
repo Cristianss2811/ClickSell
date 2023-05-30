@@ -491,11 +491,11 @@ String accion;
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarMouseEntered
-        btnRegistrar.setBackground(Color.decode(verde));
+        btnRegistrar.setBackground(Color.decode(naranja));
     }//GEN-LAST:event_btnRegistrarMouseEntered
 
     private void btnRegistrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarMouseExited
-       btnRegistrar.setBackground(Color.decode(naranja));
+       btnRegistrar.setBackground(Color.decode(verde));
     }//GEN-LAST:event_btnRegistrarMouseExited
 
     private void btnBuscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseEntered
@@ -552,6 +552,7 @@ String accion;
         // TODO add your handling code here:
         tabla.setVisible(true);
         Registro.setVisible(false);
+        Limpiar();
     }//GEN-LAST:event_btnVolverMouseClicked
 
     private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked

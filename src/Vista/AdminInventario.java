@@ -1212,6 +1212,7 @@ String accionp, accionc;
         InventarioTabla.setVisible(true);
         InventarioProducto.setVisible(false);
         InventarioCategoria.setVisible(false);
+        LimpiarProducto();
     }//GEN-LAST:event_btnVolverMouseClicked
 
     private void btnVolverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseEntered
@@ -1266,6 +1267,7 @@ String accionp, accionc;
         InventarioTabla.setVisible(true);
         InventarioProducto.setVisible(false);
         InventarioCategoria.setVisible(false);
+        LimpiarCategoria();
         
 
     }//GEN-LAST:event_btnVolver1MouseClicked
@@ -1375,7 +1377,7 @@ String accionp, accionc;
             if (resp.equals("OK")) {
                 mensajeOK("Registro Insertado con exito");
                 ListarC("");
-                Limpiar();
+                LimpiarCategoria();
             } else {
                 mensajeError(resp);
             }
