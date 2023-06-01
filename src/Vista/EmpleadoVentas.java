@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 import Vista.Usuario_Venta;
 import javax.swing.JOptionPane;
 import java.awt.Color;
+import java.util.List;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
@@ -15,7 +16,7 @@ import javax.swing.table.TableRowSorter;
 
 public class EmpleadoVentas extends javax.swing.JPanel {
     private final ProductoControl PRCONTROL;
-    private final VentasControl COMCONTROL;
+    private final VentasControl VENCONTROL;
     private DefaultTableModel modeloTabla;
     private Usuario_Venta u = new Usuario_Venta();
     
@@ -26,7 +27,7 @@ public class EmpleadoVentas extends javax.swing.JPanel {
     public EmpleadoVentas() {
         initComponents();
         PRCONTROL = new ProductoControl();
-        COMCONTROL = new VentasControl();
+        VENCONTROL = new VentasControl();
         inicializarTabla();
         listarVentas("");
         EmpleadoVentas.setVisible(false);
@@ -84,7 +85,7 @@ public class EmpleadoVentas extends javax.swing.JPanel {
     }
     
     private void listarVentas(String msj){
-        tabla.setModel(COMCONTROL.listar(msj));
+        tabla.setModel(VENCONTROL.listar(msj));
         TableRowSorter modeloOrdenado = new TableRowSorter(tabla.getModel());
         tabla.setRowSorter(modeloOrdenado);
     }
@@ -106,6 +107,8 @@ public class EmpleadoVentas extends javax.swing.JPanel {
         jLabel28 = new javax.swing.JLabel();
         btnAgregar1 = new javax.swing.JPanel();
         jLabel29 = new javax.swing.JLabel();
+        btnTicket = new javax.swing.JPanel();
+        jLabel30 = new javax.swing.JLabel();
         EmpleadoVentas = new javax.swing.JPanel();
         txtProducto = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -212,6 +215,39 @@ public class EmpleadoVentas extends javax.swing.JPanel {
             .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
         );
 
+        btnTicket.setBackground(new java.awt.Color(113, 189, 68));
+        btnTicket.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        btnTicket.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnTicket.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnTicketMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnTicketMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnTicketMouseExited(evt);
+            }
+        });
+
+        jLabel30.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel30.setText("Ticket");
+        jLabel30.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout btnTicketLayout = new javax.swing.GroupLayout(btnTicket);
+        btnTicket.setLayout(btnTicketLayout);
+        btnTicketLayout.setHorizontalGroup(
+            btnTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnTicketLayout.createSequentialGroup()
+                .addContainerGap(32, Short.MAX_VALUE)
+                .addComponent(jLabel30)
+                .addGap(30, 30, 30))
+        );
+        btnTicketLayout.setVerticalGroup(
+            btnTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel30, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout MostrarComprasLayout = new javax.swing.GroupLayout(MostrarCompras);
         MostrarCompras.setLayout(MostrarComprasLayout);
         MostrarComprasLayout.setHorizontalGroup(
@@ -219,10 +255,12 @@ public class EmpleadoVentas extends javax.swing.JPanel {
             .addGroup(MostrarComprasLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(MostrarComprasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1018, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1018, Short.MAX_VALUE)
                     .addGroup(MostrarComprasLayout.createSequentialGroup()
-                        .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnTicket, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
                         .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnAgregar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -238,7 +276,8 @@ public class EmpleadoVentas extends javax.swing.JPanel {
                 .addGroup(MostrarComprasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAgregar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnAgregar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTicket, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(77, Short.MAX_VALUE))
         );
 
@@ -529,10 +568,10 @@ public class EmpleadoVentas extends javax.swing.JPanel {
     private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
         if(tablaProductos.getRowCount() > 0)
         {
-            COMCONTROL.insertar(Integer.parseInt(u.nombre));
+            VENCONTROL.insertar(Integer.parseInt(u.nombre));
             for(i = 0; i < tablaProductos.getRowCount(); i++)
             {
-                COMCONTROL.insertarDetalle(Integer.parseInt(""+tablaProductos.getValueAt(i, 0)),
+                VENCONTROL.insertarDetalle(Integer.parseInt(""+tablaProductos.getValueAt(i, 0)),
                                              Integer.parseInt(""+tablaProductos.getValueAt(i, 4)));
             }
             JOptionPane.showMessageDialog(null, "Venta realizada con éxito.");
@@ -595,6 +634,30 @@ public class EmpleadoVentas extends javax.swing.JPanel {
         btnRegresar.setBackground(Color.decode(verde));
     }//GEN-LAST:event_btnRegresarMouseExited
 
+    private void btnTicketMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTicketMouseClicked
+        if(tabla.getSelectedRow() != -1){
+            List<String[]> lista = VENCONTROL.ticket(Integer.parseInt(""+tabla.getValueAt(tabla.getSelectedRow(), 0)));
+            Ticket ticket=new Ticket(
+            Integer.parseInt(""+tabla.getValueAt(tabla.getSelectedRow(), 0)),
+            Math.round((Double.parseDouble(""+tabla.getValueAt(tabla.getSelectedRow(), 1)) * 100.0)/100.0),
+            Math.round((Double.parseDouble(""+tabla.getValueAt(tabla.getSelectedRow(), 2)) * 100.0)/100.0),
+            lista,
+            ""+tabla.getValueAt(tabla.getSelectedRow(), 3)
+            );
+            ticket.setVisible(true);
+        }
+        else
+            JOptionPane.showMessageDialog(null, "Por favor, seleccione una venta para consultar su ticket..");
+    }//GEN-LAST:event_btnTicketMouseClicked
+
+    private void btnTicketMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTicketMouseEntered
+        btnTicket.setBackground(Color.decode(naranja));
+    }//GEN-LAST:event_btnTicketMouseEntered
+
+    private void btnTicketMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTicketMouseExited
+        btnTicket.setBackground(Color.decode(verde));
+    }//GEN-LAST:event_btnTicketMouseExited
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel EmpleadoVentas;
@@ -604,12 +667,14 @@ public class EmpleadoVentas extends javax.swing.JPanel {
     private javax.swing.JPanel btnBuscar;
     private javax.swing.JPanel btnEliminar;
     private javax.swing.JPanel btnRegresar;
+    private javax.swing.JPanel btnTicket;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;

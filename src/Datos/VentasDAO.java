@@ -42,6 +42,36 @@ public class VentasDAO  implements CrudVentas<Ventas>{
         }
         return registros;
     }
+    
+    public List<String[]> ticket(int venta) {
+        List<String[]> registros=new ArrayList();
+        try{
+            ps=CON.Conectar().prepareStatement("SELECT NOMBRE, PRECIOVENTA, CANPROVEN \n" +
+                                                "FROM PRODUCTO INNER JOIN PRO_VEN ON PRO_VEN.CVEPRODUCTO = PRODUCTO.CVEPRODUCTO\n" +
+                                                "WHERE CVEVENTAS = ?;");
+            ps.setInt(1, venta);
+            rs=ps.executeQuery();
+            while(rs.next()){
+                String objetos[] = new String[3];
+                objetos[0] = rs.getString(1);
+                objetos[2] = ""+rs.getDouble(2);
+                objetos[1] = ""+rs.getInt(3);
+                registros.add(objetos);
+            }
+                
+            ps.close();
+            rs.close();
+        }
+        catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally{
+            ps=null;
+            rs=null;
+            CON.Desconectar();
+        }
+        return registros;
+    }
 
     @Override
     public List<Ventas> ListarDetalle(int idVenta) {

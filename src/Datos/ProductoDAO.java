@@ -253,5 +253,4 @@ public class ProductoDAO implements CrudProducto<Producto> {
         }
         return resp;    
     }
-    
 }

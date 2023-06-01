@@ -40,6 +40,12 @@ public class VentasControl {
         return modeloTabla;
     }
     
+    public List<String[]> ticket(int venta){
+        List<String[]> lista = new ArrayList();
+        lista.addAll(DATOS.ticket(venta));
+        return lista;
+    }
+    
     public String insertar(int cveUsuario){
         obj.setCveUsuario(cveUsuario);
         return (DATOS.insertar(obj))?"OK":"Error al insertar la compra";
